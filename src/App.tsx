@@ -6370,17 +6370,16 @@ function LoginPage({
                 htmlFor="login-phone"
                 className="block font-body text-sm font-semibold text-maroon-700 mb-2"
               >
-                {t("authPhoneLabel", language)}
+                Email or Phone Number
               </label>
               <input
                 id="login-phone"
                 type="text"
-                placeholder="Email or Phone Number"
+                placeholder="Enter your email or phone number"
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="w-full rounded-xl border border-gold-100 bg-white px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-saffron-300"
-                placeholder={t("authPhonePlaceholder", language)}
               />
             </div>
 
