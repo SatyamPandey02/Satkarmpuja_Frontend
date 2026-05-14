@@ -6374,7 +6374,8 @@ function LoginPage({
               </label>
               <input
                 id="login-phone"
-                type="tel"
+                type="text"
+                placeholder="Email or Phone Number"
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
