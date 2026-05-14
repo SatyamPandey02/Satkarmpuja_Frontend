@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { 
   Table, TableHeader, TableBody, TableHead, TableRow, TableCell 
 } from "@/components/ui/table";
+import { apiFetch } from "./api";
 
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -4130,7 +4131,7 @@ function Footer({ config, onNavigate, language }: FooterProps) {
   const [popularPoojas, setPopularPoojas] = useState<PopularPoojaCard[]>([]);
 
   const loadPopular = () => {
-    fetch("/api/content/popularPoojas")
+    apiFetch("/api/content/popularPoojas")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
@@ -4346,7 +4347,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
   const [popularCards, setPopularCards] = useState<PopularPoojaCard[]>([]);
 
   const loadPopular = () => {
-    fetch("/api/content/popularPoojas")
+    apiFetch("/api/content/popularPoojas")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
@@ -5108,7 +5109,7 @@ function SuccessStoriesPage({ onNavigate, language }: SuccessStoriesPageProps) {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await fetch("/api/stories/public");
+        const res = await apiFetch("/api/stories/public");
         if (!res.ok) return;
         const data = (await res.json()) as any[];
         setApproved(
@@ -5307,7 +5308,7 @@ function BookPage({
       };
 
       try {
-        const res = await fetch("/api/bookings", {
+        const res = await apiFetch("/api/bookings", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -5639,7 +5640,7 @@ function AboutPage({ onNavigate, language }: AboutPageProps) {
   const pointerStartX = useRef<number | null>(null);
 
   useEffect(() => {
-    fetch("/api/content/aboutGallery")
+    apiFetch("/api/content/aboutGallery")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
@@ -6284,7 +6285,7 @@ function LoginPage({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/auth/request-otp", {
+      const res = await apiFetch("/api/auth/request-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone }),
@@ -6321,7 +6322,7 @@ function LoginPage({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/auth/login-otp", {
+      const res = await apiFetch("/api/auth/login-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone, otp }),
@@ -6594,7 +6595,7 @@ function SignupPage({
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await apiFetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -6787,7 +6788,7 @@ function ShareExperiencePage({
     const load = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/bookings/mine", {
+        const res = await apiFetch("/api/bookings/mine", {
           headers: { Authorization: `Bearer ${auth.token}` },
         });
         if (res.ok) {
@@ -6817,7 +6818,7 @@ function ShareExperiencePage({
       formData.append("story", story);
       formData.append("rating", String(rating));
 
-      const res = await fetch("/api/stories", {
+      const res = await apiFetch("/api/stories", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -7154,7 +7155,7 @@ function DashboardPage({
   const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/users/profile", {
+      const res = await apiFetch("/api/users/profile", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -7178,7 +7179,7 @@ function DashboardPage({
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/bookings/mine", {
+      const res = await apiFetch("/api/bookings/mine", {
         headers: { Authorization: `Bearer ${auth.token}` },
       });
       if (res.ok) {
@@ -7201,7 +7202,7 @@ function DashboardPage({
     if (!booking.id) return;
 
     try {
-      const res = await fetch("/api/payments/create-order", {
+      const res = await apiFetch("/api/payments/create-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -7231,7 +7232,7 @@ function DashboardPage({
         order_id: order.orderId,
         handler: async (response: any) => {
           try {
-            const verifyRes = await fetch("/api/payments/verify-payment", {
+            const verifyRes = await apiFetch("/api/payments/verify-payment", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -7794,16 +7795,16 @@ function AdminPanelPage({
     try {
       // Always fetch prices if we're looking at bookings or price change
       if (tab === "bookings" || tab === "changePrice" || tab === "overview" || tab === "payments") {
-        const res = await fetch("/api/content/poojaPrices");
+        const res = await apiFetch("/api/content/poojaPrices");
         const body = await res.json();
         if (body?.data) setPoojaPrices(body.data);
       }
 
       if (tab === "overview" || tab === "bookings" || tab === "completed" || tab === "payments" || tab === "users" || tab === "stories") {
         const [bRes, uRes, sRes] = await Promise.all([
-          fetch("/api/bookings/admin/all", { headers: { Authorization: `Bearer ${auth.token}` } }),
-          fetch("/api/admin/users", { headers: { Authorization: `Bearer ${auth.token}` } }),
-          fetch("/api/stories/admin/all", { headers: { Authorization: `Bearer ${auth.token}` } }),
+          apiFetch("/api/bookings/admin/all", { headers: { Authorization: `Bearer ${auth.token}` } }),
+          apiFetch("/api/admin/users", { headers: { Authorization: `Bearer ${auth.token}` } }),
+          apiFetch("/api/stories/admin/all", { headers: { Authorization: `Bearer ${auth.token}` } }),
         ]);
         
         const [bData, uData, sData] = await Promise.all([
@@ -7816,11 +7817,11 @@ function AdminPanelPage({
       }
 
       if (tab === "popular") {
-        const res = await fetch("/api/content/popularPoojas");
+        const res = await apiFetch("/api/content/popularPoojas");
         const body = await res.json();
         setPopularPoojas(body?.data || []);
       } else if (tab === "aboutGallery") {
-        const res = await fetch("/api/content/aboutGallery");
+        const res = await apiFetch("/api/content/aboutGallery");
         const body = await res.json();
         if (body?.data) setAboutGallery(body.data);
       }
@@ -7992,7 +7993,7 @@ function AdminPanelPage({
     const newPrices = { ...poojaPrices, [key]: `₹${priceForm.price}` };
 
     try {
-      const res = await fetch("/api/content/poojaPrices", {
+      const res = await apiFetch("/api/content/poojaPrices", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -8088,7 +8089,7 @@ function AdminPanelPage({
 
   const updateBooking = async (id: string, patch: Record<string, unknown>) => {
     try {
-      const res = await fetch(`/api/bookings/admin/${id}`, {
+      const res = await apiFetch(`/api/bookings/admin/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -8177,7 +8178,7 @@ function AdminPanelPage({
 
   const approveStory = async (id: string) => {
     try {
-      const res = await fetch(`/api/stories/admin/${id}`, {
+      const res = await apiFetch(`/api/stories/admin/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -8201,7 +8202,7 @@ function AdminPanelPage({
     const ok = window.confirm(t("adminConfirmDeleteStory", language));
     if (!ok) return;
     try {
-      const res = await fetch(`/api/stories/admin/${id}`, {
+      const res = await apiFetch(`/api/stories/admin/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${auth.token}` },
       });
@@ -8218,7 +8219,7 @@ function AdminPanelPage({
 
   const toggleBlockUser = async (userId: string, blocked: boolean) => {
     try {
-      const res = await fetch(`/api/admin/users/${userId}/block`, {
+      const res = await apiFetch(`/api/admin/users/${userId}/block`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -8246,7 +8247,7 @@ function AdminPanelPage({
     if (!ok) return;
     try {
       const target = users.find((u) => u.id === userId);
-      const res = await fetch(`/api/admin/users/${userId}`, {
+      const res = await apiFetch(`/api/admin/users/${userId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${auth.token}` },
       });
@@ -8275,7 +8276,7 @@ function AdminPanelPage({
 
   const persistPopular = async (next: PopularPoojaCard[]) => {
     try {
-      const res = await fetch("/api/content/popularPoojas", {
+      const res = await apiFetch("/api/content/popularPoojas", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -8336,7 +8337,7 @@ function AdminPanelPage({
 
   const persistGallery = async (next: AboutPoojaGalleryItem[]) => {
     try {
-      const res = await fetch("/api/content/aboutGallery", {
+      const res = await apiFetch("/api/content/aboutGallery", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -9548,7 +9549,7 @@ export default function App() {
   useEffect(() => {
     const fetchPrices = async () => {
       try {
-        const res = await fetch("/api/content/poojaPrices");
+        const res = await apiFetch("/api/content/poojaPrices");
         const body = await res.json();
         if (body?.data) setPoojaPrices(body.data);
       } catch (err) {
@@ -9604,7 +9605,7 @@ export default function App() {
     const check = async () => {
       if (!auth?.token) return;
       try {
-        const res = await fetch("/api/auth/me", {
+        const res = await apiFetch("/api/auth/me", {
           headers: { Authorization: `Bearer ${auth.token}` },
         });
         if (!res.ok) {
@@ -9685,7 +9686,7 @@ export default function App() {
 
     const initData = async () => {
       try {
-        const res = await fetch("/api/bookings");
+        const res = await apiFetch("/api/bookings");
         if (res.ok) {
           const data = (await res.json()) as BookingData[];
           setBookings(data || []);
