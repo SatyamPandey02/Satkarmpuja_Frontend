@@ -4383,7 +4383,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
     <>
       {/* Hero */}
       <section
-        className="relative min-h-screen flex items-start sm:items-center overflow-hidden"
+        className="relative min-h-screen flex flex-col overflow-hidden"
         style={{
           backgroundImage:
             "url('/assets/generated/hero-temple.jpg')",
@@ -4396,7 +4396,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
         <div className="absolute inset-0 bg-black/35 md:bg-black/25" />
         <div className="absolute top-0 left-0 w-full h-full om-pattern opacity-10" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-56 sm:pb-44 md:pb-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 w-full flex-1 flex items-center">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-2 mb-6 sm:mb-8">
               <span className="text-gold-300 text-sm font-body font-medium tracking-wide">
@@ -4436,8 +4436,8 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
           </div>
         </div>
 
-        {/* Stats bar */}
-        <div className="absolute bottom-0 left-0 right-0 glass-card border-t border-white/20">
+        {/* Stats bar - part of flex flow, always below content */}
+        <div className="relative z-10 glass-card border-t border-white/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-5">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
               {[
