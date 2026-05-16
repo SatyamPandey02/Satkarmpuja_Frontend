@@ -4383,7 +4383,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
     <>
       {/* Hero */}
       <section
-        className="relative min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-screen flex items-start sm:items-center overflow-hidden"
         style={{
           backgroundImage:
             "url('/assets/generated/hero-temple.jpg')",
@@ -4396,31 +4396,31 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
         <div className="absolute inset-0 bg-black/35 md:bg-black/25" />
         <div className="absolute top-0 left-0 w-full h-full om-pattern opacity-10" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-48 sm:pb-40 md:pb-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-56 sm:pb-44 md:pb-32 w-full">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-2 mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-2 mb-6 sm:mb-8">
               <span className="text-gold-300 text-sm font-body font-medium tracking-wide">
                 <Sparkles className="w-4 h-4 inline-block mr-2 text-saffron-500" /> {t("heroTagline", language)}
               </span>
             </div>
 
-            <div className="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mb-8 shadow-glow-gold float-animation">
-              <Sparkles className="w-8 h-8 inline-block text-saffron-500" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 gradient-gold rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-glow-gold float-animation">
+              <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 inline-block text-saffron-500" />
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-4 sm:mb-6">
               {t("heroTitle", language) ?? config.hero_title}
             </h1>
-            <p className="font-body text-lg md:text-xl text-white/85 mb-10 leading-relaxed max-w-2xl">
+            <p className="font-body text-base sm:text-lg md:text-xl text-white/85 mb-8 sm:mb-10 leading-relaxed max-w-2xl">
               {t("heroSubtitle", language) ?? config.hero_subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 type="button"
                 data-ocid="hero.book.primary_button"
                 onClick={() => onNavigate("book")}
-                className="btn-primary px-8 py-4 rounded-full text-lg flex items-center justify-center gap-2 shadow-glow-saffron"
+                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg flex items-center justify-center gap-2 shadow-glow-saffron"
               >
                 <HeartHandshake className="w-5 h-5 inline-block mr-2 text-saffron-500" /> {t("heroBookCta", language)}
               </button>
@@ -4428,7 +4428,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
                 type="button"
                 data-ocid="hero.categories.secondary_button"
                 onClick={() => onNavigate("categories")}
-                className="btn-outline-white px-8 py-4 rounded-full text-lg flex items-center justify-center gap-2"
+                className="btn-outline-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg flex items-center justify-center gap-2"
               >
                 <Target className="w-5 h-5 inline-block mr-2 text-saffron-500" /> {t("heroExploreCta", language)}
               </button>
