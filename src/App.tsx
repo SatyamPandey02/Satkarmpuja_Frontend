@@ -2028,15 +2028,15 @@ const TRANSLATIONS = {
     gu: "પાછા સ્વાગત છે",
   },
   authLoginShellSubtitle: {
-    en: "Login with your mobile number to track your bookings and manage your profile.",
-    hi: "अपनी बुकिंग ट्रैक करने और प्रोफ़ાઇલ मैनेज करने के लिए अपने मोबाइल नंबर से लॉगिन करें।",
-    gu: "તમારી બુકિંગ ટ્રેક કરવા અને પ્રોફાઇલ મેનેજ કરવા માટે તમારા મોબાઈલ નંબરથી લૉગિન કરો.",
+    en: "Login with your email or mobile number to track your bookings and manage your profile.",
+    hi: "अपनी बुकिंग ट्रैक करने और प्रोफ़ाइल मैनेज करने के लिए अपने ईमेल या मोबाइल नंबर से लॉगिन करें।",
+    gu: "તમારી બુકિંગ ટ્રેક કરવા અને પ્રોફાઇલ મેનેજ કરવા માટે તમારા ઈમેલ અથવા મોબાઈલ નંબરથી લૉગિન કરો.",
   },
   authLoginTitle: { en: "Login", hi: "लॉगिन", gu: "લૉગિન" },
   authLoginSubtitle: {
-    en: "OTP will be sent to your registered mobile number.",
-    hi: "आपके पंजीकृत मोबाइल नंबर पर ओटीपी भेजा जाएगा।",
-    gu: "તમારા રજિસ્ટર્ડ મોબાઈલ નંબર પર OTP મોકલવામાં આવશે.",
+    en: "OTP will be sent to your registered email.",
+    hi: "आपके पंजीकृत ईमेल पर ओटीपी भेजा जाएगा।",
+    gu: "તમારા રજિસ્ટર્ડ ઈમેલ પર OTP મોકલવામાં આવશે.",
   },
   authPhoneLabel: { en: "Phone Number", hi: "फ़ोन नंबर", gu: "ફોન નંબર" },
   authPhonePlaceholder: {
@@ -4396,7 +4396,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
         <div className="absolute inset-0 bg-black/35 md:bg-black/25" />
         <div className="absolute top-0 left-0 w-full h-full om-pattern opacity-10" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-48 sm:pb-40 md:pb-32 w-full">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-2 mb-8">
               <span className="text-gold-300 text-sm font-body font-medium tracking-wide">
@@ -4438,23 +4438,23 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
 
         {/* Stats bar */}
         <div className="absolute bottom-0 left-0 right-0 glass-card border-t border-white/20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
               {[
-                { icon: <Users className="w-6 h-6 text-saffron-500" />, num: "2,500+", label: t("statsHappyFamilies", language) },
-                { icon: <HeartHandshake className="w-6 h-6 text-saffron-500" />, num: "5,000+", label: t("statsPoojasPerformed", language) },
-                { icon: <Star className="w-6 h-6 text-yellow-500" />, num: "4.9/5", label: t("statsAvgRating", language) },
-                { icon: <Trophy className="w-6 h-6 text-saffron-500" />, num: "99%", label: t("statsSatisfaction", language) },
+                { icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "2,500+", label: t("statsHappyFamilies", language) },
+                { icon: <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "5,000+", label: t("statsPoojasPerformed", language) },
+                { icon: <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500" />, num: "4.9/5", label: t("statsAvgRating", language) },
+                { icon: <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "99%", label: t("statsSatisfaction", language) },
               ].map((s) => (
-                <div key={s.label} className="flex items-center gap-4 group">
-                  <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                <div key={s.label} className="flex items-center gap-2 sm:gap-4 group">
+                  <div className="flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl bg-white/10 border border-white/20 group-hover:bg-white/20 transition-all duration-300">
                     {s.icon}
                   </div>
                   <div>
-                    <p className="font-display text-xl font-bold text-maroon-700 leading-none">
+                    <p className="font-display text-base sm:text-xl font-bold text-maroon-700 leading-none">
                       {s.num}
                     </p>
-                    <p className="font-body text-xs text-maroon-500 mt-1">
+                    <p className="font-body text-[10px] sm:text-xs text-maroon-500 mt-0.5 sm:mt-1">
                       {s.label}
                     </p>
                   </div>
