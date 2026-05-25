@@ -4257,6 +4257,10 @@ function Footer({ config, onNavigate, language }: FooterProps) {
                 <Mail className="w-5 h-5 inline-block text-gray-500" />
                 <span className="font-body">{config.contact_email}</span>
               </li>
+              <li className="flex items-center gap-3 text-gold-100/80 text-sm">
+                <MapPin className="w-5 h-5 inline-block text-gray-500" />
+                <span className="font-body">Ahmedabad, Gujarat, India</span>
+              </li>
               <li className="pt-2">
                 <p className="text-gold-400 text-xs font-semibold uppercase tracking-wider mb-2">Follow Us</p>
                 <div className="flex items-center gap-3">
@@ -5954,7 +5958,7 @@ function ContactPage({ config, language }: ContactPageProps) {
 
       <section className="py-16 om-pattern">
         <div className="max-w-3xl mx-auto px-4">
-          <div className="grid sm:grid-cols-2 gap-7 mb-10">
+          <div className="grid sm:grid-cols-3 gap-7 mb-10">
             <div className="bg-white rounded-3xl shadow-card-warm p-8 text-center border border-gold-100">
               <div className="w-16 h-16 gradient-saffron rounded-2xl flex items-center justify-center mx-auto mb-5 text-3xl shadow-glow-saffron">
                 <Phone className="w-4 h-4 inline-block mr-2 text-gray-500" />
@@ -5975,6 +5979,17 @@ function ContactPage({ config, language }: ContactPageProps) {
               </p>
               <p className="font-display text-xl font-bold text-maroon-600">
                 {config.contact_email}
+              </p>
+            </div>
+            <div className="bg-white rounded-3xl shadow-card-warm p-8 text-center border border-gold-100">
+              <div className="w-16 h-16 gradient-saffron rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-glow-saffron">
+                <MapPin className="w-6 h-6 text-white" />
+              </div>
+              <p className="font-body text-muted-foreground text-sm mb-2">
+                {language === "hi" ? "स्थान" : language === "gu" ? "સ્થાન" : "Location"}
+              </p>
+              <p className="font-display text-xl font-bold text-maroon-600">
+                Ahmedabad, Gujarat, India
               </p>
             </div>
           </div>
