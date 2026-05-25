@@ -2456,7 +2456,7 @@ const defaultConfig: Config = {
   hero_subtitle:
     "Experience sacred rituals performed by learned Brahmins with personalized consultation and transparent pricing",
   contact_phone: "+91 8849307007",
-  contact_email: "namaste@satkarmpooja.com",
+  contact_email: "namaste@satkarmpuja.com",
   primary_color: "#ff8800",
   secondary_color: "#d4af37",
   background_color: "#fff8f0",
@@ -7108,7 +7108,7 @@ const generateReceipt = async (
 
     doc.setTextColor(153, 27, 27);
     doc.text(
-      "Support: namaste@satkarmpooja.com • www.satkarmpooja.com",
+      "Support: namaste@satkarmpuja.com • www.satkarmpooja.com",
       105,
       footerY + 24,
       { align: "center" }
