@@ -5966,7 +5966,7 @@ function ContactPage({ config, language }: ContactPageProps) {
               <p className="font-body text-muted-foreground text-sm mb-2">
                 {t("contactCallUs", language)}
               </p>
-              <p className="font-display text-xl font-bold text-maroon-600">
+              <p className="font-display text-lg sm:text-sm md:text-xs lg:text-sm xl:text-lg font-bold text-maroon-600">
                 {config.contact_phone}
               </p>
             </div>
@@ -5977,7 +5977,7 @@ function ContactPage({ config, language }: ContactPageProps) {
               <p className="font-body text-muted-foreground text-sm mb-2">
                 {t("contactEmailUs", language)}
               </p>
-              <p className="font-display text-xl font-bold text-maroon-600">
+              <p className="font-display text-lg sm:text-sm md:text-xs lg:text-sm xl:text-lg font-bold text-maroon-600 break-all">
                 {config.contact_email}
               </p>
             </div>
@@ -5988,7 +5988,7 @@ function ContactPage({ config, language }: ContactPageProps) {
               <p className="font-body text-muted-foreground text-sm mb-2">
                 {language === "hi" ? "स्थान" : language === "gu" ? "સ્થાન" : "Location"}
               </p>
-              <p className="font-display text-xl font-bold text-maroon-600">
+              <p className="font-display text-lg sm:text-sm md:text-xs lg:text-sm xl:text-lg font-bold text-maroon-600 break-words">
                 Ahmedabad, Gujarat, India
               </p>
             </div>
