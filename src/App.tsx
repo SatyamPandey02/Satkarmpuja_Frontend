@@ -32,6 +32,7 @@ type Page =
   | "success-stories"
   | "about"
   | "contact"
+  | "blog"
   | "login"
   | "signup"
   | "dashboard"
@@ -3930,6 +3931,7 @@ function Navbar({
     },
     { label: t("navAbout", language), page: "about", ocid: "nav.about.link" },
     { label: t("navContact", language), page: "contact", ocid: "nav.contact.link" },
+    { label: "Blog", page: "blog", ocid: "nav.blog.link" },
   ];
 
   return (
@@ -4254,6 +4256,29 @@ function Footer({ config, onNavigate, language }: FooterProps) {
                 <Mail className="w-5 h-5 inline-block text-gray-500" />
                 <span className="font-body">{config.contact_email}</span>
               </li>
+              <li className="pt-2">
+                <p className="text-gold-400 text-xs font-semibold uppercase tracking-wider mb-2">Follow Us</p>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.instagram.com/satkarmpuja"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gold-100/70 hover:text-pink-400 transition text-sm font-body"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                    Instagram
+                  </a>
+                  <a
+                    href="https://www.facebook.com/satkarmpuja"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gold-100/70 hover:text-blue-400 transition text-sm font-body"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+                    Facebook
+                  </a>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -4345,6 +4370,16 @@ const faqItems: { qKey: keyof typeof TRANSLATIONS; aKey: keyof typeof TRANSLATIO
 function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [popularCards, setPopularCards] = useState<PopularPoojaCard[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const loadPopular = () => {
     apiFetch("/api/content/popularPoojas")
@@ -4385,8 +4420,9 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
       <section
         className="relative min-h-screen flex flex-col overflow-hidden"
         style={{
-          backgroundImage:
-            "url('/assets/generated/hero-temple.jpg')",
+          backgroundImage: isMobile
+            ? "url('/assets/generated/Mobile_VIew _Hero.png')"
+            : "url('/assets/generated/hero-temple.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -4555,53 +4591,65 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
       ) : null}
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-saffron-50 om-pattern">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="section-heading-accent">
+      <section className="py-24 relative overflow-hidden bg-saffron-50 om-pattern">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section header */}
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5" style={{ background: "oklch(0.66 0.20 53 / 0.12)", color: "oklch(0.57 0.20 50)", border: "1px solid oklch(0.66 0.20 53 / 0.3)" }}>
+              <Sparkles className="w-3.5 h-3.5" />
               {t("homeWhyChooseUs", language)}
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-maroon-600 mt-3 mb-4">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-maroon-600 mt-2 mb-5 leading-tight">
               {t("homeWhyHeading", language)}
             </h2>
-            <div className="lotus-divider mx-auto max-w-[120px]" />
+            <p className="font-body text-muted-foreground max-w-xl mx-auto text-base">
+              Centuries of Vedic wisdom, delivered with modern trust and transparency.
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="text-center">
-                <div className="w-16 h-16 gradient-saffron rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-glow-saffron">
-                  <span className="text-3xl">{f.icon}</span>
+          {/* Feature cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className="group relative rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 bg-white shadow-sm"
+                style={{ border: "1px solid oklch(0.88 0.04 75)" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.border = "1px solid oklch(0.66 0.20 53 / 0.5)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px oklch(0.66 0.20 53 / 0.12)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.border = "1px solid oklch(0.88 0.04 75)"; (e.currentTarget as HTMLDivElement).style.boxShadow = ""; }}
+              >
+                {/* Step number */}
+                <span className="absolute top-5 right-6 font-display text-5xl font-bold select-none" style={{ color: "oklch(0.66 0.20 53 / 0.1)" }}>
+                  0{i + 1}
+                </span>
+
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-lg" style={{ background: "linear-gradient(135deg, oklch(0.66 0.20 53) 0%, oklch(0.57 0.20 50) 100%)" }}>
+                  <span className="text-white [&>svg]:w-6 [&>svg]:h-6 [&>svg]:text-white">{f.icon}</span>
                 </div>
-                <h3 className="font-display text-lg font-semibold text-maroon-600 mb-3">
+
+                {/* Accent line */}
+                <div className="w-8 h-0.5 mb-4 rounded-full" style={{ background: "oklch(0.82 0.14 78)" }} />
+
+                <h3 className="font-display text-lg font-bold text-maroon-600 mb-3">
                   {(() => {
                     switch (f.title) {
-                      case "Verified Pandits":
-                        return t("feature_verified_title", language);
-                      case "Sacred Traditions":
-                        return t("feature_traditions_title", language);
-                      case "Personal Consultation":
-                        return t("feature_consult_title", language);
-                      case "Transparent Pricing":
-                        return t("feature_pricing_title", language);
-                      default:
-                        return f.title;
+                      case "Verified Pandits": return t("feature_verified_title", language);
+                      case "Sacred Traditions": return t("feature_traditions_title", language);
+                      case "Personal Consultation": return t("feature_consult_title", language);
+                      case "Transparent Pricing": return t("feature_pricing_title", language);
+                      default: return f.title;
                     }
                   })()}
                 </h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                <p className="font-body text-sm leading-relaxed text-muted-foreground">
                   {(() => {
                     switch (f.title) {
-                      case "Verified Pandits":
-                        return t("feature_verified_desc", language);
-                      case "Sacred Traditions":
-                        return t("feature_traditions_desc", language);
-                      case "Personal Consultation":
-                        return t("feature_consult_desc", language);
-                      case "Transparent Pricing":
-                        return t("feature_pricing_desc", language);
-                      default:
-                        return f.desc;
+                      case "Verified Pandits": return t("feature_verified_desc", language);
+                      case "Sacred Traditions": return t("feature_traditions_desc", language);
+                      case "Personal Consultation": return t("feature_consult_desc", language);
+                      case "Transparent Pricing": return t("feature_pricing_desc", language);
+                      default: return f.desc;
                     }
                   })()}
                 </p>
@@ -4610,6 +4658,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
           </div>
         </div>
       </section>
+
 
       {/* Secondary Image Section */}
       <section className="py-0 relative overflow-hidden">
@@ -5929,6 +5978,37 @@ function ContactPage({ config, language }: ContactPageProps) {
             </div>
           </div>
 
+          {/* Social Media */}
+          <div className="bg-white rounded-3xl shadow-card-warm p-8 border border-gold-100 text-center mb-7">
+            <h3 className="font-display text-xl font-bold text-maroon-600 mb-5">Follow Us on Social Media</h3>
+            <div className="flex justify-center gap-6">
+              <a
+                href="https://www.instagram.com/satkarmpuja"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-2 group"
+              >
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md transition-transform group-hover:-translate-y-1" style={{ background: "linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)" }}>
+                  <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                </div>
+                <span className="text-sm font-body font-semibold text-maroon-600">Instagram</span>
+                <span className="text-xs text-muted-foreground">@satkarmpuja</span>
+              </a>
+              <a
+                href="https://www.facebook.com/satkarmpuja"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-2 group"
+              >
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md transition-transform group-hover:-translate-y-1" style={{ background: "#1877F2" }}>
+                  <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+                </div>
+                <span className="text-sm font-body font-semibold text-maroon-600">Facebook</span>
+                <span className="text-xs text-muted-foreground">SatkarmPuja</span>
+              </a>
+            </div>
+          </div>
+
           <div className="bg-white rounded-3xl shadow-card-warm p-8 border border-gold-100 text-center">
             <Clock className="w-8 h-8 mb-4 text-saffron-600 mx-auto" />
             <h3 className="font-display text-xl font-bold text-maroon-600 mb-3">
@@ -5944,6 +6024,185 @@ function ContactPage({ config, language }: ContactPageProps) {
               {t("contactResponseTime", language)}
             </p>
           </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// ─── Blog Page ────────────────────────────────────────────────────────────────
+const blogPosts = [
+  {
+    id: 1,
+    title: "The Significance of Rudrabhishek Puja in Daily Life",
+    excerpt: "Rudrabhishek is one of the most powerful rituals dedicated to Lord Shiva. Discover how this ancient practice can bring peace, prosperity, and spiritual growth into your everyday life.",
+    category: "Rituals",
+    readTime: "5 min read",
+    date: "May 20, 2026",
+    image: "/assets/generated/pooja-ceremony.dim_800x600.jpg",
+    color: "oklch(0.43 0.17 22)",
+  },
+  {
+    id: 2,
+    title: "Understanding Navagraha Shanti: A Guide to Planetary Peace",
+    excerpt: "The nine planets (Navagrahas) exert a powerful influence on human destiny. Learn how Navagraha Shanti puja can harmonize cosmic energies and remove obstacles in your path.",
+    category: "Astrology & Pujas",
+    readTime: "7 min read",
+    date: "May 14, 2026",
+    image: "/assets/generated/hero-temple.jpg",
+    color: "oklch(0.40 0.15 260)",
+  },
+  {
+    id: 3,
+    title: "Griha Pravesh: Welcoming Divine Blessings into Your New Home",
+    excerpt: "Moving into a new home is a sacred milestone. The Griha Pravesh ceremony purifies the space, invokes positive energies, and ensures prosperity for the family.",
+    category: "Home Ceremonies",
+    readTime: "4 min read",
+    date: "May 8, 2026",
+    image: "/assets/generated/category-graha-shanti.dim_800x500.jpg",
+    color: "oklch(0.50 0.16 145)",
+  },
+  {
+    id: 4,
+    title: "Satyanarayan Katha: The Story Behind the Most Popular Puja",
+    excerpt: "Satyanarayan Puja is performed in millions of homes across India for blessings, prosperity, and thanksgiving. Here's a deep dive into its mythology, significance, and proper procedure.",
+    category: "Mythology",
+    readTime: "6 min read",
+    date: "April 30, 2026",
+    image: "/assets/generated/category-dev-pooja.dim_800x500.jpg",
+    color: "oklch(0.60 0.18 55)",
+  },
+  {
+    id: 5,
+    title: "How to Prepare for a Vedic Puja at Home",
+    excerpt: "Whether you are hosting a small puja or a grand ceremony, proper preparation is key. From gathering materials to creating a sacred space — here's everything you need to know.",
+    category: "Tips & Guides",
+    readTime: "5 min read",
+    date: "April 22, 2026",
+    image: "/assets/generated/category-dosh-nivaran.dim_800x500.jpg",
+    color: "oklch(0.45 0.14 30)",
+  },
+  {
+    id: 6,
+    title: "The Science and Spirituality of Mantra Chanting",
+    excerpt: "Ancient Vedic mantras are not just prayers — they are vibrational tools that affect the mind, body, and spirit. Explore the spiritual and scientific basis behind mantra-based rituals.",
+    category: "Spirituality",
+    readTime: "8 min read",
+    date: "April 15, 2026",
+    image: "/assets/generated/category-nakshatra-shanti.dim_800x500.jpg",
+    color: "oklch(0.35 0.12 280)",
+  },
+];
+
+function BlogPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
+  const categories = ["All", ...Array.from(new Set(blogPosts.map(p => p.category)))];
+  const [activeCategory, setActiveCategory] = React.useState("All");
+  const filtered = activeCategory === "All" ? blogPosts : blogPosts.filter(p => p.category === activeCategory);
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="gradient-saffron pt-28 pb-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <span className="text-white/70 font-body font-medium text-sm tracking-wider uppercase block mb-3">
+            Our Journal
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+            Vedic Wisdom &amp; Insights
+          </h1>
+          <p className="font-body text-white/85 text-lg max-w-2xl mx-auto">
+            Explore articles on Vedic rituals, spirituality, and the sacred traditions that connect us to the divine.
+          </p>
+        </div>
+      </section>
+
+      {/* Category Filter */}
+      <section className="py-8 bg-saffron-50 border-b border-gold-100">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map(cat => (
+              <button
+                type="button"
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2 rounded-full text-sm font-body font-semibold transition-all ${
+                  activeCategory === cat
+                    ? "btn-primary"
+                    : "bg-white text-maroon-700 border border-gold-200 hover:bg-saffron-50"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Posts Grid */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filtered.map(post => (
+              <article
+                key={post.id}
+                className="bg-white rounded-2xl overflow-hidden border border-gold-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative h-52 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0" style={{ background: `${post.color}55` }} />
+                  <span
+                    className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-body font-semibold text-white"
+                    style={{ background: post.color }}
+                  >
+                    {post.category}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground font-body mb-3">
+                    <span>{post.date}</span>
+                    <span>·</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h2 className="font-display text-lg font-bold text-maroon-700 mb-3 leading-snug group-hover:text-saffron-700 transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-5 flex items-center gap-1 text-saffron-600 text-sm font-semibold font-body">
+                    Read Article
+                    <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-saffron-50 om-pattern">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-maroon-600 mb-4">
+            Ready to Book Your Puja?
+          </h2>
+          <p className="font-body text-muted-foreground mb-8">
+            Connect with our verified pandits and experience the power of authentic Vedic rituals.
+          </p>
+          <button
+            type="button"
+            onClick={() => onNavigate("book")}
+            className="btn-primary px-8 py-3.5 rounded-full font-body text-sm"
+          >
+            Book a Puja Now
+          </button>
         </div>
       </section>
     </>
@@ -9571,7 +9830,12 @@ export default function App() {
     console.log("Navigating to:", page);
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    if (poojaKey) setCurrentPoojaKey(poojaKey);
+    if (poojaKey) {
+      setCurrentPoojaKey(poojaKey);
+      window.location.hash = `#/${page}/${poojaKey}`;
+    } else {
+      window.location.hash = `#/${page}`;
+    }
   }, []);
 
   const handleLoggedIn = useCallback((next: { token: string; user: AuthUser }) => {
@@ -9596,9 +9860,50 @@ export default function App() {
   const logout = useCallback(() => {
     setAuth(null);
     storeAuth(null);
-    setCurrentPage("home");
+    navigateTo("home");
     showToast(t("dashLoggedOut", language), "success");
-  }, [showToast, language]);
+  }, [navigateTo, showToast, language]);
+
+  // Synchronize navigation state with URL hash (enables browser Back/Forward)
+  useEffect(() => {
+    const parseHash = () => {
+      const hash = window.location.hash.replace("#/", "");
+      if (!hash) {
+        setCurrentPage("home");
+        return;
+      }
+      const parts = hash.split("/");
+      const page = parts[0] as Page;
+      const key = parts[1];
+
+      const validPages: Page[] = [
+        "home",
+        "book",
+        "categories",
+        "pooja-detail",
+        "success-stories",
+        "about",
+        "contact",
+        "blog",
+        "login",
+        "signup",
+        "dashboard",
+        "admin",
+        "share-experience"
+      ];
+
+      if (validPages.includes(page)) {
+        setCurrentPage(page);
+        if (page === "pooja-detail" && key) {
+          setCurrentPoojaKey(key);
+        }
+      }
+    };
+
+    parseHash();
+    window.addEventListener("hashchange", parseHash);
+    return () => window.removeEventListener("hashchange", parseHash);
+  }, []);
 
   // Validate stored token on load
   useEffect(() => {
@@ -9722,119 +10027,122 @@ export default function App() {
       />
 
       <main className="pt-16 md:pt-20">
-        {currentPage === "home" && (
-          <HomePage
-            config={config}
-            onNavigate={navigateTo}
-            language={language}
-            poojaPrices={poojaPrices}
-          />
-        )}
-        {currentPage === "categories" && (
-          <CategoriesPage onNavigate={navigateTo} language={language} poojaPrices={poojaPrices} />
-        )}
-        {currentPage === "success-stories" && (
-          <SuccessStoriesPage onNavigate={navigateTo} language={language} />
-        )}
-        {currentPage === "about" && <AboutPage onNavigate={navigateTo} language={language} />}
-        {currentPage === "book" &&
-          (auth ? (
-            <BookPage
-              preSelectedPooja={poojaToBook}
-              preSelectedCategory={categoryToBook}
-              bookings={bookings}
+        <div key={currentPage} className="page-enter">
+          {currentPage === "home" && (
+            <HomePage
+              config={config}
               onNavigate={navigateTo}
-              auth={{ ...auth, loading: false }}
               language={language}
-              showToast={showToast}
+              poojaPrices={poojaPrices}
             />
-          ) : (
+          )}
+          {currentPage === "categories" && (
+            <CategoriesPage onNavigate={navigateTo} language={language} poojaPrices={poojaPrices} />
+          )}
+          {currentPage === "success-stories" && (
+            <SuccessStoriesPage onNavigate={navigateTo} language={language} />
+          )}
+          {currentPage === "about" && <AboutPage onNavigate={navigateTo} language={language} />}
+          {currentPage === "book" &&
+            (auth ? (
+              <BookPage
+                preSelectedPooja={poojaToBook}
+                preSelectedCategory={categoryToBook}
+                bookings={bookings}
+                onNavigate={navigateTo}
+                auth={{ ...auth, loading: false }}
+                language={language}
+                showToast={showToast}
+              />
+            ) : (
+              <LoginPage
+                onNavigate={navigateTo}
+                onLoggedIn={handleLoggedIn}
+                showToast={showToast}
+                language={language}
+              />
+            ))}
+          {currentPage === "contact" && <ContactPage config={config} language={language} />}
+          {currentPage === "blog" && <BlogPage onNavigate={navigateTo} />}
+          {currentPage === "pooja-detail" && (
+            <PoojaDetailPage
+              poojaKey={currentPoojaKey}
+              onNavigate={navigateTo}
+              onSelectPooja={(name, cat) => {
+                setPoojaToBook(name);
+                setCategoryToBook(cat || "");
+              }}
+              language={language}
+              poojaPrices={poojaPrices}
+            />
+          )}
+          {currentPage === "login" && (
             <LoginPage
               onNavigate={navigateTo}
               onLoggedIn={handleLoggedIn}
               showToast={showToast}
               language={language}
             />
-          ))}
-        {currentPage === "contact" && <ContactPage config={config} language={language} />}
-        {currentPage === "pooja-detail" && (
-          <PoojaDetailPage
-            poojaKey={currentPoojaKey}
-            onNavigate={navigateTo}
-            onSelectPooja={(name, cat) => {
-              setPoojaToBook(name);
-              setCategoryToBook(cat || "");
-            }}
-            language={language}
-            poojaPrices={poojaPrices}
-          />
-        )}
-        {currentPage === "login" && (
-          <LoginPage
-            onNavigate={navigateTo}
-            onLoggedIn={handleLoggedIn}
-            showToast={showToast}
-            language={language}
-          />
-        )}
-        {currentPage === "signup" && (
-          <SignupPage
-            onNavigate={navigateTo}
-            onLoggedIn={handleLoggedIn}
-            showToast={showToast}
-            language={language}
-          />
-        )}
-        {currentPage === "dashboard" &&
-          (auth ? (
-            <DashboardPage
-              auth={auth}
-              onLogout={logout}
-              onNavigate={navigateTo}
-              onUpdateUser={handleUpdateUser}
-              showToast={showToast}
-              language={language}
-            />
-          ) : (
-            <LoginPage
+          )}
+          {currentPage === "signup" && (
+            <SignupPage
               onNavigate={navigateTo}
               onLoggedIn={handleLoggedIn}
               showToast={showToast}
               language={language}
             />
-          ))}
-        {currentPage === "admin" &&
-          (auth ? (
-            <AdminPanelPage
-              auth={auth}
-              onNavigate={navigateTo}
-              showToast={showToast}
-              language={language}
-            />
-          ) : (
-            <LoginPage
-              onNavigate={navigateTo}
-              onLoggedIn={handleLoggedIn}
-              showToast={showToast}
-              language={language}
-            />
-          ))}
-        {currentPage === "share-experience" &&
-          (auth ? (
-            <ShareExperiencePage
-              auth={auth}
-              onNavigate={navigateTo}
-              showToast={showToast}
-              language={language}
-            />
-          ) : (
-            <LoginPage
-              onNavigate={navigateTo}
-              onLoggedIn={handleLoggedIn}
-              showToast={showToast}
-              language={language}
-            />
-          ))}
+          )}
+          {currentPage === "dashboard" &&
+            (auth ? (
+              <DashboardPage
+                auth={auth}
+                onLogout={logout}
+                onNavigate={navigateTo}
+                onUpdateUser={handleUpdateUser}
+                showToast={showToast}
+                language={language}
+              />
+            ) : (
+              <LoginPage
+                onNavigate={navigateTo}
+                onLoggedIn={handleLoggedIn}
+                showToast={showToast}
+                language={language}
+              />
+            ))}
+          {currentPage === "admin" &&
+            (auth ? (
+              <AdminPanelPage
+                auth={auth}
+                onNavigate={navigateTo}
+                showToast={showToast}
+                language={language}
+              />
+            ) : (
+              <LoginPage
+                onNavigate={navigateTo}
+                onLoggedIn={handleLoggedIn}
+                showToast={showToast}
+                language={language}
+              />
+            ))}
+          {currentPage === "share-experience" &&
+            (auth ? (
+              <ShareExperiencePage
+                auth={auth}
+                onNavigate={navigateTo}
+                showToast={showToast}
+                language={language}
+              />
+            ) : (
+              <LoginPage
+                onNavigate={navigateTo}
+                onLoggedIn={handleLoggedIn}
+                showToast={showToast}
+                language={language}
+              />
+            ))}
+        </div>
       </main>
 
       <Footer config={config} onNavigate={navigateTo} language={language} />
