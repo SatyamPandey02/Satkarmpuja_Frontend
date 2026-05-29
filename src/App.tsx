@@ -4274,7 +4274,7 @@ function Footer({ config, onNavigate, language }: FooterProps) {
                     Instagram
                   </a>
                   <a
-                    href="https://www.facebook.com/satkarmpuja"
+                    href="https://www.facebook.com/profile.php?id=61590174430707"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gold-100/70 hover:text-blue-400 transition text-sm font-body"
@@ -6011,7 +6011,7 @@ function ContactPage({ config, language }: ContactPageProps) {
                 <span className="text-xs text-muted-foreground">@satkarmpuja</span>
               </a>
               <a
-                href="https://www.facebook.com/satkarmpuja"
+                href="https://www.facebook.com/profile.php?id=61590174430707"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 group"
