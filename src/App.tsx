@@ -8374,25 +8374,44 @@ const generateReceipt = async (
       { align: "center" }
     );
 
-    doc.setTextColor(153, 27, 27);
+    // Support & Website Links
+    const supportTextPart1 = "Support: namaste@satkarmpuja.com • ";
+    const supportTextPart2 = "www.satkarmpooja.com";
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
-    doc.text(
-      "Support: namaste@satkarmpuja.com • www.satkarmpooja.com",
-      105,
-      footerY + 24,
-      { align: "center" }
-    );
+    const part1Width = doc.getTextWidth(supportTextPart1);
+    const part2Width = doc.getTextWidth(supportTextPart2);
+    const totalSupportWidth = part1Width + part2Width;
+    const supportStartX = (210 - totalSupportWidth) / 2;
 
     doc.setTextColor(153, 27, 27);
-    doc.setFontSize(8);
+    doc.text(supportTextPart1, supportStartX, footerY + 24);
+    doc.textWithLink(supportTextPart2, supportStartX + part1Width, footerY + 24, {
+      url: "https://www.satkarmpooja.com"
+    });
+
+    // Legal Terms & Privacy Links
+    const termsText = "Terms & Conditions";
+    const dividerText = " • ";
+    const privacyText = "Privacy Policy";
+    doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
-    doc.text(
-      "Terms & Conditions: www.satkarmpooja.com/#/terms   •   Privacy Policy: www.satkarmpooja.com/#/privacy",
-      105,
-      footerY + 30,
-      { align: "center" }
-    );
+    const termsWidth = doc.getTextWidth(termsText);
+    const dividerWidth = doc.getTextWidth(dividerText);
+    const privacyWidth = doc.getTextWidth(privacyText);
+    const totalLinksWidth = termsWidth + dividerWidth + privacyWidth;
+    const linksStartX = (210 - totalLinksWidth) / 2;
+
+    doc.setTextColor(153, 27, 27);
+    doc.textWithLink(termsText, linksStartX, footerY + 30, {
+      url: "https://www.satkarmpooja.com/#/terms"
+    });
+    doc.setTextColor(100, 100, 100);
+    doc.text(dividerText, linksStartX + termsWidth, footerY + 30);
+    doc.setTextColor(153, 27, 27);
+    doc.textWithLink(privacyText, linksStartX + termsWidth + dividerWidth, footerY + 30, {
+      url: "https://www.satkarmpooja.com/#/privacy"
+    });
 
     // Save PDF
     doc.save(`SatkarmPuja_Receipt_${booking.id || "N/A"}.pdf`);
