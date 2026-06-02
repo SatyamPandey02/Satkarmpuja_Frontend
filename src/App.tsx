@@ -5325,10 +5325,27 @@ function BookPage({
   const [selectedCategory, setSelectedCategory] = useState<string>(preSelectedCategory || "");
   const formRef = useRef<HTMLFormElement>(null);
 
+  // Controlled form fields – pre-filled from logged-in user profile
+  const [formName, setFormName] = useState(auth?.user?.fullName || "");
+  const [formPhone, setFormPhone] = useState(auth?.user?.phone || "");
+  const [formEmail, setFormEmail] = useState(auth?.user?.email || "");
+  const [formCity, setFormCity] = useState(auth?.user?.city || "");
+  const isAutoFilled = !!(auth?.user?.fullName || auth?.user?.email);
+
   useEffect(() => {
     setSelectedPooja(preSelectedPooja);
     setSelectedCategory(preSelectedCategory || "");
   }, [preSelectedPooja, preSelectedCategory]);
+
+  // Re-fill when user logs in after landing on the page
+  useEffect(() => {
+    if (auth?.user) {
+      setFormName((prev) => prev || auth.user!.fullName || "");
+      setFormPhone((prev) => prev || auth.user!.phone || "");
+      setFormEmail((prev) => prev || auth.user!.email || "");
+      setFormCity((prev) => prev || auth.user!.city || "");
+    }
+  }, [auth?.user]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
@@ -5350,11 +5367,11 @@ function BookPage({
 
       const formData: BookingData = {
         type: "booking",
-        name: (form.querySelector("#name") as HTMLInputElement).value,
-        phone: (form.querySelector("#phone") as HTMLInputElement).value,
-        email: (form.querySelector("#email") as HTMLInputElement).value,
+        name: formName,
+        phone: formPhone,
+        email: formEmail,
         pooja_type: selectedPooja,
-        city: (form.querySelector("#city") as HTMLInputElement).value,
+        city: formCity,
         message:
           (form.querySelector("#message") as HTMLTextAreaElement).value || "",
         status: "pending",
@@ -5482,6 +5499,15 @@ function BookPage({
                   </div>
 
                   <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+
+                    {/* Auto-fill notice */}
+                    {isAutoFilled && (
+                      <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-saffron-50 border border-saffron-200 text-saffron-800 text-xs font-body">
+                        <span className="text-base">✨</span>
+                        <span>Fields auto-filled from your profile. You can edit them if needed.</span>
+                      </div>
+                    )}
+
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label
@@ -5496,6 +5522,8 @@ function BookPage({
                           required
                           data-ocid="booking.name.input"
                           placeholder={t("bookPlaceholderName", language)}
+                          value={formName}
+                          onChange={(e) => setFormName(e.target.value)}
                           className="w-full px-4 py-3 border border-gold-200 rounded-xl font-body text-sm focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none transition bg-gold-50/30"
                         />
                       </div>
@@ -5512,6 +5540,8 @@ function BookPage({
                           required
                           data-ocid="booking.phone.input"
                           placeholder={t("bookPlaceholderPhone", language)}
+                          value={formPhone}
+                          onChange={(e) => setFormPhone(e.target.value)}
                           className="w-full px-4 py-3 border border-gold-200 rounded-xl font-body text-sm focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none transition bg-gold-50/30"
                         />
                       </div>
@@ -5530,6 +5560,8 @@ function BookPage({
                         required
                         data-ocid="booking.email.input"
                         placeholder={t("bookPlaceholderEmail", language)}
+                        value={formEmail}
+                        onChange={(e) => setFormEmail(e.target.value)}
                         className="w-full px-4 py-3 border border-gold-200 rounded-xl font-body text-sm focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none transition bg-gold-50/30"
                       />
                     </div>
@@ -5609,6 +5641,8 @@ function BookPage({
                           required
                           data-ocid="booking.city.input"
                           placeholder={t("bookPlaceholderCity", language)}
+                          value={formCity}
+                          onChange={(e) => setFormCity(e.target.value)}
                           className="w-full px-4 py-3 border border-gold-200 rounded-xl font-body text-sm focus:ring-2 focus:ring-saffron-400 focus:border-transparent outline-none transition bg-gold-50/30"
                         />
                       </div>
