@@ -3958,7 +3958,7 @@ function Navbar({
             className="flex items-center gap-3 group flex-shrink-0"
           >
             <img
-              src="/assets/satkarm-logo2.png"
+              src="/assets/satkarm-logo-small.png"
               alt="SatkarmPuja logo"
               className="h-10 w-10 md:h-14 md:w-14 rounded-full object-cover border-2 border-gold-200/50 shadow-sm transition-transform group-hover:scale-105"
             />
@@ -4182,7 +4182,7 @@ function Footer({ config, onNavigate, language }: FooterProps) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/assets/satkarm-logo2.png"
+                src="/assets/satkarm-logo-small.png"
                 alt="SatkarmPuja logo"
                 className="w-12 h-12 rounded-full object-contain drop-shadow-md"
               />
@@ -5220,7 +5220,7 @@ function SuccessStoriesPage({ onNavigate, language }: SuccessStoriesPageProps) {
               >
                 {/* Avatar + header */}
                 <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center border-b border-gold-100">
-                  <img src="/assets/satkarm-logo2.png" alt="SatkarmPuja Logo" className="w-full h-full object-cover" />
+                  <img src="/assets/satkarm-logo-small.png" alt="SatkarmPuja Logo" className="w-full h-full object-cover" />
                   <div className="absolute top-4 right-4 bg-saffron-500 text-white px-3 py-1 rounded-full text-xs font-body font-medium shadow-sm z-10">
                     <Sparkles className="w-4 h-4 inline-block mr-2 text-saffron-500" /> {t("successBlessedJourney", language)}
                   </div>
@@ -7732,6 +7732,16 @@ function ShareExperiencePage({
   );
 }
 
+const loadImage = (src: string): Promise<HTMLImageElement> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = src;
+    img.onload = () => resolve(img);
+    img.onerror = (e) => reject(e);
+  });
+};
+
 const generateReceipt = async (
   booking: any,
   showToast: (message: string, type?: "success" | "error") => void
@@ -7749,6 +7759,7 @@ const generateReceipt = async (
 
     // Add High-Quality Circular Logo
     try {
+      const img = await loadImage("/assets/satkarm-logo-small.png");
       const radius = 17.5;
       const centerX = 15 + radius;
       const centerY = 5 + radius;
@@ -7760,7 +7771,7 @@ const generateReceipt = async (
       doc.clip();
 
       // Add the image (will be clipped to the circle)
-      doc.addImage("/assets/satkarm-logo2.png", "PNG", 15, 5, 35, 35);
+      doc.addImage(img, "PNG", 15, 5, 35, 35);
 
       doc.restoreGraphicsState();
 
@@ -7792,6 +7803,22 @@ const generateReceipt = async (
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
     doc.text("OFFICIAL RECEIPT", 105, 65, { align: "center" });
+
+    // Draw professional green "PAID" stamp
+    try {
+      doc.saveGraphicsState();
+      doc.setDrawColor(46, 125, 50); // Green
+      doc.setLineWidth(1);
+      doc.roundedRect(155, 52, 35, 12, 2, 2, "D");
+      
+      doc.setTextColor(46, 125, 50);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.text("PAID", 172.5, 60.5, { align: "center" });
+      doc.restoreGraphicsState();
+    } catch (e) {
+      console.error("Failed to add PAID stamp", e);
+    }
 
     // 3. Transaction Details Table
     (doc as any).autoTable({
@@ -10368,6 +10395,31 @@ export default function App() {
     [],
   );
 
+  const triggerReceiptDownload = useCallback(async (id: string) => {
+    try {
+      showToast("Preparing your receipt...", "info");
+      const res = await apiFetch(`/api/bookings/receipt/${id}`);
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.error || "Failed to fetch receipt details");
+      }
+      const { data } = await res.json();
+      
+      // Call the helper to generate the PDF and trigger browser download
+      await generateReceipt(data, showToast);
+      
+      // Clear URL parameter so it doesn't download again on page refresh
+      const hash = window.location.hash;
+      if (hash.includes("?")) {
+        const [path] = hash.split("?");
+        window.location.hash = path;
+      }
+    } catch (err: any) {
+      console.error("Receipt auto-download failed:", err);
+      showToast(err.message || "Failed to download receipt", "error");
+    }
+  }, [showToast]);
+
   const navigateTo = useCallback((page: Page, poojaKey?: string | number) => {
     console.log("Navigating to:", page);
     setCurrentPage(page);
@@ -10413,14 +10465,24 @@ export default function App() {
   // Synchronize navigation state with URL hash (enables browser Back/Forward)
   useEffect(() => {
     const parseHash = () => {
-      const hash = window.location.hash.replace("#/", "");
-      if (!hash) {
+      const hashWithQuery = window.location.hash.replace("#/", "");
+      if (!hashWithQuery) {
         setCurrentPage("home");
         return;
       }
-      const parts = hash.split("/");
+      const [hashPath, queryString] = hashWithQuery.split("?");
+      const parts = hashPath.split("/");
       const page = parts[0] as Page;
       const key = parts[1];
+
+      // Check if we need to auto-download a receipt (e.g. ?downloadReceipt=xxxx)
+      if (queryString) {
+        const queryParams = new URLSearchParams(queryString);
+        const downloadReceiptId = queryParams.get("downloadReceipt");
+        if (downloadReceiptId) {
+          triggerReceiptDownload(downloadReceiptId);
+        }
+      }
 
       const validPages: Page[] = [
         "home",
