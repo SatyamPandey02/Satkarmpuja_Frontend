@@ -8376,7 +8376,7 @@ const generateReceipt = async (
 
     // Support & Website Links
     const supportTextPart1 = "Support: namaste@satkarmpuja.com • ";
-    const supportTextPart2 = "www.satkarmpooja.com";
+    const supportTextPart2 = "satkarmpuja.com";
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
     const part1Width = doc.getTextWidth(supportTextPart1);
@@ -8387,7 +8387,7 @@ const generateReceipt = async (
     doc.setTextColor(153, 27, 27);
     doc.text(supportTextPart1, supportStartX, footerY + 24);
     doc.textWithLink(supportTextPart2, supportStartX + part1Width, footerY + 24, {
-      url: "https://www.satkarmpooja.com"
+      url: "https://satkarmpuja.com"
     });
 
     // Legal Terms & Privacy Links
@@ -8404,13 +8404,13 @@ const generateReceipt = async (
 
     doc.setTextColor(153, 27, 27);
     doc.textWithLink(termsText, linksStartX, footerY + 30, {
-      url: "https://www.satkarmpooja.com/#/terms"
+      url: "https://satkarmpuja.com/#/terms"
     });
     doc.setTextColor(100, 100, 100);
     doc.text(dividerText, linksStartX + termsWidth, footerY + 30);
     doc.setTextColor(153, 27, 27);
     doc.textWithLink(privacyText, linksStartX + termsWidth + dividerWidth, footerY + 30, {
-      url: "https://www.satkarmpooja.com/#/privacy"
+      url: "https://satkarmpuja.com/#/privacy"
     });
 
     // Save PDF
