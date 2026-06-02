@@ -6156,61 +6156,139 @@ function TermsPage({ language, onNavigate }: TermsPageProps) {
             </div>
             
             <p className="font-body text-muted-foreground mb-6 leading-relaxed">
-              Welcome to <strong>SatkarmPuja</strong>. By accessing our platform and booking our Vedic puja services, you agree to comply with and be bound by the following terms and conditions. These terms govern the relationship between you (the devotee) and SatkarmPuja regarding all services offered.
+              {isHi ? (
+                <><strong>सत्कर्मपूजा</strong> में आपका स्वागत है। हमारे प्लेटफ़ॉर्म का उपयोग करने और हमारी वैदिक पूजा सेवाओं को बुक करने से, आप निम्नलिखित नियमों और शर्तों का पालन करने और उनसे बाध्य होने के लिए सहमत होते हैं। ये शर्तें आपके (भक्त) और सत्कर्मपूजा के बीच के सभी सेवा संबंधों को नियंत्रित करती हैं।</>
+              ) : isGu ? (
+                <><strong>સત્કર્મપૂજા</strong> માં આપનું સ્વાગત છે. અમારા પ્લેટફોર્મનો ઉપયોગ કરીને અને અમારી વૈદિક પૂજા સેવાઓ બુક કરીને, તમે નીચેના નિયમો અને શરતોનું પાલન કરવા અને તેનાથી બંધાવવા માટે સંમત થાઓ છો. આ શરતો તમારા (ભક્ત) અને સત્કર્મપૂજા વચ્ચેના તમામ સેવા સંબંધોને નિયંત્રિત કરે છે.</>
+              ) : (
+                <>Welcome to <strong>SatkarmPuja</strong>. By accessing our platform and booking our Vedic puja services, you agree to comply with and be bound by the following terms and conditions. These terms govern the relationship between you (the devotee) and SatkarmPuja regarding all services offered.</>
+              )}
             </p>
 
             <div className="space-y-8 font-body text-muted-foreground text-sm leading-relaxed">
+              {/* Point 1 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">1. Sacred Services & Bookings</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "1. पवित्र सेवाएँ और बुकिंग" : isGu ? "1. પવિત્ર સેવાઓ અને બુકિંગ" : "1. Sacred Services & Bookings"}
+                </h3>
                 <p>
-                  SatkarmPuja facilitates the scheduling and performance of authentic Vedic rituals, patha, jap, anushthan, and yajnas. Bookings must be made by providing accurate details of the devotee (Name, Gotra, Family Details, and Nakshatra if applicable) to ensure the Sankalpa is conducted correctly in accordance with ancient scripture.
+                  {isHi ? (
+                    "सत्कर्मपूजा प्रामाणिक वैदिक अनुष्ठान, पाठ, जाप, अनुष्ठान और यज्ञों के आयोजन और प्रदर्शन की सुविधा प्रदान करती है। बुकिंग के समय भक्त का सही विवरण (नाम, गोत्र, परिवार का विवरण और नक्षत्र यदि लागू हो) प्रदान करना आवश्यक है ताकि प्राचीन शास्त्रों के अनुसार संकल्प सही ढंग से किया जा सके।"
+                  ) : isGu ? (
+                    "સત્કર્મપૂજા સાચી વૈદિક વિધિઓ, પાઠ, જાપ, અનુષ્ઠાન અને યજ્ઞોના આયોજન અને પ્રદર્શનની સુવિધા આપે છે. બુકિંગ સમયે ભક્તની સાચી વિગતો (નામ, ગોત્ર, પરિવારની વિગતો અને નક્ષત્ર જો લાગુ પડતું હોય) પ્રદાન કરવી જરૂરી છે જેથી પ્રાચીન શાસ્ત્રો અનુસાર સંકલ્પ સાચી રીતે કરી શકાય."
+                  ) : (
+                    "SatkarmPuja facilitates the scheduling and performance of authentic Vedic rituals, patha, jap, anushthan, and yajnas. Bookings must be made by providing accurate details of the devotee (Name, Gotra, Family Details, and Nakshatra if applicable) to ensure the Sankalpa is conducted correctly in accordance with ancient scripture."
+                  )}
                 </p>
               </div>
 
+              {/* Point 2 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">2. Scheduling & Pandits</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "2. शेड्यूलिंग और पंडित" : isGu ? "2. શેડ્યુલિંગ અને પંડિતો" : "2. Scheduling & Pandits"}
+                </h3>
                 <p>
-                  All ceremonies are performed by verified Brahmins trained in Vedic scriptures from historic spiritual hubs (Kashi, Prayagraj, Chitrakoot, Ayodhya, Mathura, Vrindavan). While we strive to assign preferred pandits, SatkarmPuja reserves the right to assign or substitute qualified pandits as necessary to ensure scriptural integrity and timely completion.
+                  {isHi ? (
+                    "सभी अनुष्ठान ऐतिहासिक आध्यात्मिक केंद्रों (काशी, प्रयागराज, चित्रकूट, अयोध्या, मथुरा, वृंदावन) के वैदिक शास्त्रों में प्रशिक्षित सत्यापित ब्राह्मणों द्वारा किए जाते हैं। यद्यपि हम पसंदीदा पंडितों को नियुक्त करने का प्रयास करते हैं, फिर भी सत्कर्मपूजा के पास शास्त्रोक्त शुद्धता और समय पर पूजा संपन्न करने के लिए आवश्यकतानुसार योग्य पंडितों को नियुक्त करने या बदलने का अधिकार सुरक्षित है।"
+                  ) : isGu ? (
+                    "બધી વિધિઓ ઐતિહાસિક આધ્યાત્મિક કેન્દ્રો (કાશી, પ્રયાગરાજ, ચિત્રકૂટ, અયોધ્યા, મથુરા, વૃંદાવન) ના વૈદિક શાસ્ત્રોમાં પ્રશિક્ષિત પ્રમાણિત બ્રાહ્મણો દ્વારા કરવામાં આવે છે. તેમ છતાં અમે મનપસંદ પંડિતોને નિયુક્ત કરવાનો પ્રયાસ કરીએ છીએ, છતાં સત્કર્મપૂજા પાસે શાસ્ત્રોક્ત શુદ્ધતા અને સમયસર પૂજા પૂર્ણ કરવા માટે જરૂરિયાત મુજબ લાયક પંડિતો બદલવાનો અધિકાર સુરક્ષિત છે."
+                  ) : (
+                    "All ceremonies are performed by verified Brahmins trained in Vedic scriptures from historic spiritual hubs (Kashi, Prayagraj, Chitrakoot, Ayodhya, Mathura, Vrindavan). While we strive to assign preferred pandits, SatkarmPuja reserves the right to assign or substitute qualified pandits as necessary to ensure scriptural integrity and timely completion."
+                  )}
                 </p>
               </div>
 
+              {/* Point 3 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">3. Devotee Preparations & Conduct</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "3. भक्त की तैयारी और आचरण" : isGu ? "3. ભક્તની તૈયારી અને આચરણ" : "3. Devotee Preparations & Conduct"}
+                </h3>
                 <p>
-                  To secure the full spiritual benefits of the Vedic rituals, devotees are requested to maintain purity:
+                  {isHi 
+                    ? "वैदिक अनुष्ठानों का पूर्ण आध्यात्मिक लाभ प्राप्त करने के लिए, भक्तों से शुद्धता बनाए रखने का अनुरोध किया जाता है:" 
+                    : isGu 
+                      ? "વૈદિક વિધિઓનો સંપૂર્ણ આધ્યાત્મિક લાભ મેળવવા માટે, ભક્તોને શુદ્ધતા જાળવવાની વિનંતી કરવામાં આવે છે:" 
+                      : "To secure the full spiritual benefits of the Vedic rituals, devotees are requested to maintain purity:"}
                 </p>
                 <ul className="list-disc pl-5 mt-2 space-y-1">
-                  <li>Bathe and wear clean, traditional clothing prior to the ceremony.</li>
-                  <li>Prepare the designated puja altar space with clean platform/chowki.</li>
-                  <li>Ensure required local samagri (like two bowls—one filled with water, one empty—and a spoon) is ready 5 minutes before scheduled start.</li>
-                  <li>Maintain a stable internet connection for online/virtual pujas.</li>
+                  {isHi ? (
+                    <>
+                      <li>पूजा से पहले स्नान करें और साफ, पारंपरिक वस्त्र पहनें।</li>
+                      <li>पूजा स्थल को साफ करें और चौकी पर साफ लाल या पीला कपड़ा बिछाएं।</li>
+                      <li>सुनिश्चित करें कि संकल्प के लिए दो कटोरे (एक पानी से भरा, एक खाली) और एक चम्मच पूजा शुरू होने से 5 मिनट पहले तैयार रखें।</li>
+                      <li>ऑनलाइन/वर्चुअल पूजा के लिए एक स्थिर इंटरनेट कनेक्शन सुनिश्चित करें।</li>
+                    </>
+                  ) : isGu ? (
+                    <>
+                      <li>પૂજા પહેલાં સ્નાન કરો અને સ્વચ્છ, પરંપરાગત વસ્ત્રો પહેરો.</li>
+                      <li>પૂજા સ્થાનને સાફ કરો અને ચોકી પર સ્વચ્છ લાલ કે પીળું કપડું પાથરો.</li>
+                      <li>ખાતરી કરો કે સંકલ્પ માટે બે વાટકી (એક પાણીથી ભરેલી, એક ખાલી) અને એક ચમચી પૂજા શરૂ થવાના 5 મિનિટ પહેલા તૈયાર રાખો.</li>
+                      <li>ઓનલાઇન/વર્ચ્યુઅલ પૂજા માટે સ્થિર ઇન્ટરનેટ કનેક્શનની ખાતરી કરો.</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Bathe and wear clean, traditional clothing prior to the ceremony.</li>
+                      <li>Prepare the designated puja altar space with clean platform/chowki.</li>
+                      <li>Ensure required local samagri (like two bowls—one filled with water, one empty—and a spoon) is ready 5 minutes before scheduled start.</li>
+                      <li>Maintain a stable internet connection for online/virtual pujas.</li>
+                    </>
+                  )}
                 </ul>
               </div>
 
+              {/* Point 4 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">4. Payments, Cancellations & Refunds</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "4. भुगतान, रद्दीकरण और रिफंड" : isGu ? "4. ચુકવણી, રદ્દીકરણ અને રિફંડ" : "4. Payments, Cancellations & Refunds"}
+                </h3>
                 <p>
-                  All bookings are confirmed upon successful payment through our secure payment gateways (Razorpay). Cancellations made at least 24 hours prior to the scheduled puja time are eligible for a refund (minus processing fees). Cancellations within 24 hours of the puja may incur charges covering preparation costs and pandit coordination.
+                  {isHi ? (
+                    "सभी बुकिंग हमारे सुरक्षित भुगतान गेटवे (रेज़रपे) के माध्यम से सफल भुगतान पर ही पक्की मानी जाती हैं। निर्धारित पूजा समय से कम से कम 24 घंटे पहले किए गए रद्दीकरण रिफंड (प्रोसेसिंग शुल्क घटाकर) के पात्र हैं। पूजा के 24 घंटे के भीतर रद्दीकरण होने पर पंडित समन्वय और तैयारी की लागत को कवर करने के लिए शुल्क लिया जा सकता है।"
+                  ) : isGu ? (
+                    "તમામ બુકિંગ અમારા સુરક્ષિત પેમેન્ટ ગેટવે (રેઝરપે) દ્વારા સફળ ચુકવણી પછી જ કન્ફર્મ ગણવામાં આવશે. નિર્ધારિત પૂજા સમયના ઓછામાં ઓછા 24 કલાક પહેલાં કરેલ રદ્દીકરણ રિફંડ (પ્રોસેસિંગ ફી બાદ કરીને) માટે પાત્ર છે. પૂજાના 24 કલાકની અંદર રદ્દીકરણના કિસ્સામાં પંડિત સમન્વય અને તૈયારીના ખર્ચને આવરી લેવા માટે શુલ્ક લેવામાં આવી શકે છે."
+                  ) : (
+                    "All bookings are confirmed upon successful payment through our secure payment gateways (Razorpay). Cancellations made at least 24 hours prior to the scheduled puja time are eligible for a refund (minus processing fees). Cancellations within 24 hours of the puja may incur charges covering preparation costs and pandit coordination."
+                  )}
                 </p>
               </div>
 
+              {/* Point 5 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">5. Devotional Act & Outcome Disclaimer</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "5. भक्ति भाव और फल अस्वीकरण" : isGu ? "5. ભક્તિ ભાવ અને ફળ અસ્વીકરણ" : "5. Devotional Act & Outcome Disclaimer"}
+                </h3>
                 <p>
-                  Pujas and Vedic rituals are acts of faith and spiritual devotion. In Vedic philosophy, outcomes depend on individual karma, sincere devotion (bhakti), and divine grace. While our pandits follow strict scripture, SatkarmPuja makes no guarantees regarding specific material or spiritual outcomes.
+                  {isHi ? (
+                    "पूजा और वैदिक अनुष्ठान आस्था और आध्यात्मिक भक्ति के कार्य हैं। वैदिक दर्शन में, फल व्यक्तिगत कर्म, सच्ची भक्ति और ईश्वरीय कृपा पर निर्भर करते हैं। यद्यपि हमारे पंडित सख्त शास्त्रों का पालन करते हैं, फिर भी सत्कर्मपूजा किसी विशिष्ट भौतिक या आध्यात्मिक परिणाम की कोई गारंटी नहीं देती है।"
+                  ) : isGu ? (
+                    "પૂજા અને વૈદિક વિધિઓ શ્રદ્ધા અને આધ્યાત્મિક ભક્તિના કાર્યો છે. વૈદિક દર્શનમાં, ફળ વ્યક્તિગત કર્મ, સાચી ભક્તિ અને દૈવી કૃપા પર આધાર રાખે છે. જો કે અમારા પંડિતો કડક શાસ્ત્રોનું પાલન કરે છે, છતાં સત્કર્મપૂજા કોઈ ચોક્કસ ભૌતિક અથવા આધ્યાત્મિક પરિણામની બાંયધરી આપતી નથી."
+                  ) : (
+                    "Pujas and Vedic rituals are acts of faith and spiritual devotion. In Vedic philosophy, outcomes depend on individual karma, sincere devotion (bhakti), and divine grace. While our pandits follow strict scripture, SatkarmPuja makes no guarantees regarding specific material or spiritual outcomes."
+                  )}
                 </p>
               </div>
 
+              {/* Point 6 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">6. Intellectual Property</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "6. बौद्धिक संपदा" : isGu ? "6. બૌદ્ધિક સંપદા" : "6. Intellectual Property"}
+                </h3>
                 <p>
-                  All content on this website, including logos, designs, audio clips, text, and images, is the intellectual property of SatkarmPuja and may not be reproduced, copied, or used without prior written permission.
+                  {isHi ? (
+                    "इस वेबसाइट की सभी सामग्री, जिसमें लोगो, डिज़ाइन, ऑडियो क्लिप, टेक्स्ट और चित्र शामिल हैं, सत्कर्मपूजा की बौद्धिक संपदा हैं और पूर्व लिखित अनुमति के बिना इन्हें पुनरुत्पादित, कॉपी या उपयोग नहीं किया जा सकता है।"
+                  ) : isGu ? (
+                    "આ વેબસાઇટની તમામ સામગ્રી, જેમાં લોગો, ડિઝાઇન, ઓડિયો ક્લિપ, લખાણ અને ચિત્રો શામેલ છે, તે સત્કર્મપૂજાની બૌદ્ધિક સંપદા છે અને પૂર્વ લેખિત પરવાનગી વિના તેનું પુનઃઉત્પાદન, નકલ અથવા ઉપયોગ કરી શકાશે નહીં."
+                  ) : (
+                    "All content on this website, including logos, designs, audio clips, text, and images, is the intellectual property of SatkarmPuja and may not be reproduced, copied, or used without prior written permission."
+                  )}
                 </p>
               </div>
             </div>
 
             <div className="mt-10 pt-6 border-t border-gold-100 flex justify-between items-center flex-wrap gap-4">
-              <span className="text-xs text-muted-foreground font-body">Last Updated: June 2026</span>
+              <span className="text-xs text-muted-foreground font-body">
+                {isHi ? "अंतिम अद्यतन: जून 2026" : isGu ? "છેલ્લે અપડેટ કરેલ: જૂન 2026" : "Last Updated: June 2026"}
+              </span>
               <button
                 onClick={() => onNavigate("home")}
                 className="gradient-saffron hover:opacity-90 text-white font-body font-semibold px-6 py-2 rounded-full transition shadow-md"
@@ -6266,59 +6344,142 @@ function PrivacyPage({ language, onNavigate }: PrivacyPageProps) {
             </div>
             
             <p className="font-body text-muted-foreground mb-6 leading-relaxed">
-              At <strong>SatkarmPuja</strong>, we hold your trust and devotion in the highest regard. We are committed to safeguarding your privacy and ensuring that any personal and sacred details you share with us remain secure and confidential.
+              {isHi ? (
+                <><strong>सत्कर्मपूजा</strong> में, हम आपके विश्वास और भक्ति को सर्वोच्च सम्मान देते हैं। हम आपकी गोपनीयता की रक्षा करने और यह सुनिश्चित करने के लिए प्रतिबद्ध हैं कि आपके द्वारा साझा किए गए व्यक्तिगत और पवित्र विवरण सुरक्षित और गोपनीय रहें।</>
+              ) : isGu ? (
+                <><strong>સત્કર્મપૂજા</strong> માં, અમે તમારા વિશ્વાસ અને ભક્તિને સર્વોચ્ચ સન્માન આપીએ છીએ. અમે તમારી ગોપનીયતાનું રક્ષણ કરવા અને તમે અમારી સાથે શેર કરેલી તમામ વ્યક્તિગત અને પવિત્ર વિગતો સુરક્ષિત અને ગુપ્ત રહે તેની ખાતરી કરવા માટે પ્રતિબદ્ધ છીએ.</>
+              ) : (
+                <>At <strong>SatkarmPuja</strong>, we hold your trust and devotion in the highest regard. We are committed to safeguarding your privacy and ensuring that any personal and sacred details you share with us remain secure and confidential.</>
+              )}
             </p>
 
             <div className="space-y-8 font-body text-muted-foreground text-sm leading-relaxed">
+              {/* Point 1 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">1. Personal Information We Collect</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "1. व्यक्तिगत जानकारी जो हम एकत्र करते हैं" : isGu ? "1. વ્યક્તિગત માહિતી જે અમે એકત્રિત કરીએ છીએ" : "1. Personal Information We Collect"}
+                </h3>
                 <p>
-                  To facilitate bookings and perform personalized Vedic rituals, we collect the following details:
+                  {isHi 
+                    ? "बुकिंग की सुविधा और व्यक्तिगत वैदिक अनुष्ठानों को संपन्न करने के लिए, हम निम्नलिखित विवरण एकत्र करते हैं:" 
+                    : isGu 
+                      ? "બુકિંગની સુવિધા અને વ્યક્તિગત વૈદિક વિધિઓ કરવા માટે, અમે નીચેની વિગતો એકત્રિત કરીએ છીએ:" 
+                      : "To facilitate bookings and perform personalized Vedic rituals, we collect the following details:"}
                 </p>
                 <ul className="list-disc pl-5 mt-2 space-y-1">
-                  <li><strong>Contact Details:</strong> Full name, email address, phone number, and city.</li>
-                  <li><strong>Devotional Details:</strong> Family members' names, Gotra, Nakshatra, and custom requirements for puja Sankalpa.</li>
-                  <li><strong>Transactional Info:</strong> Order ID, payment confirmations, and booking status (card details are processed directly by our secure payment gateway Razorpay and never stored on our servers).</li>
+                  {isHi ? (
+                    <>
+                      <li><strong>सम्पर्क विवरण:</strong> पूरा नाम, ईमेल पता, फोन नंबर और शहर।</li>
+                      <li><strong>भक्ति विवरण:</strong> परिवार के सदस्यों के नाम, गोत्र, नक्षत्र, और पूजा संकल्प के लिए विशेष आवश्यकताएं।</li>
+                      <li><strong>लेनदेन की जानकारी:</strong> ऑर्डर आईडी, भुगतान पुष्टि, और बुकिंग स्थिति (कार्ड विवरण सीधे हमारे सुरक्षित भुगतान गेटवे रेज़रपे द्वारा संसाधित किए जाते हैं और हमारे सर्वर पर कभी संग्रहीत नहीं होते हैं)।</li>
+                    </>
+                  ) : isGu ? (
+                    <>
+                      <li><strong>સંપર્ક વિગતો:</strong> પૂરું નામ, ઇમેઇલ સરનામું, ફોન નંબર અને શહેર.</li>
+                      <li><strong>ભક્તિ વિગતો:</strong> પરિવારના સભ્યોના નામ, ગોત્ર, નક્ષત્ર અને પૂજા સંકલ્પ માટેની ખાસ જરૂરિયાતો.</li>
+                      <li><strong>વ્યવહાર માહિતી:</strong> ઓર્ડર આઈડી, પેમેન્ટ કન્ફર્મેશન અને બુકિંગ સ્ટેટસ (કાર્ડની વિગતો સીધી અમારા સુરક્ષિત પેમેન્ટ ગેટવે રેઝરપે દ્વારા પ્રોસેસ કરવામાં આવે છે અને અમારા સર્વર પર ક્યારેય સ્ટોર થતી નથી).</li>
+                    </>
+                  ) : (
+                    <>
+                      <li><strong>Contact Details:</strong> Full name, email address, phone number, and city.</li>
+                      <li><strong>Devotional Details:</strong> Family members' names, Gotra, Nakshatra, and custom requirements for puja Sankalpa.</li>
+                      <li><strong>Transactional Info:</strong> Order ID, payment confirmations, and booking status (card details are processed directly by our secure payment gateway Razorpay and never stored on our servers).</li>
+                    </>
+                  )}
                 </ul>
               </div>
 
+              {/* Point 2 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">2. How We Use Your Information</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "2. हम आपकी जानकारी का उपयोग कैसे करते हैं" : isGu ? "2. અમે તમારી માહિતીનો ઉપયોગ કેવી રીતે કરીએ છીએ" : "2. How We Use Your Information"}
+                </h3>
                 <p>
-                  Your information is strictly used for the following purposes:
+                  {isHi 
+                    ? "आपकी जानकारी का उपयोग केवल निम्नलिखित उद्देश्यों के लिए किया जाता है:" 
+                    : isGu 
+                      ? "તમારી માહિતીનો ઉપયોગ માત્ર નીચેના હેતુઓ માટે કરવામાં આવે છે:" 
+                      : "Your information is strictly used for the following purposes:"}
                 </p>
                 <ul className="list-disc pl-5 mt-2 space-y-1">
-                  <li>Scheduling your puja and coordinating with the assigned Vedic pandits.</li>
-                  <li>Conducting the sacred Sankalpa ceremony with your specified gotra and name.</li>
-                  <li>Sending transaction status emails, booking reminders, and official receipts.</li>
-                  <li>Improving our Vedic services, user experience, and addressing customer support queries.</li>
+                  {isHi ? (
+                    <>
+                      <li>आपकी पूजा का समय निर्धारित करना और सौंपे गए वैदिक पंडितों के साथ समन्वय करना।</li>
+                      <li>आपके द्वारा निर्दिष्ट गोत्र और नाम के साथ पवित्र संकल्प समारोह का संचालन करना।</li>
+                      <li>लेनदेन की स्थिति के ईमेल, बुकिंग अनुस्मारक और आधिकारिक रसीदें भेजना।</li>
+                      <li>हमारी वैदिक सेवाओं, उपयोगकर्ता अनुभव को बेहतर बनाना और ग्राहक सहायता प्रश्नों का समाधान करना।</li>
+                    </>
+                  ) : isGu ? (
+                    <>
+                      <li>તમારી પૂજા શેડ્યૂલ કરવી અને સોંપાયેલ વૈદિક પંડિતો સાથે સમન્વય સાધવો.</li>
+                      <li>તમારા નિર્દિષ્ટ ગોત્ર અને નામ સાથે પવિત્ર સંકલ્પ વિધિ કરવી.</li>
+                      <li>ટ્રાન્ઝેક્શન સ્ટેટસ ઈમેલ, બુકિંગ રીમાઇન્ડર્સ અને સત્તાવાર રસીદો મોકલવી.</li>
+                      <li>અમારી વૈદિક સેવાઓ, વપરાશકર્તા અનુભવ સુધારવા અને ગ્રાહક સેવા પ્રશ્નોના નિરાકરણ માટે.</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Scheduling your puja and coordinating with the assigned Vedic pandits.</li>
+                      <li>Conducting the sacred Sankalpa ceremony with your specified gotra and name.</li>
+                      <li>Sending transaction status emails, booking reminders, and official receipts.</li>
+                      <li>Improving our Vedic services, user experience, and addressing customer support queries.</li>
+                    </>
+                  )}
                 </ul>
               </div>
 
+              {/* Point 3 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">3. Confidentiality & Security</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "3. गोपनीयता और सुरक्षा" : isGu ? "3. ગુપ્તતા અને સુરક્ષા" : "3. Confidentiality & Security"}
+                </h3>
                 <p>
-                  We implement industry-standard technical security measures to protect your data. All data transmission between the client browser and our servers is encrypted using Secure Socket Layer (SSL) technology. We never sell, rent, trade, or share your devotional details with third-party marketers.
+                  {isHi ? (
+                    "हम आपके डेटा की सुरक्षा के लिए उद्योग-मानक तकनीकी सुरक्षा उपाय लागू करते हैं। क्लाइंट ब्राउज़र और हमारे सर्वर के बीच सभी डेटा ट्रांसमिशन सुरक्षित सॉकेट लेयर (एसएसएल) तकनीक का उपयोग करके एन्क्रिप्ट किए जाते हैं। हम कभी भी विपणन के लिए तीसरे पक्ष के साथ आपके भक्ति विवरण बेचते, किराए पर देते, व्यापार या साझा नहीं करते हैं।"
+                  ) : isGu ? (
+                    "અમે તમારા ડેટાને સુરક્ષિત રાખવા માટે ઉદ્યોગ-માનક તકનીકી સુરક્ષા પગલાં લાગુ કરીએ છીએ. ક્લાયંટ બ્રાઉઝર અને અમારા સર્વર વચ્ચે તમામ ડેટા ટ્રાન્સમિશન સિક્યોર સોકેટ લેયર (SSL) ટેકનોલોજીનો ઉપયોગ કરીને એન્ક્રિપ્ટ કરવામાં આવે છે. અમે ક્યારેય માર્કેટિંગ માટે ત્રીજા પક્ષકારો સાથે તમારી ભક્તિ સંબંધિત વિગતો વેચતા, ભાડે આપતા, વેપાર કરતા અથવા શેર કરતા નથી."
+                  ) : (
+                    "We implement industry-standard technical security measures to protect your data. All data transmission between the client browser and our servers is encrypted using Secure Socket Layer (SSL) technology. We never sell, rent, trade, or share your devotional details with third-party marketers."
+                  )}
                 </p>
               </div>
 
+              {/* Point 4 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">4. Third-Party Payment Services</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "4. तीसरे पक्ष की भुगतान सेवाएँ" : isGu ? "4. તૃતીય-પક્ષ ચુકવણી સેવાઓ" : "4. Third-Party Payment Services"}
+                </h3>
                 <p>
-                  We integrate with Razorpay, a top-tier certified payment gateway, to handle payment transactions. Razorpay adheres to strict standards managed by the PCI Security Standards Council (PCI-DSS) to ensure security of credit card and netbanking credentials.
+                  {isHi ? (
+                    "हम भुगतान लेनदेन को संभालने के लिए एक शीर्ष प्रमाणित भुगतान गेटवे, रेज़रपे के साथ एकीकृत करते हैं। रेज़रपे क्रेडिट कार्ड और नेटबैंकिंग क्रेडेंशियल्स की सुरक्षा सुनिश्चित करने के लिए पीसीआई सुरक्षा मानक परिषद (पीसीआई-डीएसएस) द्वारा प्रबंधित सख्त मानकों का पालन करता है।"
+                  ) : isGu ? (
+                    "અમે ચુકવણી વ્યવહારો હેન્ડલ કરવા માટે ટોચના પ્રમાણિત પેમેન્ટ ગેટવે, રેઝરપે સાથે સંકલિત છીએ. રેઝરપે ક્રેડિટ કાર્ડ અને નેટબેંકિંગ ઓળખપત્રોની સુરક્ષા સુનિશ્ચિત કરવા માટે PCI સિક્યોરિટી સ્ટાન્ડર્ડ્સ કાઉન્સિલ (PCI-DSS) દ્વારા સંચાલિત કડક ધોરણોનું પાલન કરે છે."
+                  ) : (
+                    "We integrate with Razorpay, a top-tier certified payment gateway, to handle payment transactions. Razorpay adheres to strict standards managed by the PCI Security Standards Council (PCI-DSS) to ensure security of credit card and netbanking credentials."
+                  )}
                 </p>
               </div>
 
+              {/* Point 5 */}
               <div>
-                <h3 className="text-lg font-bold text-maroon-700 mb-2">5. Devotee Rights</h3>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">
+                  {isHi ? "5. भक्त के अधिकार" : isGu ? "5. ભક્તના અધિકારો" : "5. Devotee Rights"}
+                </h3>
                 <p>
-                  You have the right to review, update, or request deletion of your personal profile and booking history by contacting us directly.
+                  {isHi ? (
+                    "आपके पास सीधे हमसे संपर्क करके अपनी व्यक्तिगत प्रोफ़ाइल और बुकिंग इतिहास की समीक्षा करने, अपडेट करने या हटाने का अनुरोध करने का अधिकार है।"
+                  ) : isGu ? (
+                    "તમારી પાસે સીધો અમારો સંપર્ક કરીને તમારી વ્યક્તિગત પ્રોફાઇલ અને બુકિંગ ઇતિહાસની સમીક્ષા કરવાનો, અપડેટ કરવાનો અથવા કાઢી નાખવાની વિનંતી કરવાનો અધિકાર છે."
+                  ) : (
+                    "You have the right to review, update, or request deletion of your personal profile and booking history by contacting us directly."
+                  )}
                 </p>
               </div>
             </div>
 
             <div className="mt-10 pt-6 border-t border-gold-100 flex justify-between items-center flex-wrap gap-4">
-              <span className="text-xs text-muted-foreground font-body">Last Updated: June 2026</span>
+              <span className="text-xs text-muted-foreground font-body">
+                {isHi ? "अंतिम अद्यतन: जून 2026" : isGu ? "છેલ્લે અપડેટ કરેલ: જૂન 2026" : "Last Updated: June 2026"}
+              </span>
               <button
                 onClick={() => onNavigate("home")}
                 className="gradient-saffron hover:opacity-90 text-white font-body font-semibold px-6 py-2 rounded-full transition shadow-md"
