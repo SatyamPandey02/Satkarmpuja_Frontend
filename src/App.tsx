@@ -21,6 +21,7 @@ import {
   Table, TableHeader, TableBody, TableHead, TableRow, TableCell 
 } from "@/components/ui/table";
 import { apiFetch } from "./api";
+import { LOGO_BASE64 } from "./logo-base64";
 
 // Razorpay global type declaration
 declare global {
@@ -7766,7 +7767,6 @@ const generateReceipt = async (
 
     // Add High-Quality Circular Logo
     try {
-      const img = await loadImage("/assets/satkarm-logo-small.png");
       const radius = 17.5;
       const centerX = 15 + radius;
       const centerY = 5 + radius;
@@ -7777,8 +7777,8 @@ const generateReceipt = async (
       doc.arc(centerX, centerY, radius, 0, 360, false);
       doc.clip();
 
-      // Add the image (will be clipped to the circle)
-      doc.addImage(img, "PNG", 15, 5, 35, 35);
+      // Add the Base64 image directly (instant and offline)
+      doc.addImage(LOGO_BASE64, "PNG", 15, 5, 35, 35);
 
       doc.restoreGraphicsState();
 
@@ -7888,29 +7888,49 @@ const generateReceipt = async (
     const pageHeight = doc.internal.pageSize.getHeight();
     let currentY = (doc as any).lastAutoTable.finalY || 150;
 
-    // Check if there is enough space for preparation note + footer (we need at least 95 units)
-    if (currentY > pageHeight - 95) {
+    // 4. Puja Preparation & Devotional Instructions Box
+    const prepSteps = [
+      ["Purity & Clothing:", "Take a bath before the puja and wear clean traditional attire (Dhoti-Kurta or Saree/Salwar)."],
+      ["Sacred Prasad:", "Prepare and keep fresh sweets or Panchamrit ready as Prasad offerings for the deity."],
+      ["Essential Samagri:", "Keep Diya, incense, Kumkum, Akshat, two bowls (one filled with water, one empty), and a spoon ready for Sankalpa."],
+      ["Timing & Connect:", "Please sit ready 5 minutes prior to the scheduled puja time and ensure a stable network connection."],
+      ["Devotional Focus:", "Sit with a calm, peaceful mind and a sense of bhakti (devotion) for the sacred Sankalpa pledge."]
+    ];
+
+    // Pre-calculate exact box height based on text wrapping (width: 120)
+    let bulletAreaHeight = 0;
+    const splitSteps = prepSteps.map(([title, desc]) => {
+      const splitDesc = doc.splitTextToSize(desc, 120);
+      const linesHeight = splitDesc.length * 4.5;
+      bulletAreaHeight += linesHeight + 2.5; // line height + padding between points
+      return { title, splitDesc };
+    });
+
+    const boxHeight = 18 + bulletAreaHeight + 2; // header + bullet area + bottom padding
+
+    // Check if there is enough space for preparation note + footer (we need at least boxHeight + 35 units)
+    if (currentY > pageHeight - (boxHeight + 35)) {
       doc.addPage();
       currentY = 20;
     } else {
       currentY += 8;
     }
 
-    // 4. Puja Preparation & Devotional Instructions Box
+    // Draw a box with soft saffron/gold cream background and gold border
     doc.setFillColor(255, 248, 240); // Soft saffron cream
     doc.setDrawColor(212, 175, 55); // Gold border
     doc.setLineWidth(0.5);
-    doc.roundedRect(15, currentY, 180, 56, 3, 3, "FD");
+    doc.roundedRect(15, currentY, 180, boxHeight, 3, 3, "FD");
 
     // Left vertical border accent
     doc.setFillColor(212, 175, 55); // Gold
-    doc.rect(15, currentY, 3, 56, "F");
+    doc.rect(15, currentY, 3, boxHeight, "F");
 
-    // Title
+    // Title (removed emoji to prevent rendering corrupt characters)
     doc.setTextColor(153, 27, 27); // Maroon
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
-    doc.text("🌸 SACRED PUJA PREPARATIONS & DEVOTIONAL GUIDE", 23, currentY + 7);
+    doc.text("SACRED PUJA PREPARATIONS & DEVOTIONAL GUIDE", 23, currentY + 7);
 
     // Devotional Note
     doc.setTextColor(80, 80, 80);
@@ -7922,20 +7942,9 @@ const generateReceipt = async (
       currentY + 13
     );
 
-    // Bullet points
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(9.5);
-
-    const prepSteps = [
-      ["Purity & Clothing:", "Take a bath before the puja and wear clean traditional attire (Dhoti-Kurta or Saree/Salwar)."],
-      ["Altar Space Setup:", "Clean the puja altar area and place a clean red or yellow cloth over a wooden platform (Chowki)."],
-      ["Sacred Offerings:", "Arrange fresh flowers, seasonal fruits, a coconut, and sweets (Prasad like Panchamrit or Halwa)."],
-      ["Essential Samagri:", "Keep Diya (oil/ghee lamp), Agarbatti (incense), Kumkum, Akshat (unbroken rice), and water in a copper lota."],
-      ["Devotional Focus:", "Sit with a calm, peaceful mind and a sense of bhakti (devotion) for the sacred Sankalpa pledge."]
-    ];
-
+    // Render Bullet points
     let bulletY = currentY + 19;
-    prepSteps.forEach(([title, desc]) => {
+    splitSteps.forEach(({ title, splitDesc }) => {
       // Draw small bullet circle
       doc.setFillColor(212, 175, 55); // Gold
       doc.circle(25, bulletY - 1, 0.8, "F");
@@ -7943,18 +7952,20 @@ const generateReceipt = async (
       // Print bold title
       doc.setTextColor(153, 27, 27); // Maroon
       doc.setFont("helvetica", "bold");
+      doc.setFontSize(9.5);
       doc.text(title, 28, bulletY);
       
-      // Print description text
+      // Print description text (safely wrapped)
       doc.setTextColor(60, 60, 60);
       doc.setFont("helvetica", "normal");
-      doc.text(desc, 65, bulletY);
+      doc.setFontSize(9.5);
+      doc.text(splitDesc, 65, bulletY);
       
-      bulletY += 7;
+      bulletY += (splitDesc.length * 4.5) + 2.5;
     });
 
     // 5. Professional Footer Section
-    const finalFooterY = currentY + 56;
+    const finalFooterY = currentY + boxHeight;
     let footerY = finalFooterY + 6;
     if (footerY > pageHeight - 35) {
       doc.addPage();
