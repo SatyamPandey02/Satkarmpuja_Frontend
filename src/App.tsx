@@ -48,7 +48,9 @@ type Page =
   | "signup"
   | "dashboard"
   | "admin"
-  | "share-experience";
+  | "share-experience"
+  | "terms"
+  | "privacy";
 
 type Lang = "en" | "hi" | "gu";
 
@@ -4302,10 +4304,25 @@ function Footer({ config, onNavigate, language }: FooterProps) {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex justify-center items-center">
-          <p className="text-gold-200/60 text-sm font-body text-center">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-gold-200/60 text-sm font-body">
+          <p className="text-center md:text-left">
             © {year} SatkarmPuja. {t("footerCopyright", language)}
           </p>
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            <button
+              onClick={() => onNavigate("terms")}
+              className="hover:text-gold-300 transition-colors text-xs font-semibold uppercase tracking-wider"
+            >
+              {language === "hi" ? "नियम और शर्तें" : language === "gu" ? "નિયમો અને શરતો" : "Terms & Conditions"}
+            </button>
+            <span className="text-white/20">•</span>
+            <button
+              onClick={() => onNavigate("privacy")}
+              className="hover:text-gold-300 transition-colors text-xs font-semibold uppercase tracking-wider"
+            >
+              {language === "hi" ? "गोपनीयता नीति" : language === "gu" ? "ગોપનીયતા નીતિ" : "Privacy Policy"}
+            </button>
+          </div>
         </div>
       </div>
     </footer>
@@ -6091,6 +6108,224 @@ function ContactPage({ config, language }: ContactPageProps) {
             <p className="font-body text-muted-foreground text-xs mt-3">
               {t("contactResponseTime", language)}
             </p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// ─── Terms & Conditions Page ──────────────────────────────────────────────────
+interface TermsPageProps {
+  language: Lang;
+  onNavigate: (page: Page) => void;
+}
+
+function TermsPage({ language, onNavigate }: TermsPageProps) {
+  const isHi = language === "hi";
+  const isGu = language === "gu";
+
+  return (
+    <>
+      <section className="gradient-saffron pt-28 pb-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <span className="text-white/70 font-body font-medium text-sm tracking-wider uppercase block mb-3">
+            {isHi ? "सत्कर्मपूजा नियमावली" : isGu ? "સત્કર્મપૂજા નિયમો" : "SatkarmPuja Guidelines"}
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+            {isHi ? "नियम और शर्तें" : isGu ? "નિયમો અને શરતો" : "Terms & Conditions"}
+          </h1>
+          <p className="font-body text-white/85 text-lg max-w-2xl mx-auto">
+            {isHi 
+              ? "हमारे पवित्र अनुष्ठानों और सेवाओं का उपयोग करने के लिए नियम और दिशा-निर्देश।" 
+              : isGu 
+                ? "અમારી પવિત્ર વિધિઓ અને સેવાઓનો ઉપયોગ કરવા માટેની માર્ગદર્શિકા." 
+                : "Terms and guidelines governing our sacred Vedic rituals and booking services."}
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-gradient-to-b from-saffron-50/50 to-white om-pattern">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-card-warm border border-gold-100 p-8 md:p-12 text-left">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gold-100">
+              <ScrollText className="w-8 h-8 text-maroon-600" />
+              <h2 className="font-display text-2xl font-bold text-maroon-800">
+                {isHi ? "सेवा शर्तें और नियम" : isGu ? "સેવા શરતો અને નિયમો" : "Terms of Service"}
+              </h2>
+            </div>
+            
+            <p className="font-body text-muted-foreground mb-6 leading-relaxed">
+              Welcome to <strong>SatkarmPuja</strong>. By accessing our platform and booking our Vedic puja services, you agree to comply with and be bound by the following terms and conditions. These terms govern the relationship between you (the devotee) and SatkarmPuja regarding all services offered.
+            </p>
+
+            <div className="space-y-8 font-body text-muted-foreground text-sm leading-relaxed">
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">1. Sacred Services & Bookings</h3>
+                <p>
+                  SatkarmPuja facilitates the scheduling and performance of authentic Vedic rituals, patha, jap, anushthan, and yajnas. Bookings must be made by providing accurate details of the devotee (Name, Gotra, Family Details, and Nakshatra if applicable) to ensure the Sankalpa is conducted correctly in accordance with ancient scripture.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">2. Scheduling & Pandits</h3>
+                <p>
+                  All ceremonies are performed by verified Brahmins trained in Vedic scriptures from historic spiritual hubs (Kashi, Prayagraj, Chitrakoot, Ayodhya, Mathura, Vrindavan). While we strive to assign preferred pandits, SatkarmPuja reserves the right to assign or substitute qualified pandits as necessary to ensure scriptural integrity and timely completion.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">3. Devotee Preparations & Conduct</h3>
+                <p>
+                  To secure the full spiritual benefits of the Vedic rituals, devotees are requested to maintain purity:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li>Bathe and wear clean, traditional clothing prior to the ceremony.</li>
+                  <li>Prepare the designated puja altar space with clean platform/chowki.</li>
+                  <li>Ensure required local samagri (like two bowls—one filled with water, one empty—and a spoon) is ready 5 minutes before scheduled start.</li>
+                  <li>Maintain a stable internet connection for online/virtual pujas.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">4. Payments, Cancellations & Refunds</h3>
+                <p>
+                  All bookings are confirmed upon successful payment through our secure payment gateways (Razorpay). Cancellations made at least 24 hours prior to the scheduled puja time are eligible for a refund (minus processing fees). Cancellations within 24 hours of the puja may incur charges covering preparation costs and pandit coordination.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">5. Devotional Act & Outcome Disclaimer</h3>
+                <p>
+                  Pujas and Vedic rituals are acts of faith and spiritual devotion. In Vedic philosophy, outcomes depend on individual karma, sincere devotion (bhakti), and divine grace. While our pandits follow strict scripture, SatkarmPuja makes no guarantees regarding specific material or spiritual outcomes.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">6. Intellectual Property</h3>
+                <p>
+                  All content on this website, including logos, designs, audio clips, text, and images, is the intellectual property of SatkarmPuja and may not be reproduced, copied, or used without prior written permission.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-gold-100 flex justify-between items-center flex-wrap gap-4">
+              <span className="text-xs text-muted-foreground font-body">Last Updated: June 2026</span>
+              <button
+                onClick={() => onNavigate("home")}
+                className="gradient-saffron hover:opacity-90 text-white font-body font-semibold px-6 py-2 rounded-full transition shadow-md"
+              >
+                {isHi ? "होम पेज पर जाएं" : isGu ? "હોમ પેજ પર જાઓ" : "Back to Home"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// ─── Privacy Policy Page ──────────────────────────────────────────────────────
+interface PrivacyPageProps {
+  language: Lang;
+  onNavigate: (page: Page) => void;
+}
+
+function PrivacyPage({ language, onNavigate }: PrivacyPageProps) {
+  const isHi = language === "hi";
+  const isGu = language === "gu";
+
+  return (
+    <>
+      <section className="gradient-saffron pt-28 pb-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <span className="text-white/70 font-body font-medium text-sm tracking-wider uppercase block mb-3">
+            {isHi ? "डेटा सुरक्षा नीति" : isGu ? "ડેટા સુરક્ષા નીતિ" : "Data Protection Policy"}
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+            {isHi ? "गोपनीयता नीति" : isGu ? "ગોપનીયતા નીતિ" : "Privacy Policy"}
+          </h1>
+          <p className="font-body text-white/85 text-lg max-w-2xl mx-auto">
+            {isHi 
+              ? "आपकी व्यक्तिगत जानकारी और श्रद्धा से जुड़े डेटा की सुरक्षा के लिए हमारा संकल्प।" 
+              : isGu 
+                ? "તમારી અંગત માહિતી અને શ્રદ્ધા સંબંધિત ડેટાની સુરક્ષા માટે અમારો સંકલ્પ." 
+                : "Our commitment to protecting your personal information and sacred data."}
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-gradient-to-b from-saffron-50/50 to-white om-pattern">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-card-warm border border-gold-100 p-8 md:p-12 text-left">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gold-100">
+              <Shield className="w-8 h-8 text-maroon-600" />
+              <h2 className="font-display text-2xl font-bold text-maroon-800">
+                {isHi ? "गोपनीयता और डेटा सुरक्षा" : isGu ? "ગોપનીયતા અને ડેટા સુરક્ષા" : "Privacy & Data Protection"}
+              </h2>
+            </div>
+            
+            <p className="font-body text-muted-foreground mb-6 leading-relaxed">
+              At <strong>SatkarmPuja</strong>, we hold your trust and devotion in the highest regard. We are committed to safeguarding your privacy and ensuring that any personal and sacred details you share with us remain secure and confidential.
+            </p>
+
+            <div className="space-y-8 font-body text-muted-foreground text-sm leading-relaxed">
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">1. Personal Information We Collect</h3>
+                <p>
+                  To facilitate bookings and perform personalized Vedic rituals, we collect the following details:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li><strong>Contact Details:</strong> Full name, email address, phone number, and city.</li>
+                  <li><strong>Devotional Details:</strong> Family members' names, Gotra, Nakshatra, and custom requirements for puja Sankalpa.</li>
+                  <li><strong>Transactional Info:</strong> Order ID, payment confirmations, and booking status (card details are processed directly by our secure payment gateway Razorpay and never stored on our servers).</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">2. How We Use Your Information</h3>
+                <p>
+                  Your information is strictly used for the following purposes:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li>Scheduling your puja and coordinating with the assigned Vedic pandits.</li>
+                  <li>Conducting the sacred Sankalpa ceremony with your specified gotra and name.</li>
+                  <li>Sending transaction status emails, booking reminders, and official receipts.</li>
+                  <li>Improving our Vedic services, user experience, and addressing customer support queries.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">3. Confidentiality & Security</h3>
+                <p>
+                  We implement industry-standard technical security measures to protect your data. All data transmission between the client browser and our servers is encrypted using Secure Socket Layer (SSL) technology. We never sell, rent, trade, or share your devotional details with third-party marketers.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">4. Third-Party Payment Services</h3>
+                <p>
+                  We integrate with Razorpay, a top-tier certified payment gateway, to handle payment transactions. Razorpay adheres to strict standards managed by the PCI Security Standards Council (PCI-DSS) to ensure security of credit card and netbanking credentials.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-maroon-700 mb-2">5. Devotee Rights</h3>
+                <p>
+                  You have the right to review, update, or request deletion of your personal profile and booking history by contacting us directly.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-gold-100 flex justify-between items-center flex-wrap gap-4">
+              <span className="text-xs text-muted-foreground font-body">Last Updated: June 2026</span>
+              <button
+                onClick={() => onNavigate("home")}
+                className="gradient-saffron hover:opacity-90 text-white font-body font-semibold px-6 py-2 rounded-full transition shadow-md"
+              >
+                {isHi ? "होम पेज पर जाएं" : isGu ? "હોમ પેજ પર જાઓ" : "Back to Home"}
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -7949,7 +8184,7 @@ const generateReceipt = async (
     // 5. Professional Footer Section
     const finalFooterY = currentY + boxHeight;
     let footerY = finalFooterY + 6;
-    if (footerY > pageHeight - 35) {
+    if (footerY > pageHeight - 40) {
       doc.addPage();
       footerY = 20;
     }
@@ -7979,10 +8214,22 @@ const generateReceipt = async (
     );
 
     doc.setTextColor(153, 27, 27);
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
     doc.text(
       "Support: namaste@satkarmpuja.com • www.satkarmpooja.com",
       105,
       footerY + 24,
+      { align: "center" }
+    );
+
+    doc.setTextColor(153, 27, 27);
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
+    doc.text(
+      "Terms & Conditions: www.satkarmpooja.com/#/terms   •   Privacy Policy: www.satkarmpooja.com/#/privacy",
+      105,
+      footerY + 30,
       { align: "center" }
     );
 
@@ -10580,7 +10827,9 @@ export default function App() {
         "signup",
         "dashboard",
         "admin",
-        "share-experience"
+        "share-experience",
+        "terms",
+        "privacy"
       ];
 
       if (validPages.includes(page)) {
@@ -10836,6 +11085,12 @@ export default function App() {
                 language={language}
               />
             ))}
+          {currentPage === "terms" && (
+            <TermsPage language={language} onNavigate={navigateTo} />
+          )}
+          {currentPage === "privacy" && (
+            <PrivacyPage language={language} onNavigate={navigateTo} />
+          )}
         </div>
       </main>
 
