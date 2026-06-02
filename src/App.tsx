@@ -2057,7 +2057,7 @@ const TRANSLATIONS = {
   authResendOtp: { en: "Resend OTP", hi: "ओटीपी दोबारा भेजें", gu: "OTP ફરી મોકલો" },
   authVerifyOtp: { en: "Verify & Login", hi: "सत्यापित करें और लॉगिन करें", gu: "વેરિફાય અને લૉગિન" },
   authVerifying: { en: "Verifying...", hi: "सत्यापित किया जा रहा है...", gu: "વેરિફાય થઈ રહ્યું છે..." },
-  authChangePhone: { en: "Change phone number", hi: "फ़ोन नंबर बदलें", gu: "ફોન નંબર બદલો" },
+  authChangePhone: { en: "Change email / phone number", hi: "ईमेल / फ़ोन नंबर बदलें", gu: "ઈમેઇલ / ફોન નંબર બદલો" },
   authOtpSentSuccess: {
     en: "OTP sent successfully!",
     hi: "ओटीपी सफलतापूर्वक भेज दिया गया!",
@@ -3834,10 +3834,10 @@ const getSuggestedPrice = (poojaType: string) => {
 const keyToFormValue: Record<string, string> = {
   "griha-pravesh": "Griha Pravesh",
   "satyanarayan-katha": "Satyanarayan Katha",
-  rudrabhishek: "Rudrabhishek",
+  rudrabhishek: "Rudrabhishek Puja",
   "navagraha-shanti": "Navagraha Shanti",
   "lakshmi-pooja": "Lakshmi Puja",
-  "durga-saptashati": "Durga Saptashati",
+  "durga-saptashati": "Durga Saptashati Puja",
   "surya-grah-shanti": "Surya Grah Shanti",
   "chandra-grah-shanti": "Chandra Grah Shanti",
   "mangal-grah-shanti": "Mangal Grah Shanti",
@@ -3852,8 +3852,8 @@ const keyToFormValue: Record<string, string> = {
   "ganesh-pooja": "Ganesh Puja",
   "hanuman-pooja": "Hanuman Puja",
   "vishnu-pooja": "Vishnu Puja",
-  "maha-mrityunjay": "Maha Mrityunjay",
-  "durga-navarna": "Durga Navarna",
+  "maha-mrityunjay": "Maha Mrityunjay Mantra Jap",
+  "durga-navarna": "Durga Navarna Mantra Jap",
   "kaal-sarp-dosh": "Kaal Sarp Dosh Nivaran puja",
   "surya-shani-dosh": "Surya-Shani Shapit Dosh Shanti Vidhan",
   "surya-rahu-dosh": "Surya-Rahu Grahan Dosh Shanti Vidhan",
@@ -3946,15 +3946,15 @@ function Navbar({
           <button
             type="button"
             onClick={() => onNavigate("home")}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group flex-shrink-0"
           >
             <img
               src="/assets/satkarm-logo2.png"
               alt="SatkarmPuja logo"
-              className="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover border-2 border-gold-200/50 shadow-sm transition-transform group-hover:scale-105"
+              className="h-10 w-10 md:h-14 md:w-14 rounded-full object-cover border-2 border-gold-200/50 shadow-sm transition-transform group-hover:scale-105"
             />
             <div className="text-left">
-              <h1 className="font-display text-lg md:text-xl font-bold text-maroon-600 leading-tight">
+              <h1 className="font-display text-sm md:text-lg font-bold text-maroon-600 leading-tight whitespace-nowrap overflow-hidden">
                 SatkarmPuja
               </h1>
               <p className="text-xs text-gold-700 hidden sm:block font-body font-medium tracking-wide">
@@ -5359,6 +5359,7 @@ function BookPage({
           (form.querySelector("#message") as HTMLTextAreaElement).value || "",
         status: "pending",
         created_at: new Date().toISOString(),
+        userId: auth?.user?.id || null,
       };
 
       try {
@@ -5390,10 +5391,10 @@ function BookPage({
   const poojaOptions = [
     "Griha Pravesh",
     "Satyanarayan Katha",
-    "Rudrabhishek",
+    "Rudrabhishek Puja",
     "Navagraha Shanti",
     "Lakshmi Puja",
-    "Durga Saptashati",
+    "Durga Saptashati Puja",
     "Surya Grah Shanti",
     "Chandra Grah Shanti",
     "Mangal Grah Shanti",
@@ -5406,15 +5407,15 @@ function BookPage({
     "Ganesh Puja",
     "Hanuman Puja",
     "Vishnu Puja",
-    "Maha Mrityunjay",
-    "Durga Navarna",
-    "Kaal Sarp Dosh",
-    "Surya-Shani Dosh",
-    "Shani-Rahu Dosh",
-    "Mangal-Rahu Dosh",
-    "Guru-Rahu Dosh",
-    "Chandra-Rahu Dosh",
-    "Homatmak Laghu Rudra",
+    "Maha Mrityunjay Mantra Jap",
+    "Durga Navarna Mantra Jap",
+    "Kaal Sarp Dosh Nivaran puja",
+    "Surya-Shani Shapit Dosh Shanti Vidhan",
+    "Shani-Rahu Shapit Dosh Shanti Vidhan",
+    "Mangal-Rahu Angarak Dosh Shanti Vidhan",
+    "Guru-Rahu Chandal Dosh Shanti Vidhan",
+    "Chandra-Rahu Grahan Dosh Shanti Vidhan",
+    "Homatmak Laghu Rudra Puja",
     "Navchandi Yagna",
     "Revati Nakshatra Shanti Vidhan",
     "Mool Nakshatra Shanti Vidhan",
@@ -6991,7 +6992,7 @@ function LoginPage({
   showToast: (message: string, type?: "success" | "error") => void;
   language: Lang;
 }) {
-  const [phone, setPhone] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -7002,10 +7003,11 @@ function LoginPage({
     setIsSubmitting(true);
 
     try {
+      const isEmail = identifier.includes('@');
       const res = await apiFetch("/api/auth/request-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone }),
+        body: JSON.stringify(isEmail ? { email: identifier.trim() } : { phone: identifier.trim() }),
       });
 
       if (!res.ok) {
@@ -7039,10 +7041,11 @@ function LoginPage({
     setIsSubmitting(true);
 
     try {
+      const isEmail = identifier.includes('@');
       const res = await apiFetch("/api/auth/login-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, otp }),
+        body: JSON.stringify(isEmail ? { email: identifier.trim(), otp } : { phone: identifier.trim(), otp }),
       });
 
       if (!res.ok) {
@@ -7094,8 +7097,8 @@ function LoginPage({
                 type="text"
                 placeholder="Enter your email or phone number"
                 required
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
                 className="w-full rounded-xl border border-gold-100 bg-white px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-saffron-300"
               />
             </div>
@@ -8507,6 +8510,15 @@ function AdminPanelPage({
     return priceStr.replace(/[^0-9]/g, "");
   }, [poojaPrices]);
 
+  const getCategoryName = useCallback((poojaType: string) => {
+    const cat = categories.find(c => c.pujas.includes(poojaType));
+    if (cat) {
+      const key = `cat_${cat.id}_name` as keyof typeof TRANSLATIONS;
+      return TRANSLATIONS[key] ? t(key, language) : cat.id;
+    }
+    return "Other";
+  }, [language]);
+
   const load = useCallback(async () => {
     setLoading(true);
     try {
@@ -8654,6 +8666,7 @@ function AdminPanelPage({
                     </TableCell>
                     <TableCell>
                       <div className="text-sm font-medium text-maroon-600">{b.pooja_type}</div>
+                      <div className="text-[10px] text-saffron-600 font-medium">Category: {getCategoryName(b.pooja_type)}</div>
                       <div className="text-xs font-bold text-emerald-600">₹{b.price || 0}</div>
                     </TableCell>
                     <TableCell>
@@ -9412,6 +9425,7 @@ function AdminPanelPage({
                               </TableCell>
                               <TableCell>
                                 <div className="text-sm font-medium text-maroon-600">{b.pooja_type}</div>
+                                <div className="text-[10px] text-saffron-600 font-medium">Category: {getCategoryName(b.pooja_type)}</div>
                                 <div className="text-[10px] text-muted-foreground">Booked: {new Date(b.created_at).toLocaleDateString()}</div>
                               </TableCell>
                               <TableCell>
@@ -9452,8 +9466,11 @@ function AdminPanelPage({
                       >
                         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                           <div>
-                            <p className="font-display text-lg font-semibold text-maroon-600">
+                            <p className="font-display text-lg font-semibold text-maroon-600 flex flex-wrap items-center gap-2">
                               {b.pooja_type}
+                              <span className="text-[10px] font-normal text-saffron-600 px-2 py-0.5 bg-saffron-50 rounded-full border border-saffron-100 uppercase">
+                                {getCategoryName(b.pooja_type)}
+                              </span>
                             </p>
                             <p className="font-body text-sm text-muted-foreground mt-1">
                               {b.name} • {b.phone} • {b.email}
