@@ -8137,10 +8137,11 @@ function DashboardPage({
       </div>
 
       {/* Status Progress Tracker */}
-      <div className="mt-6 mb-8">
-        <div className="relative flex items-center justify-between">
-          {/* Background Line */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-gold-100" />
+      <div className="mt-6 mb-8 px-1 sm:px-0">
+        <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
+          {/* Background Line (Horizontal on Desktop, Vertical on Mobile) */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-gold-100 hidden sm:block" />
+          <div className="absolute left-[16px] top-2 bottom-2 w-0.5 bg-gold-100 sm:hidden" />
           
           {/* Steps */}
           {[
@@ -8152,19 +8153,19 @@ function DashboardPage({
           ].map((step, idx, arr) => {
             const stepIndex = idx;
             const currentStatusIndex = arr.findIndex(s => s.id === b.status);
-            const isCompleted = currentStatusIndex > stepIndex || (b.status === 'completed' && stepIndex <= 3) || b.status === 'pooja-performed' && stepIndex <= 4;
+            const isCompleted = currentStatusIndex > stepIndex || (b.status === 'completed' && stepIndex <= 3) || (b.status === 'pooja-performed' && stepIndex <= 4);
             const isCurrent = b.status === step.id || (b.status === 'confirmed' && step.id === 'consultation');
             
             return (
-              <div key={step.id} className="relative z-10 flex flex-col items-center">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all ${
+              <div key={step.id} className="relative z-10 flex flex-row items-center gap-4 sm:flex-col sm:gap-0">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all shrink-0 ${
                   isCompleted ? 'bg-emerald-500 border-emerald-500 text-white' : 
                   isCurrent ? 'bg-white border-saffron-500 text-saffron-600 ring-4 ring-saffron-50' : 
                   'bg-white border-gold-200 text-gold-300'
                 }`}>
                   {isCompleted ? <Check className="w-4 h-4" /> : <span className="text-[10px] font-bold">{idx + 1}</span>}
                 </div>
-                <span className={`absolute top-10 whitespace-nowrap text-[10px] font-bold uppercase tracking-wider ${
+                <span className={`relative top-0 sm:absolute sm:top-10 whitespace-nowrap text-[10px] font-bold uppercase tracking-wider ${
                   isCompleted ? 'text-emerald-600' : isCurrent ? 'text-maroon-700' : 'text-gold-300'
                 }`}>
                   {step.label}
