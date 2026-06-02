@@ -7828,6 +7828,24 @@ const generateReceipt = async (
     }
 
     // 3. Transaction Details Table
+    const formatDateSafe = (dateVal: any) => {
+      if (!dateVal) return "N/A";
+      try {
+        const d = new Date(dateVal);
+        if (isNaN(d.getTime())) return String(dateVal);
+        return d.toLocaleString("en-IN", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        });
+      } catch (e) {
+        return String(dateVal);
+      }
+    };
+
     (doc as any).autoTable({
       startY: 75,
       head: [["Transaction Detail", "Information"]],
@@ -7838,12 +7856,11 @@ const generateReceipt = async (
         ["Devotee Email", booking.email],
         ["Devotee Phone", booking.phone || "N/A"],
         ["City", booking.city],
-        ["Booking Date", new Date(booking.created_at).toLocaleString()],
+        ["Booking Date & Time", formatDateSafe(booking.created_at)],
+        ["Payment Date & Time", formatDateSafe(booking.created_at)], // Verified upon payment confirmation
         [
-          "Scheduled For",
-          booking.poojaDate
-            ? new Date(booking.poojaDate).toLocaleString()
-            : "To Be Finalized",
+          "Scheduled Puja Date & Time",
+          booking.poojaDate ? formatDateSafe(booking.poojaDate) : "To Be Finalized",
         ],
         ["Payment Status", "PAID"],
         ["Amount Paid", `INR ${booking.price || 0}`],
@@ -7860,7 +7877,7 @@ const generateReceipt = async (
       styles: {
         font: "helvetica",
         fontSize: 10,
-        cellPadding: 5,
+        cellPadding: 4,
         lineColor: [220, 220, 220],
       },
       columnStyles: {
@@ -7868,13 +7885,78 @@ const generateReceipt = async (
       },
     });
 
-    // 4. Professional Footer Section
-    const finalY = (doc as any).lastAutoTable.finalY || 160;
     const pageHeight = doc.internal.pageSize.getHeight();
-    
-    // Ensure footer doesn't get cut off at the bottom
-    let footerY = finalY + 10;
-    if (footerY > pageHeight - 40) {
+    let currentY = (doc as any).lastAutoTable.finalY || 150;
+
+    // Check if there is enough space for preparation note + footer (we need at least 95 units)
+    if (currentY > pageHeight - 95) {
+      doc.addPage();
+      currentY = 20;
+    } else {
+      currentY += 8;
+    }
+
+    // 4. Puja Preparation & Devotional Instructions Box
+    doc.setFillColor(255, 248, 240); // Soft saffron cream
+    doc.setDrawColor(212, 175, 55); // Gold border
+    doc.setLineWidth(0.5);
+    doc.roundedRect(15, currentY, 180, 56, 3, 3, "FD");
+
+    // Left vertical border accent
+    doc.setFillColor(212, 175, 55); // Gold
+    doc.rect(15, currentY, 3, 56, "F");
+
+    // Title
+    doc.setTextColor(153, 27, 27); // Maroon
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.text("🌸 SACRED PUJA PREPARATIONS & DEVOTIONAL GUIDE", 23, currentY + 7);
+
+    // Devotional Note
+    doc.setTextColor(80, 80, 80);
+    doc.setFont("helvetica", "oblique");
+    doc.setFontSize(9);
+    doc.text(
+      "To receive the maximum spiritual benefits of the sacred Vedic rituals, please prepare the following before the puja:",
+      23,
+      currentY + 13
+    );
+
+    // Bullet points
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9.5);
+
+    const prepSteps = [
+      ["Purity & Clothing:", "Take a bath before the puja and wear clean traditional attire (Dhoti-Kurta or Saree/Salwar)."],
+      ["Altar Space Setup:", "Clean the puja altar area and place a clean red or yellow cloth over a wooden platform (Chowki)."],
+      ["Sacred Offerings:", "Arrange fresh flowers, seasonal fruits, a coconut, and sweets (Prasad like Panchamrit or Halwa)."],
+      ["Essential Samagri:", "Keep Diya (oil/ghee lamp), Agarbatti (incense), Kumkum, Akshat (unbroken rice), and water in a copper lota."],
+      ["Devotional Focus:", "Sit with a calm, peaceful mind and a sense of bhakti (devotion) for the sacred Sankalpa pledge."]
+    ];
+
+    let bulletY = currentY + 19;
+    prepSteps.forEach(([title, desc]) => {
+      // Draw small bullet circle
+      doc.setFillColor(212, 175, 55); // Gold
+      doc.circle(25, bulletY - 1, 0.8, "F");
+      
+      // Print bold title
+      doc.setTextColor(153, 27, 27); // Maroon
+      doc.setFont("helvetica", "bold");
+      doc.text(title, 28, bulletY);
+      
+      // Print description text
+      doc.setTextColor(60, 60, 60);
+      doc.setFont("helvetica", "normal");
+      doc.text(desc, 65, bulletY);
+      
+      bulletY += 7;
+    });
+
+    // 5. Professional Footer Section
+    const finalFooterY = currentY + 56;
+    let footerY = finalFooterY + 6;
+    if (footerY > pageHeight - 35) {
       doc.addPage();
       footerY = 20;
     }
