@@ -7765,27 +7765,9 @@ const generateReceipt = async (
     doc.setFillColor(212, 175, 55); // Gold accent line
     doc.rect(0, 45, 210, 2, "F");
 
-    // Add High-Quality Circular Logo
+    // Add High-Quality Circular Logo (transparent circular PNG with gold border built in)
     try {
-      const radius = 17.5;
-      const centerX = 15 + radius;
-      const centerY = 5 + radius;
-
-      // Draw circular clip
-      doc.saveGraphicsState();
-      // Using arc to create a circle path for clipping
-      doc.arc(centerX, centerY, radius, 0, 360, false);
-      doc.clip();
-
-      // Add the Base64 image directly (instant and offline)
       doc.addImage(LOGO_BASE64, "PNG", 15, 5, 35, 35);
-
-      doc.restoreGraphicsState();
-
-      // Add a nice gold border around the circle
-      doc.setDrawColor(212, 175, 55); // Gold
-      doc.setLineWidth(0.8);
-      doc.circle(centerX, centerY, radius, "D");
     } catch (e) {
       console.error("Logo failed to load for PDF", e);
     }
