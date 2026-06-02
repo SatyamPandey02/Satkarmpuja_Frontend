@@ -22,6 +22,15 @@ import {
 } from "@/components/ui/table";
 import { apiFetch } from "./api";
 
+// Razorpay global type declaration
+declare global {
+  interface Window {
+    Razorpay: new (options: Record<string, unknown>) => {
+      open: () => void;
+      on: (event: string, handler: () => void) => void;
+    };
+  }
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Page =
@@ -7956,6 +7965,7 @@ function DashboardPage({
     if (!booking.id) return;
 
     try {
+      // Step 1: Create order on backend
       const res = await apiFetch("/api/payments/create-order", {
         method: "POST",
         headers: {
@@ -7977,15 +7987,28 @@ function DashboardPage({
 
       const order = await res.json();
 
+      // Step 2: Load Razorpay script if not already loaded
+      if (!window.Razorpay) {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error("Failed to load Razorpay checkout script"));
+          document.body.appendChild(script);
+        });
+      }
+
+      // Step 3: Open Razorpay checkout popup
       const options = {
         key: order.keyId,
         amount: order.amount,
         currency: order.currency,
-        name: "Satkarm Pooja",
+        name: "SatkarmPuja",
         description: `Payment for ${booking.pooja_type}`,
         order_id: order.orderId,
-        handler: async (response: any) => {
+        handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
           try {
+            // Step 4: Verify payment via backend (HMAC signature check)
             const verifyRes = await apiFetch("/api/payments/verify-payment", {
               method: "POST",
               headers: {
@@ -7993,20 +8016,23 @@ function DashboardPage({
                 Authorization: `Bearer ${auth.token}`,
               },
               body: JSON.stringify({
-                ...response,
                 bookingId: booking.id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
               }),
             });
 
             if (verifyRes.ok) {
-              showToast("Payment successful!", "success");
+              showToast("Payment successful! 🙏 Your booking is confirmed.", "success");
               load(); // Refresh bookings
             } else {
-              showToast("Payment verification failed", "error");
+              const err = await verifyRes.json().catch(() => ({}));
+              showToast((err as { error?: string }).error || "Payment verification failed. Contact support.", "error");
             }
           } catch (error) {
             console.error("Verification error:", error);
-            showToast("Error verifying payment", "error");
+            showToast("Error verifying payment. Please contact support.", "error");
           }
         },
         prefill: {
@@ -8015,15 +8041,20 @@ function DashboardPage({
           contact: auth.user.phone || "",
         },
         theme: {
-          color: "#f59e0b", // Saffron color
+          color: "#8B1A1A", // SatkarmPuja maroon brand color
+        },
+        modal: {
+          ondismiss: () => {
+            showToast("Payment cancelled. You can retry anytime.", "error");
+          },
         },
       };
 
-      const rzp = new (window as any).Razorpay(options);
+      const rzp = new window.Razorpay(options as Record<string, unknown>);
       rzp.open();
     } catch (error) {
       console.error("Payment initiation error:", error);
-      showToast("Error initiating payment", "error");
+      showToast("Error initiating payment. Please try again.", "error");
     }
   };
 
