@@ -5223,7 +5223,7 @@ function SuccessStoriesPage({ onNavigate, language }: SuccessStoriesPageProps) {
               >
                 {/* Avatar + header */}
                 <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center border-b border-gold-100">
-                  <img src="/assets/satkarm-logo-small.png" alt="SatkarmPuja Logo" className="w-full h-full object-cover" />
+                  <img src="/assets/satkarm-logo2.png" alt="SatkarmPuja Logo" className="w-full h-full object-cover" />
                   <div className="absolute top-4 right-4 bg-saffron-500 text-white px-3 py-1 rounded-full text-xs font-body font-medium shadow-sm z-10">
                     <Sparkles className="w-4 h-4 inline-block mr-2 text-saffron-500" /> {t("successBlessedJourney", language)}
                   </div>
