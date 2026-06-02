@@ -7807,21 +7807,21 @@ const generateReceipt = async (
 
     // 2. Receipt Title Section
     doc.setTextColor(153, 27, 27); // Maroon
-    doc.setFontSize(22);
+    doc.setFontSize(20);
     doc.setFont("helvetica", "bold");
-    doc.text("OFFICIAL RECEIPT", 105, 65, { align: "center" });
+    doc.text("OFFICIAL RECEIPT", 105, 56, { align: "center" });
 
     // Draw professional green "PAID" stamp
     try {
       doc.saveGraphicsState();
       doc.setDrawColor(46, 125, 50); // Green
       doc.setLineWidth(1);
-      doc.roundedRect(155, 52, 35, 12, 2, 2, "D");
+      doc.roundedRect(155, 48, 35, 10, 2, 2, "D");
       
       doc.setTextColor(46, 125, 50);
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(14);
-      doc.text("PAID", 172.5, 60.5, { align: "center" });
+      doc.setFontSize(13);
+      doc.text("PAID", 172.5, 55, { align: "center" });
       doc.restoreGraphicsState();
     } catch (e) {
       console.error("Failed to add PAID stamp", e);
@@ -7847,7 +7847,7 @@ const generateReceipt = async (
     };
 
     (doc as any).autoTable({
-      startY: 75,
+      startY: 64,
       head: [["Transaction Detail", "Information"]],
       body: [
         ["Booking ID", booking.id || "N/A"],
@@ -7877,7 +7877,7 @@ const generateReceipt = async (
       styles: {
         font: "helvetica",
         fontSize: 10,
-        cellPadding: 4,
+        cellPadding: 3,
         lineColor: [220, 220, 220],
       },
       columnStyles: {
@@ -7892,7 +7892,7 @@ const generateReceipt = async (
     const prepSteps = [
       ["Purity & Clothing:", "Take a bath before the puja and wear clean traditional attire (Dhoti-Kurta or Saree/Salwar)."],
       ["Sacred Prasad:", "Prepare and keep fresh sweets or Panchamrit ready as Prasad offerings for the deity."],
-      ["Essential Samagri:", "Keep Diya, incense, Kumkum, Akshat, two bowls (one filled with water, one empty), and a spoon ready for Sankalpa."],
+      ["Essential Samagri:", "Keep two bowls (one filled with water, one empty), and a spoon ready for Sankalpa."],
       ["Timing & Connect:", "Please sit ready 5 minutes prior to the scheduled puja time and ensure a stable network connection."],
       ["Devotional Focus:", "Sit with a calm, peaceful mind and a sense of bhakti (devotion) for the sacred Sankalpa pledge."]
     ];
