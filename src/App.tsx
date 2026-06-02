@@ -5006,9 +5006,9 @@ function CategoriesPage({ onNavigate, language, poojaPrices }: CategoriesPagePro
                 data-ocid={`categories.item.${catIdx + 1}`}
                 className="bg-white rounded-3xl shadow-card-warm overflow-hidden border border-gold-100"
               >
-                <div className="grid md:grid-cols-2">
+                <div className="grid md:grid-cols-12">
                   {/* Image Side */}
-                  <div className="relative h-64 md:h-full min-h-[340px] overflow-hidden">
+                  <div className="relative w-full aspect-[16/10] md:aspect-auto md:h-full md:col-span-5 lg:col-span-4 overflow-hidden border-b border-gold-100 md:border-b-0 md:border-r border-gold-200/40">
                     <img
                       src={cat.image}
                       alt={t(`cat_${cat.id}_name` as keyof typeof TRANSLATIONS, language)}
@@ -5028,7 +5028,7 @@ function CategoriesPage({ onNavigate, language, poojaPrices }: CategoriesPagePro
                   </div>
 
                   {/* Content Side */}
-                  <div className="p-8 md:p-10 flex flex-col">
+                  <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-between md:col-span-7 lg:col-span-8">
                     <div className="mb-6">
                       <span className="section-heading-accent block mb-2">
                         {t(`cat_${cat.id}_subtitle` as keyof typeof TRANSLATIONS, language)}
@@ -5036,18 +5036,17 @@ function CategoriesPage({ onNavigate, language, poojaPrices }: CategoriesPagePro
                       <h2 className="font-display text-2xl md:text-3xl font-bold text-maroon-600 mb-3">
                         {t(`cat_${cat.id}_name` as keyof typeof TRANSLATIONS, language)}
                       </h2>
-                      <p className="font-body text-muted-foreground leading-relaxed">
+                      <p className="font-body text-muted-foreground leading-relaxed text-sm md:text-base">
                         {t(`cat_${cat.id}_desc` as keyof typeof TRANSLATIONS, language)}
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8 flex-1 max-h-44 overflow-y-auto pr-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                       {cat.pujas.map((poojaName) => {
                         const key =
                           poojaMapping[poojaName] ||
                           poojaName.toLowerCase().replace(/\s+/g, "-");
                         const hasDetail = !!poojaDetails[key];
-                        const thumbImg = poojaImages[key];
                         const price = poojaPrices?.[key] || poojaDetails[key]?.price;
                         const nameKey = ("pooja_" + key.replace(/-/g, "_") + "_name") as keyof typeof TRANSLATIONS;
                         const displayName = (TRANSLATIONS[nameKey] ? t(nameKey, language) : null) ?? poojaName;
@@ -5062,13 +5061,14 @@ function CategoriesPage({ onNavigate, language, poojaPrices }: CategoriesPagePro
                                 onNavigate("book");
                               }
                             }}
-                            className="flex items-center gap-3 bg-saffron-50 hover:bg-saffron-100 border border-saffron-100 hover:border-saffron-200 p-2.5 rounded-xl transition-all cursor-pointer text-left group"
+                            className="flex items-center justify-between gap-3 bg-saffron-50/50 hover:bg-saffron-100/80 border border-saffron-100/70 hover:border-saffron-300 p-3 rounded-2xl transition-all cursor-pointer text-left group hover:-translate-y-0.5 hover:shadow-sm"
                           >
-                            <div className="flex flex-col">
-                              <span className="font-body text-sm text-maroon-600 font-medium leading-tight">
-                                {displayName}
-                              </span>
-                            </div>
+                            <span className="font-body text-sm text-maroon-700 font-semibold leading-tight transition-colors group-hover:text-maroon-900">
+                              {displayName}
+                            </span>
+                            <span className="text-saffron-600 transform translate-x-0 group-hover:translate-x-1 transition-all duration-300 text-xs font-bold font-body">
+                              →
+                            </span>
                           </button>
                         );
                       })}
@@ -5077,7 +5077,7 @@ function CategoriesPage({ onNavigate, language, poojaPrices }: CategoriesPagePro
                     <button
                       type="button"
                       onClick={() => onNavigate("book")}
-                      className="btn-primary px-6 py-3 rounded-xl w-fit flex items-center gap-2 text-sm"
+                      className="btn-primary px-6 py-3 rounded-xl w-fit flex items-center gap-2 text-sm hover:shadow-md transition-all"
                     >
                       <ClipboardEdit className="w-4 h-4 inline-block mr-2" /> {t("catBookNow", language)}
                     </button>
