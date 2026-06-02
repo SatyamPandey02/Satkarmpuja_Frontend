@@ -4260,11 +4260,15 @@ function Footer({ config, onNavigate, language }: FooterProps) {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-gold-100/80 text-sm">
                 <Phone className="w-5 h-5 inline-block text-gray-500" />
-                <span className="font-body">{config.contact_phone}</span>
+                <a href={`tel:${config.contact_phone}`} className="font-body hover:text-gold-300 transition-colors">
+                  {config.contact_phone}
+                </a>
               </li>
               <li className="flex items-center gap-3 text-gold-100/80 text-sm">
                 <Mail className="w-5 h-5 inline-block text-gray-500" />
-                <span className="font-body">{config.contact_email}</span>
+                <a href={`mailto:${config.contact_email}`} className="font-body hover:text-gold-300 transition-colors">
+                  {config.contact_email}
+                </a>
               </li>
               <li className="flex items-center gap-3 text-gold-100/80 text-sm">
                 <MapPin className="w-5 h-5 inline-block text-gray-500" />
@@ -6011,7 +6015,9 @@ function ContactPage({ config, language }: ContactPageProps) {
                 {t("contactCallUs", language)}
               </p>
               <p className="font-display text-lg sm:text-sm md:text-xs lg:text-sm xl:text-lg font-bold text-maroon-600">
-                {config.contact_phone}
+                <a href={`tel:${config.contact_phone}`} className="hover:text-saffron-600 transition-colors">
+                  {config.contact_phone}
+                </a>
               </p>
             </div>
             <div className="bg-white rounded-3xl shadow-card-warm p-8 text-center border border-gold-100">
@@ -6022,7 +6028,9 @@ function ContactPage({ config, language }: ContactPageProps) {
                 {t("contactEmailUs", language)}
               </p>
               <p className="font-display text-lg sm:text-sm md:text-xs lg:text-sm xl:text-lg font-bold text-maroon-600 break-all">
-                {config.contact_email}
+                <a href={`mailto:${config.contact_email}`} className="hover:text-saffron-600 transition-colors">
+                  {config.contact_email}
+                </a>
               </p>
             </div>
             <div className="bg-white rounded-3xl shadow-card-warm p-8 text-center border border-gold-100">
