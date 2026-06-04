@@ -4487,22 +4487,24 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
               {t("heroSubtitle", language) ?? config.hero_subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-[380px] sm:max-w-none">
               <button
                 type="button"
                 data-ocid="hero.book.primary_button"
                 onClick={() => onNavigate("book")}
-                className="btn-primary px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg flex items-center justify-center gap-2 shadow-glow-saffron"
+                className="flex-1 sm:flex-initial btn-primary px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2 shadow-glow-saffron"
               >
-                <HeartHandshake className="w-5 h-5 inline-block mr-2 text-saffron-500" /> {t("heroBookCta", language)}
+                <HeartHandshake className="w-4 h-4 sm:w-5 sm:h-5 text-saffron-500" />
+                <span className="whitespace-nowrap">{t("heroBookCta", language)}</span>
               </button>
               <button
                 type="button"
                 data-ocid="hero.categories.secondary_button"
                 onClick={() => onNavigate("categories")}
-                className="btn-outline-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg flex items-center justify-center gap-2"
+                className="flex-1 sm:flex-initial btn-outline-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2"
               >
-                <Target className="w-5 h-5 inline-block mr-2 text-saffron-500" /> {t("heroExploreCta", language)}
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-saffron-500" />
+                <span className="whitespace-nowrap">{t("heroExploreCta", language)}</span>
               </button>
             </div>
           </div>
@@ -8901,36 +8903,64 @@ function DashboardPage({
                       ) : pastBookings.length === 0 ? (
                         <div className="bg-saffron-50 border border-saffron-100 rounded-2xl p-6 font-body text-sm text-maroon-700">{t("dashNoPast", language)}</div>
                       ) : (
-                        <div className="bg-white border border-gold-100 rounded-2xl overflow-hidden shadow-sm">
-                          <Table>
-                            <TableHeader>
-                              <TableRow className="bg-saffron-50/50">
-                                <TableHead className="font-bold text-maroon-700">Pooja Type</TableHead>
-                                <TableHead className="font-bold text-maroon-700">City</TableHead>
-                                <TableHead className="font-bold text-maroon-700">Date</TableHead>
-                                <TableHead className="font-bold text-maroon-700 text-right">Receipt</TableHead>
-                              </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                              {pastBookings.map((b) => (
-                                <TableRow key={b.id ?? b.created_at} className="hover:bg-slate-50/50 transition-colors">
-                                  <TableCell className="font-medium text-maroon-700">{b.pooja_type}</TableCell>
-                                  <TableCell className="text-xs text-muted-foreground">{b.city}</TableCell>
-                                  <TableCell className="text-xs text-muted-foreground">{new Date(b.created_at).toLocaleDateString()}</TableCell>
-                                  <TableCell className="text-right">
-                                    <button
-                                      onClick={() => generateReceipt(b, showToast)}
-                                      className="p-2 text-emerald-600 hover:text-emerald-700 transition-colors"
-                                      title={t("dashDownloadReceipt", language)}
-                                    >
-                                      <Download size={16} />
-                                    </button>
-                                  </TableCell>
+                        <>
+                          {/* Mobile View: Stacked list card layout */}
+                          <div className="space-y-3 sm:hidden">
+                            {pastBookings.map((b) => (
+                              <div key={b.id ?? b.created_at} className="bg-white border border-gold-100 rounded-xl p-4 shadow-sm">
+                                <div className="flex justify-between items-start gap-2 mb-2">
+                                  <div>
+                                    <p className="font-display font-bold text-maroon-700 text-sm leading-snug">{b.pooja_type}</p>
+                                    <p className="text-xs text-muted-foreground mt-0.5">{b.city}</p>
+                                  </div>
+                                  <button
+                                    onClick={() => generateReceipt(b, showToast)}
+                                    className="p-2 bg-emerald-50 hover:bg-emerald-100 rounded-lg text-emerald-600 hover:text-emerald-700 transition-colors flex items-center justify-center"
+                                    title={t("dashDownloadReceipt", language)}
+                                  >
+                                    <Download size={15} />
+                                  </button>
+                                </div>
+                                <div className="flex justify-between items-center text-xs border-t border-gold-50 pt-2 mt-2">
+                                  <span className="text-gold-500 font-medium">Booking Date</span>
+                                  <span className="text-muted-foreground">{new Date(b.created_at).toLocaleDateString()}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Desktop/Tablet View: Table layout */}
+                          <div className="hidden sm:block bg-white border border-gold-100 rounded-2xl overflow-hidden shadow-sm">
+                            <Table>
+                              <TableHeader>
+                                <TableRow className="bg-saffron-50/50">
+                                  <TableHead className="font-bold text-maroon-700">Pooja Type</TableHead>
+                                  <TableHead className="font-bold text-maroon-700">City</TableHead>
+                                  <TableHead className="font-bold text-maroon-700">Date</TableHead>
+                                  <TableHead className="font-bold text-maroon-700 text-right">Receipt</TableHead>
                                 </TableRow>
-                              ))}
-                            </TableBody>
-                          </Table>
-                        </div>
+                              </TableHeader>
+                              <TableBody>
+                                {pastBookings.map((b) => (
+                                  <TableRow key={b.id ?? b.created_at} className="hover:bg-slate-50/50 transition-colors">
+                                    <TableCell className="font-medium text-maroon-700">{b.pooja_type}</TableCell>
+                                    <TableCell className="text-xs text-muted-foreground">{b.city}</TableCell>
+                                    <TableCell className="text-xs text-muted-foreground">{new Date(b.created_at).toLocaleDateString()}</TableCell>
+                                    <TableCell className="text-right">
+                                      <button
+                                        onClick={() => generateReceipt(b, showToast)}
+                                        className="p-2 text-emerald-600 hover:text-emerald-700 transition-colors"
+                                        title={t("dashDownloadReceipt", language)}
+                                      >
+                                        <Download size={16} />
+                                      </button>
+                                    </TableCell>
+                                  </TableRow>
+                                ))}
+                              </TableBody>
+                            </Table>
+                          </div>
+                        </>
                       )}
                     </TabsContent>
                   </Tabs>
