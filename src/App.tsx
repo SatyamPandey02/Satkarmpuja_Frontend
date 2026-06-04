@@ -10948,32 +10948,73 @@ export default function App() {
       await generateReceipt(data, showToast);
       
       // Clear URL parameter so it doesn't download again on page refresh
-      const hash = window.location.hash;
-      if (hash.includes("?")) {
-        const [path] = hash.split("?");
-        window.location.hash = path;
-      }
+      const pathname = window.location.pathname;
+      window.history.replaceState(null, "", pathname);
     } catch (err: any) {
       console.error("Receipt auto-download failed:", err);
       showToast(err.message || "Failed to download receipt", "error");
     }
   }, [showToast]);
 
+  const handleUrlNavigation = useCallback((pathname: string, search: string) => {
+    const cleanPath = pathname.replace(/^\//, "");
+    if (!cleanPath) {
+      setCurrentPage("home");
+      return;
+    }
+    const [pathPart] = cleanPath.split("?");
+    const parts = pathPart.split("/");
+    const page = parts[0] as Page;
+    const key = parts[1];
+
+    // Check if we need to auto-download a receipt (e.g. ?downloadReceipt=xxxx)
+    if (search) {
+      const queryParams = new URLSearchParams(search);
+      const downloadReceiptId = queryParams.get("downloadReceipt");
+      if (downloadReceiptId) {
+        triggerReceiptDownload(downloadReceiptId);
+      }
+    }
+
+    const validPages: Page[] = [
+      "home",
+      "book",
+      "categories",
+      "pooja-detail",
+      "success-stories",
+      "about",
+      "contact",
+      "blog",
+      "blog-detail",
+      "login",
+      "signup",
+      "dashboard",
+      "admin",
+      "share-experience",
+      "terms",
+      "privacy"
+    ];
+
+    if (validPages.includes(page)) {
+      setCurrentPage(page);
+      if (page === "pooja-detail" && key) {
+        setCurrentPoojaKey(key);
+      } else if (page === "blog-detail" && key) {
+        setCurrentBlogId(Number(key));
+      }
+    }
+  }, [triggerReceiptDownload]);
+
   const navigateTo = useCallback((page: Page, poojaKey?: string | number) => {
     console.log("Navigating to:", page);
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    let path = `/${page}`;
     if (poojaKey !== undefined) {
-      if (page === "pooja-detail") {
-        setCurrentPoojaKey(String(poojaKey));
-      } else if (page === "blog-detail") {
-        setCurrentBlogId(Number(poojaKey));
-      }
-      window.location.hash = `#/${page}/${poojaKey}`;
-    } else {
-      window.location.hash = `#/${page}`;
+      path = `/${page}/${poojaKey}`;
     }
-  }, []);
+    window.history.pushState(null, "", path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    handleUrlNavigation(window.location.pathname, window.location.search);
+  }, [handleUrlNavigation]);
 
   const handleLoggedIn = useCallback((next: { token: string; user: AuthUser }) => {
     setAuth(next);
@@ -11001,61 +11042,209 @@ export default function App() {
     showToast(t("dashLoggedOut", language), "success");
   }, [navigateTo, showToast, language]);
 
-  // Synchronize navigation state with URL hash (enables browser Back/Forward)
+  // Synchronize navigation state with URL path (enables browser Back/Forward)
   useEffect(() => {
-    const parseHash = () => {
-      const hashWithQuery = window.location.hash.replace("#/", "");
-      if (!hashWithQuery) {
-        setCurrentPage("home");
-        return;
-      }
-      const [hashPath, queryString] = hashWithQuery.split("?");
-      const parts = hashPath.split("/");
-      const page = parts[0] as Page;
-      const key = parts[1];
-
-      // Check if we need to auto-download a receipt (e.g. ?downloadReceipt=xxxx)
-      if (queryString) {
-        const queryParams = new URLSearchParams(queryString);
-        const downloadReceiptId = queryParams.get("downloadReceipt");
-        if (downloadReceiptId) {
-          triggerReceiptDownload(downloadReceiptId);
-        }
-      }
-
-      const validPages: Page[] = [
-        "home",
-        "book",
-        "categories",
-        "pooja-detail",
-        "success-stories",
-        "about",
-        "contact",
-        "blog",
-        "blog-detail",
-        "login",
-        "signup",
-        "dashboard",
-        "admin",
-        "share-experience",
-        "terms",
-        "privacy"
-      ];
-
-      if (validPages.includes(page)) {
-        setCurrentPage(page);
-        if (page === "pooja-detail" && key) {
-          setCurrentPoojaKey(key);
-        } else if (page === "blog-detail" && key) {
-          setCurrentBlogId(Number(key));
-        }
-      }
+    const parsePath = () => {
+      handleUrlNavigation(window.location.pathname, window.location.search);
     };
 
-    parseHash();
-    window.addEventListener("hashchange", parseHash);
-    return () => window.removeEventListener("hashchange", parseHash);
-  }, []);
+    parsePath();
+    window.addEventListener("popstate", parsePath);
+    return () => window.removeEventListener("popstate", parsePath);
+  }, [handleUrlNavigation]);
+
+  // Dynamic SEO Metadata and Schema Injection
+  useEffect(() => {
+    let title = "SatkarmPuja - Online Puja Service";
+    let desc = "Book authentic Vedic Pujas online with verified Pandits from Kashi, Prayagraj, and Chitrakoot. Online Puja service with transparent pricing.";
+    let schemaData: Record<string, unknown> | null = null;
+
+    const metaTitles: Record<string, Record<Lang, string>> = {
+      home: {
+        en: "Book Authentic Vedic Pujas with Verified Pandits | SatkarmPuja",
+        hi: "प्रमाणित पंडितों के साथ प्रामाणिक वैदिक पूजाएँ बुक करें | SatkarmPuja",
+        gu: "પ્રમાણિત પંડિતો સાથે સાચી વૈદિક પૂજા બુક કરો | SatkarmPuja",
+      },
+      categories: {
+        en: "Puja Categories & Services | SatkarmPuja",
+        hi: "पूजा श्रेणियाँ और सेवाएँ | SatkarmPuja",
+        gu: "પૂજા કેટેગરીઝ અને સેવાઓ | SatkarmPuja",
+      },
+      "success-stories": {
+        en: "Success Stories & Testimonials | SatkarmPuja",
+        hi: "सफलता की कहानियाँ और अनुभव | SatkarmPuja",
+        gu: "સફળતાની વાર્તાઓ અને અનુભવો | SatkarmPuja",
+      },
+      about: {
+        en: "About Our Vedic Puja Organization | SatkarmPuja",
+        hi: "हमारी वैदिक पूजा संस्था के बारे में | SatkarmPuja",
+        gu: "અમારી વૈદિક પૂજા સંસ્થા વિશે | SatkarmPuja",
+      },
+      contact: {
+        en: "Contact Us for Puja Booking | SatkarmPuja",
+        hi: "पूजा बुकिंग के लिए संपर्क करें | SatkarmPuja",
+        gu: "પૂજા બુકિંગ માટે અમારો સંપર્ક કરો | SatkarmPuja",
+      },
+      blog: {
+        en: "Vedic Wisdom Blog & Articles | SatkarmPuja",
+        hi: "वैदिक ज्ञान ब्लॉग और लेख | SatkarmPuja",
+        gu: "વૈદિક જ્ઞાન બ્લોગ અને લેખો | SatkarmPuja",
+      },
+      book: {
+        en: "Book Your Puja Online | SatkarmPuja",
+        hi: "अपनी पूजा ऑनलाइन बुक करें | SatkarmPuja",
+        gu: "તમારી પૂજા ઓનલાઇન બુક કરો | SatkarmPuja",
+      },
+      terms: {
+        en: "Terms & Conditions | SatkarmPuja",
+        hi: "नियम और शर्तें | SatkarmPuja",
+        gu: "નિયમો અને શરતો | SatkarmPuja",
+      },
+      privacy: {
+        en: "Privacy Policy | SatkarmPuja",
+        hi: "गोपनीयता नीति | SatkarmPuja",
+        gu: "ગોપનીયતા નીતિ | SatkarmPuja",
+      },
+    };
+
+    const metaDescs: Record<string, Record<Lang, string>> = {
+      home: {
+        en: "Experience sacred rituals performed by learned Brahmins with personalized consultation and transparent pricing. Book your online puja today.",
+        hi: "विद्वान ब्राह्मणों द्वारा कराए गए पवित्र अनुष्ठानों का अनुभव करें, व्यक्तिगत परामर्श और पारदर्शी शुल्क के साथ। आज ही अपनी पूजा बुक करें।",
+        gu: "પંડિત બ્રાહ્મણો દ્વારા કરાયેલા પવિત્ર વિધિઓનો અનુભવ કરો, વ્યક્તિગત માર્ગદર્શન અને પારદર્શક કિંમતો સાથે. આજે જ તમારી પૂજા બુક કરો.",
+      },
+      categories: {
+        en: "Explore our wide range of Vedic pujas including planetary peace, ancestral rituals, marriage ceremonies, and home warming pujas.",
+        hi: "हमारे विभिन्न वैदिक पूजाओं को जानें, जिसमें ग्रह शांति, पितृ तर्पण, विवाह संस्कार और गृह प्रवेश पूजा शामिल हैं।",
+        gu: "અમારા વિવિધ વૈદિક પૂજાઓ વિશે જાણો, જેમાં ગ્રહ શાંતિ, પિતૃ તર્પણ, લગ્ન વિધિ અને ગૃહ પ્રવેશ પૂજા સામેલ છે.",
+      },
+      about: {
+        en: "Learn about SatkarmPuja, our mission to preserve Vedic traditions, and our team of pandits educated in Kashi, Prayagraj, and Ayodhya.",
+        hi: "सत्कर्मपूजा के बारे में जानें, वैदिक परंपराओं को संरक्षित करने का हमारा मिशन, और काशी व अयोध्या से शिक्षित पंडितों की हमारी टीम।",
+        gu: "સત્કર્મપૂજા વિશે જાણો, વૈદિક પરંપરાઓને જાળવવાનું અમારું મિશન અને કાશી તેમજ અયોધ્યાથી શિક્ષિત પંડિતોની અમારી ટીમ.",
+      },
+    };
+
+    if (currentPage === "pooja-detail" && currentPoojaKey) {
+      const detail = poojaDetails[currentPoojaKey];
+      if (detail) {
+        const nameKey = `pooja_${currentPoojaKey.replace(/-/g, "_")}_name`;
+        const dispName = (TRANSLATIONS[nameKey as keyof typeof TRANSLATIONS] ? t(nameKey as any, language) : null) ?? detail.name;
+        title = `${dispName} | SatkarmPuja`;
+
+        const descKey = `pooja_${currentPoojaKey.replace(/-/g, "_")}_description`;
+        const dispDesc = (TRANSLATIONS[descKey as keyof typeof TRANSLATIONS] ? t(descKey as any, language) : null) ?? detail.description;
+        desc = dispDesc;
+
+        // Service Schema for Puja Detail
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": dispName,
+          "description": dispDesc,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "SatkarmPuja",
+            "image": "https://satkarmpuja.com/favicon.jpg",
+            "telephone": "+919898044080",
+            "url": "https://satkarmpuja.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": poojaPrices[currentPoojaKey] || detail.price.replace(/[^0-9]/g, ""),
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+          }
+        };
+      }
+    } else if (currentPage === "blog-detail" && currentBlogId) {
+      const post = blogPosts.find(p => p.id === currentBlogId);
+      if (post) {
+        const blogTitle = post.title[language] || post.title.en;
+        title = `${blogTitle} | SatkarmPuja Blog`;
+        
+        // Use summary if exists, else first part of content
+        const content = post.content[language] || post.content.en || "";
+        desc = content.substring(0, 155) + "...";
+
+        // BlogPosting Schema
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": blogTitle,
+          "image": post.image,
+          "datePublished": post.date,
+          "author": {
+            "@type": "Person",
+            "name": post.author
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "SatkarmPuja",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://satkarmpuja.com/favicon.jpg"
+            }
+          },
+          "description": desc
+        };
+      }
+    } else {
+      if (metaTitles[currentPage]) {
+        title = metaTitles[currentPage][language] || metaTitles[currentPage].en;
+      }
+      if (metaDescs[currentPage]) {
+        desc = metaDescs[currentPage][language] || metaDescs[currentPage].en;
+      }
+
+      // LocalBusiness Schema for Home
+      if (currentPage === "home") {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "SatkarmPuja",
+          "image": "https://satkarmpuja.com/favicon.jpg",
+          "telephone": "+919898044080",
+          "url": "https://satkarmpuja.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ahmedabad",
+            "addressRegion": "Gujarat",
+            "addressCountry": "IN"
+          },
+          "description": desc
+        };
+      }
+    }
+
+    // Apply Title & Meta Description
+    document.title = title;
+    const metaDesc = document.getElementById("meta-description") || document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', desc);
+    }
+
+    // Apply Open Graph Meta Tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+
+    // Schema Script Injection
+    const existingScript = document.getElementById("structured-schema-ld");
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    if (schemaData) {
+      const script = document.createElement("script");
+      script.id = "structured-schema-ld";
+      script.type = "application/ld+json";
+      script.innerHTML = JSON.stringify(schemaData);
+      document.head.appendChild(script);
+    }
+  }, [currentPage, currentPoojaKey, currentBlogId, language, poojaPrices]);
 
   // Validate stored token on load
   useEffect(() => {

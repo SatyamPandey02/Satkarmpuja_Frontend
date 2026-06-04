@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block search bots from indexing private pages
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /login
+Disallow: /signup
+
+Sitemap: https://satkarmpuja.com/sitemap.xml
