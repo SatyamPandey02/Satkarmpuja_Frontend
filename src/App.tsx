@@ -4454,7 +4454,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
     <>
       {/* Hero */}
       <section
-        className="relative min-h-screen flex flex-col overflow-hidden"
+        className="relative min-h-screen lg:min-h-0 lg:h-screen flex flex-col overflow-hidden"
         style={{
           backgroundImage: isMobile
             ? "url('/assets/generated/Mobile_VIew _Hero.png')"
@@ -4468,22 +4468,22 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
         <div className="absolute inset-0 bg-black/35 md:bg-black/25" />
         <div className="absolute top-0 left-0 w-full h-full om-pattern opacity-10" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 w-full flex-1 flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-4 lg:pb-6 w-full flex-1 flex items-center">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-2 mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-2 mb-4 lg:mb-5">
               <span className="text-gold-300 text-sm font-body font-medium tracking-wide">
                 <Sparkles className="w-4 h-4 inline-block mr-2 text-saffron-500" /> {t("heroTagline", language)}
               </span>
             </div>
 
-            <div className="w-16 h-16 sm:w-20 sm:h-20 gradient-gold rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-glow-gold float-animation">
+            <div className="w-16 h-16 lg:w-16 lg:h-16 gradient-gold rounded-full flex items-center justify-center mb-4 lg:mb-5 shadow-glow-gold float-animation">
               <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 inline-block text-saffron-500" />
             </div>
 
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-4 sm:mb-6">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-3 lg:mb-4">
               {t("heroTitle", language) ?? config.hero_title}
             </h1>
-            <p className="font-body text-base sm:text-lg md:text-xl text-white/85 mb-8 sm:mb-10 leading-relaxed max-w-2xl">
+            <p className="font-body text-base sm:text-lg lg:text-lg text-white/85 mb-6 lg:mb-8 leading-relaxed max-w-2xl">
               {t("heroSubtitle", language) ?? config.hero_subtitle}
             </p>
 
@@ -4512,7 +4512,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
 
         {/* Stats bar - part of flex flow, always below content */}
         <div className="relative z-10 glass-card border-t border-white/20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-3.5">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
               {[
                 { icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "2,500+", label: t("statsHappyFamilies", language) },
@@ -4724,7 +4724,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
             </p>
             <button
               type="button"
-              onClick={() => onNavigate("book")}
+              onClick={() => onNavigate("contact")}
               className="btn-outline-white px-7 py-3.5 rounded-full w-fit text-sm font-body"
             >
               {t("homeScheduleConsultation", language)}
