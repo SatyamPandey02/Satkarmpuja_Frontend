@@ -4487,12 +4487,12 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
               {t("heroSubtitle", language) ?? config.hero_subtitle}
             </p>
 
-            <div className="flex flex-row items-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-[380px] sm:max-w-none">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[380px] sm:max-w-none">
               <button
                 type="button"
                 data-ocid="hero.book.primary_button"
                 onClick={() => onNavigate("book")}
-                className="flex-1 sm:flex-initial btn-primary px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2 shadow-glow-saffron"
+                className="w-full sm:w-auto btn-primary px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2 shadow-glow-saffron"
               >
                 <HeartHandshake className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 <span className="whitespace-nowrap">{t("heroBookCta", language)}</span>
@@ -4501,7 +4501,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
                 type="button"
                 data-ocid="hero.categories.secondary_button"
                 onClick={() => onNavigate("categories")}
-                className="flex-1 sm:flex-initial btn-outline-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2"
+                className="w-full sm:w-auto btn-outline-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2"
               >
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 <span className="whitespace-nowrap">{t("heroExploreCta", language)}</span>
