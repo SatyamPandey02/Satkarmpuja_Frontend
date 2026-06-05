@@ -535,7 +535,7 @@ const TRANSLATIONS = {
     gu: "અમારી સંસ્થા વિશે",
   },
   aboutOrgDesc: {
-    en: "SatkarmPuja is an organization where every type of puja is performed according to Vedic scriptures — including Devi-Deity patha, 1.25 lakh mantra jap, Navagraha Deva-Jap anushthan, Graha Shanti, Nakshatra Shanti, and large yajnas like Navchandi. Our pandits are trained in Vedic scriptures from places like Kashi, Prayagraj, Chitrakoot, Ayodhya, Mathura, and Vrindavan, and perform karma kaand.",
+    en: "SatkarmPuja is an organization where every type of puja is performed according to Vedic scriptures — including Devi-Deity patha, 1.25 lakh mantra jap, Navagraha Deva-Jap anushthan, Graha Shanti, Nakshatra Shanti, and large yagnas like Navchandi. Our pandits are trained in Vedic scriptures from places like Kashi, Prayagraj, Chitrakoot, Ayodhya, Mathura, and Vrindavan, and perform karma kaand.",
     hi: "सत्कर्मपूजा एक ऐसी संस्था है, जहां पर हर प्रकार की पूजा जैसे कि देवी-देवताओं का पाठ, १.२५ लाख मंत्र जाप, नवग्रह देव-जाप अनुष्ठान, ग्रहशांति, नक्षत्र शांति, और नवचंडी जैसे बड़े यज्ञ वैदिक शास्त्रों के अनुसार किये जाते हैं। हमारे यहां के पंडित काशी, प्रयागराज, चित्रकूट, अयोध्या, मथुरा, वृन्दावन जैसे स्थान से वैदिक शास्त्र की शिक्षा प्राप्त किये हुए हैं और कर्मकांड करते हैं।",
     gu: "સત્કર્મપૂજા એ એવી સંસ્થા છે જ્યાં દરેક પ્રકારની પૂજા વૈદિક શાસ્ત્રો અનુસાર કરવામાં આવે છે — દેવી-દેવતાઓનું પાઠ, ૧.૨૫ લાખ મંત્ર જાપ, નવગ્રહ દેવ-જાપ અનુષ્ઠાન, ગ્રહ શાંતિ, નક્ષત્ર શાંતિ અને નવચંડી જેવા મોટા યજ્ઞ સમાવેશિત છે. અમારા પંડિતો કાશી, પ્રયાગરાજ, ચિત્રકૂટ, અયોધ્યા, મથુરા અને વૃંદાવન જેવી જગ્યાઓથી વૈદિક શિક્ષણ લીધેલા છે અને કર્મકાંડ કરે છે.",
   },
@@ -6179,7 +6179,7 @@ function TermsPage({ language, onNavigate }: TermsPageProps) {
                   ) : isGu ? (
                     "સત્કર્મપૂજા સાચી વૈદિક વિધિઓ, પાઠ, જાપ, અનુષ્ઠાન અને યજ્ઞોના આયોજન અને પ્રદર્શનની સુવિધા આપે છે. બુકિંગ સમયે ભક્તની સાચી વિગતો (નામ, ગોત્ર, પરિવારની વિગતો અને નક્ષત્ર જો લાગુ પડતું હોય) પ્રદાન કરવી જરૂરી છે જેથી પ્રાચીન શાસ્ત્રો અનુસાર સંકલ્પ સાચી રીતે કરી શકાય."
                   ) : (
-                    "SatkarmPuja facilitates the scheduling and performance of authentic Vedic rituals, patha, jap, anushthan, and yajnas. Bookings must be made by providing accurate details of the devotee (Name, Gotra, Family Details, and Nakshatra if applicable) to ensure the Sankalpa is conducted correctly in accordance with ancient scripture."
+                    "SatkarmPuja facilitates the scheduling and performance of authentic Vedic rituals, patha, jap, anushthan, and yagnas. Bookings must be made by providing accurate details of the devotee (Name, Gotra, Family Details, and Nakshatra if applicable) to ensure the Sankalpa is conducted correctly in accordance with ancient scripture."
                   )}
                 </p>
               </div>
