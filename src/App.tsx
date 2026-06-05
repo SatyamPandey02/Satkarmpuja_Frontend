@@ -4494,7 +4494,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
                 onClick={() => onNavigate("book")}
                 className="flex-1 sm:flex-initial btn-primary px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2 shadow-glow-saffron"
               >
-                <HeartHandshake className="w-4 h-4 sm:w-5 sm:h-5 text-saffron-500" />
+                <HeartHandshake className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 <span className="whitespace-nowrap">{t("heroBookCta", language)}</span>
               </button>
               <button
@@ -4503,7 +4503,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
                 onClick={() => onNavigate("categories")}
                 className="flex-1 sm:flex-initial btn-outline-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-lg font-bold flex items-center justify-center gap-1.5 sm:gap-2"
               >
-                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-saffron-500" />
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 <span className="whitespace-nowrap">{t("heroExploreCta", language)}</span>
               </button>
             </div>
