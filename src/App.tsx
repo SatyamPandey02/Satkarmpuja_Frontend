@@ -4476,9 +4476,6 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
               </span>
             </div>
 
-            <div className="w-16 h-16 lg:w-16 lg:h-16 gradient-gold rounded-full flex items-center justify-center mb-4 lg:mb-5 shadow-glow-gold float-animation">
-              <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 inline-block text-saffron-500" />
-            </div>
 
             <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.1] mb-3 lg:mb-4">
               {t("heroTitle", language) ?? config.hero_title}
