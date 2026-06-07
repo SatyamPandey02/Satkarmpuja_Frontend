@@ -203,3 +203,24 @@ export function getPoojaSeoContent(poojaKey: string, lang: 'en' | 'hi' | 'gu', p
 
   return data;
 }
+
+export function getPoojaSummary(
+  lang: 'en' | 'hi' | 'gu',
+  baseDesc: string,
+  name: string,
+  benefits: string[]
+): string {
+  if (baseDesc.length > 200) {
+    return baseDesc;
+  }
+
+  const keyBenefits = benefits.slice(0, 2).join(', ');
+
+  if (lang === 'en') {
+    return `${baseDesc} Conducted by our certified and experienced pandits, this sacred Vedic ceremony helps you achieve ${keyBenefits.toLowerCase()}, bringing long-term peace, protection, and prosperity to your household.`;
+  } else if (lang === 'hi') {
+    return `${baseDesc} यह एक अत्यंत पवित्र वैदिक अनुष्ठान है जो हमारे अनुभवी एवं प्रमाणित पंडितों द्वारा विधि-विधान से संपन्न किया जाता है। इसके प्रभाव से जीवन में ${keyBenefits} प्राप्त होती है, जिससे परिवार में सुख-समृद्धि और सुरक्षा का वास होता है।`;
+  } else {
+    return `${baseDesc} આ એક અત્યંત પવિત્ર વૈદિક વિધિ છે જે અમારા અનુભવી અને પ્રમાણિત પંડિતો દ્વારા વિધિ-વિધાનથી સંપન્ન કરવામાં આવે છે. આ પૂજાના પ્રભાવથી જીવનમાં ${keyBenefits} પ્રાપ્ત થાય છે, જેનાથી પરિવારમાં સુખ-સમૃદ્ધિ અને સુરક્ષા આવે છે.`;
+  }
+}

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/table";
 import { apiFetch } from "./api";
 import { LOGO_BASE64 } from "./logo-base64";
-import { getPoojaSeoContent } from "./poojaSeoContent";
+import { getPoojaSeoContent, getPoojaSummary } from "./poojaSeoContent";
 
 // Razorpay global type declaration
 declare global {
@@ -7207,8 +7207,13 @@ function PoojaDetailPage({
 
               {/* Description */}
               <div className="bg-white rounded-2xl shadow-card-warm p-7 border border-gold-100">
-                <p className="font-body text-foreground text-base leading-relaxed line-clamp-3">
-                  {optT(`pooja_${slug}_description`, language) ?? puja.description}
+                <p className="font-body text-foreground text-base leading-relaxed">
+                  {getPoojaSummary(
+                    language,
+                    (optT(`pooja_${slug}_description`, language) ?? puja.description) || "",
+                    (optT(`pooja_${slug}_name` as any, language) || puja.name),
+                    puja.benefits.map((b, i) => optT(`pooja_${slug}_benefit_${i}`, language) ?? b).filter(Boolean) as string[]
+                  )}
                 </p>
               </div>
 
