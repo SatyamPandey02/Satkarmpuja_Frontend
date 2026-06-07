@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/table";
 import { apiFetch } from "./api";
 import { LOGO_BASE64 } from "./logo-base64";
+import { getPoojaSeoContent } from "./poojaSeoContent";
 
 // Razorpay global type declaration
 declare global {
@@ -7281,6 +7282,57 @@ function PoojaDetailPage({
                   </div>
                 </div>
               </div>
+
+              {/* Detailed SEO Friendly Content */}
+              {(() => {
+                const seoContent = getPoojaSeoContent(
+                  poojaKey,
+                  language,
+                  (optT(`pooja_${slug}_name` as any, language) || puja.name),
+                  (optT(`pooja_${slug}_description` as any, language) || puja.description),
+                  puja.benefits,
+                  puja.process,
+                  pujaCategory
+                );
+                return (
+                  <div className="bg-white rounded-2xl shadow-card-warm p-8 border border-gold-100 space-y-8 mt-8">
+                    <h2 className="font-display text-2xl font-bold text-maroon-700 pb-3 border-b border-gold-100 flex items-center gap-2">
+                      <BookOpen className="w-6 h-6 text-saffron-500" />
+                      {seoContent.title}
+                    </h2>
+                    {seoContent.sections.map((section, idx) => (
+                      <div key={idx} className="space-y-4">
+                        <h3 className="font-display text-lg font-bold text-maroon-600">
+                          {section.title}
+                        </h3>
+                        <div className="space-y-3">
+                          {section.paragraphs.map((p, pIdx) => {
+                            if (idx === seoContent.sections.length - 1) {
+                              const isQuestion = p.startsWith('**');
+                              const text = p.replace(/\*\*Q: |\*\*A: |\*\*|\*/g, '');
+                              return (
+                                <p
+                                  key={pIdx}
+                                  className={`font-body text-sm leading-relaxed ${
+                                    isQuestion ? 'text-maroon-700 font-semibold mt-4' : 'text-gray-600 pl-4 border-l-2 border-saffron-300'
+                                  }`}
+                                >
+                                  {text}
+                                </p>
+                              );
+                            }
+                            return (
+                              <p key={pIdx} className="font-body text-sm text-gray-600 leading-relaxed text-justify">
+                                {p}
+                              </p>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Sidebar */}
@@ -11194,23 +11246,40 @@ export default function App() {
         desc = metaDescs[currentPage][language] || metaDescs[currentPage].en;
       }
 
-      // LocalBusiness Schema for Home
+      // LocalBusiness & FAQPage Schema for Home
       if (currentPage === "home") {
+        const faqQuestions = faqItems.map((item) => ({
+          "@type": "Question",
+          "name": t(item.qKey, language),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": t(item.aKey, language),
+          },
+        }));
+
         schemaData = {
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "name": "SatkarmPuja",
-          "image": "https://satkarmpuja.com/favicon.jpg",
-          "telephone": "+919898044080",
-          "url": "https://satkarmpuja.com",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Ahmedabad",
-            "addressRegion": "Gujarat",
-            "addressCountry": "IN"
-          },
-          "description": desc
+          "@graph": [
+            {
+              "@type": "LocalBusiness",
+              "name": "SatkarmPuja",
+              "image": "https://satkarmpuja.com/favicon.jpg",
+              "telephone": "+919898044080",
+              "url": "https://satkarmpuja.com",
+              "priceRange": "$$",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ahmedabad",
+                "addressRegion": "Gujarat",
+                "addressCountry": "IN",
+              },
+              "description": desc,
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": faqQuestions,
+            },
+          ],
         };
       }
     }
@@ -11227,6 +11296,24 @@ export default function App() {
     if (ogTitle) ogTitle.setAttribute('content', title);
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', desc);
+
+    // Apply Canonical Link
+    let canonicalUrl = "https://satkarmpuja.com";
+    if (currentPage === "pooja-detail" && currentPoojaKey) {
+      canonicalUrl = `https://satkarmpuja.com/pooja-detail/${currentPoojaKey}`;
+    } else if (currentPage === "blog-detail" && currentBlogId) {
+      canonicalUrl = `https://satkarmpuja.com/blog-detail/${currentBlogId}`;
+    } else if (currentPage !== "home") {
+      canonicalUrl = `https://satkarmpuja.com/${currentPage}`;
+    }
+
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement("link");
+      canonicalLink.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute("href", canonicalUrl);
 
     // Schema Script Injection
     const existingScript = document.getElementById("structured-schema-ld");
