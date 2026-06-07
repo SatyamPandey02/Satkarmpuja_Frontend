@@ -7131,6 +7131,11 @@ function PoojaDetailPage({
   language,
   poojaPrices,
 }: PoojaDetailPageProps) {
+  const [descExpanded, setDescExpanded] = useState(false);
+  useEffect(() => {
+    setDescExpanded(false);
+  }, [poojaKey]);
+
   const puja = poojaDetails[poojaKey];
   const slug = poojaKey.replace(/-/g, "_");
   const price = poojaPrices?.[poojaKey] || puja?.price;
@@ -7207,9 +7212,18 @@ function PoojaDetailPage({
 
               {/* Description */}
               <div className="bg-white rounded-2xl shadow-card-warm p-7 border border-gold-100">
-                <p className="font-body text-foreground text-base leading-relaxed">
+                <p className={`font-body text-foreground text-base leading-relaxed ${!descExpanded ? 'line-clamp-4' : ''}`}>
                   {optT(`pooja_${slug}_description`, language) ?? puja.description}
                 </p>
+                {((optT(`pooja_${slug}_description`, language) ?? puja.description) || "").length > 220 && (
+                  <button 
+                    type="button"
+                    onClick={() => setDescExpanded(!descExpanded)} 
+                    className="text-saffron-600 hover:text-saffron-700 font-semibold text-xs mt-3 block transition-all"
+                  >
+                    {descExpanded ? "Show Less" : "Read Full Summary"}
+                  </button>
+                )}
               </div>
 
               {/* Benefits */}
@@ -7285,13 +7299,15 @@ function PoojaDetailPage({
 
               {/* Detailed SEO Friendly Content */}
               {(() => {
+                const translatedBenefits = puja.benefits.map((b, i) => optT(`pooja_${slug}_benefit_${i}`, language) ?? b).filter(Boolean) as string[];
+                const translatedProcess = puja.process.map((step, i) => optT(`pooja_${slug}_process_${i}`, language) ?? step).filter(Boolean) as string[];
                 const seoContent = getPoojaSeoContent(
                   poojaKey,
                   language,
                   (optT(`pooja_${slug}_name` as any, language) || puja.name),
                   (optT(`pooja_${slug}_description` as any, language) || puja.description),
-                  puja.benefits,
-                  puja.process,
+                  translatedBenefits,
+                  translatedProcess,
                   pujaCategory
                 );
                 return (
