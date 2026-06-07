@@ -7308,17 +7308,23 @@ function PoojaDetailPage({
                         <div className="space-y-3">
                           {section.paragraphs.map((p, pIdx) => {
                             if (idx === seoContent.sections.length - 1) {
-                              const isQuestion = p.startsWith('**');
-                              const text = p.replace(/\*\*Q: |\*\*A: |\*\*|\*/g, '');
+                              const [qPart, aPart] = p.split('\n');
+                              const qText = qPart ? qPart.replace(/\*\*Q: |\*\*|\*/g, '') : '';
+                              const aText = aPart ? aPart.replace(/\*A: |\*|\*/g, '') : '';
                               return (
-                                <p
-                                  key={pIdx}
-                                  className={`font-body text-sm leading-relaxed ${
-                                    isQuestion ? 'text-maroon-700 font-semibold mt-4' : 'text-gray-600 pl-4 border-l-2 border-saffron-300'
-                                  }`}
-                                >
-                                  {text}
-                                </p>
+                                <div key={pIdx} className="space-y-1.5 mt-4 first:mt-0">
+                                  {qText && (
+                                    <p className="font-display text-sm sm:text-base font-bold text-maroon-700 flex items-start gap-1.5">
+                                      <span className="text-saffron-500 font-extrabold font-body">Q.</span>
+                                      <span>{qText}</span>
+                                    </p>
+                                  )}
+                                  {aText && (
+                                    <p className="font-body text-sm text-gray-600 pl-5 border-l-2 border-saffron-300/80 leading-relaxed">
+                                      {aText}
+                                    </p>
+                                  )}
+                                </div>
                               );
                             }
                             return (
