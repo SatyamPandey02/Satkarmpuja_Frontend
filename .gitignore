@@ -4,3 +4,4 @@ dist/
 env.json
 *.mjs
 package-lock.json
+original_poojas_backup/
