@@ -11226,8 +11226,9 @@ export default function App() {
         title = `${blogTitle} | SatkarmPuja Blog`;
         
         // Use summary if exists, else first part of content
-        const content = post.content[language] || post.content.en || "";
-        desc = content.substring(0, 155) + "...";
+        const rawContent = post.content[language] || post.content.en || "";
+        const contentStr = Array.isArray(rawContent) ? rawContent.join(" ") : rawContent;
+        desc = contentStr.substring(0, 155) + "...";
 
         // BlogPosting Schema
         schemaData = {
