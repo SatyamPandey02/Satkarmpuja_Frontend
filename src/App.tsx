@@ -11297,20 +11297,33 @@ export default function App() {
       }
     }
 
+    // ─── Set Meta Tags Helper ───
+    const setMetaTag = (attrName: string, attrVal: string, contentVal: string) => {
+      let element = document.querySelector(`meta[${attrName}="${attrVal}"]`);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attrName, attrVal);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", contentVal);
+    };
+
     // Apply Title & Meta Description
     document.title = title;
-    const metaDesc = document.getElementById("meta-description") || document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', desc);
+    setMetaTag("name", "description", desc);
+
+    // Determine absolute image URL for OG and Twitter tags
+    let imageUrl = "https://satkarmpuja.com/favicon.jpg";
+    if (currentPage === "pooja-detail" && currentPoojaKey && poojaImages[currentPoojaKey]) {
+      imageUrl = `https://satkarmpuja.com${poojaImages[currentPoojaKey]}`;
+    } else if (currentPage === "blog-detail" && currentBlogId) {
+      const post = blogPosts.find(p => p.id === currentBlogId);
+      if (post && post.image) {
+        imageUrl = post.image.startsWith("http") ? post.image : `https://satkarmpuja.com${post.image}`;
+      }
     }
 
-    // Apply Open Graph Meta Tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', title);
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', desc);
-
-    // Apply Canonical Link
+    // Determine Canonical URL
     let canonicalUrl = "https://satkarmpuja.com";
     if (currentPage === "pooja-detail" && currentPoojaKey) {
       canonicalUrl = `https://satkarmpuja.com/pooja-detail/${currentPoojaKey}`;
@@ -11320,6 +11333,7 @@ export default function App() {
       canonicalUrl = `https://satkarmpuja.com/${currentPage}`;
     }
 
+    // Apply Canonical Link
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement("link");
@@ -11328,17 +11342,150 @@ export default function App() {
     }
     canonicalLink.setAttribute("href", canonicalUrl);
 
+    // Apply Open Graph Meta Tags
+    setMetaTag("property", "og:title", title);
+    setMetaTag("property", "og:description", desc);
+    setMetaTag("property", "og:url", canonicalUrl);
+    setMetaTag("property", "og:image", imageUrl);
+    setMetaTag("property", "og:type", currentPage === "blog-detail" || currentPage === "pooja-detail" ? "article" : "website");
+
+    // Apply Twitter Card Meta Tags
+    setMetaTag("name", "twitter:card", "summary_large_image");
+    setMetaTag("name", "twitter:title", title);
+    setMetaTag("name", "twitter:description", desc);
+    setMetaTag("name", "twitter:image", imageUrl);
+
+    // Generate BreadcrumbList Schema
+    const getBreadcrumbSchema = () => {
+      const items = [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": t("navHome", language) || "Home",
+          "item": "https://satkarmpuja.com"
+        }
+      ];
+
+      if (currentPage === "categories") {
+        items.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": t("navCategories", language) || "Pujas",
+          "item": "https://satkarmpuja.com/categories"
+        });
+      } else if (currentPage === "pooja-detail" && currentPoojaKey) {
+        const detail = poojaDetails[currentPoojaKey];
+        if (detail) {
+          const nameKey = `pooja_${currentPoojaKey.replace(/-/g, "_")}_name`;
+          const dispName = (TRANSLATIONS[nameKey as keyof typeof TRANSLATIONS] ? t(nameKey as any, language) : null) ?? detail.name;
+          items.push({
+            "@type": "ListItem",
+            "position": 2,
+            "name": t("navCategories", language) || "Pujas",
+            "item": "https://satkarmpuja.com/categories"
+          });
+          items.push({
+            "@type": "ListItem",
+            "position": 3,
+            "name": dispName,
+            "item": `https://satkarmpuja.com/pooja-detail/${currentPoojaKey}`
+          });
+        }
+      } else if (currentPage === "blog") {
+        items.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://satkarmpuja.com/blog"
+        });
+      } else if (currentPage === "blog-detail" && currentBlogId) {
+        const post = blogPosts.find(p => p.id === currentBlogId);
+        if (post) {
+          const blogTitle = post.title[language] || post.title.en;
+          items.push({
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://satkarmpuja.com/blog"
+          });
+          items.push({
+            "@type": "ListItem",
+            "position": 3,
+            "name": blogTitle,
+            "item": `https://satkarmpuja.com/blog-detail/${currentBlogId}`
+          });
+        }
+      } else if (currentPage === "about") {
+        items.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": t("navAbout", language) || "About",
+          "item": "https://satkarmpuja.com/about"
+        });
+      } else if (currentPage === "contact") {
+        items.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": t("navContact", language) || "Contact",
+          "item": "https://satkarmpuja.com/contact"
+        });
+      } else if (currentPage === "success-stories") {
+        items.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": t("navSuccessStories", language) || "Success Stories",
+          "item": "https://satkarmpuja.com/success-stories"
+        });
+      }
+
+      if (items.length > 1) {
+        return {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": items
+        };
+      }
+      return null;
+    };
+
+    // Combine schemas using @graph if both main schema and breadcrumb exist
+    const breadcrumbSchema = getBreadcrumbSchema();
+    let finalSchema: any = null;
+
+    if (schemaData && breadcrumbSchema) {
+      if (schemaData["@graph"] && Array.isArray(schemaData["@graph"])) {
+        finalSchema = {
+          "@context": "https://schema.org",
+          "@graph": [...schemaData["@graph"], breadcrumbSchema]
+        };
+      } else {
+        const mainItem = { ...schemaData };
+        delete mainItem["@context"];
+        const breadcrumbItem = { ...breadcrumbSchema };
+        delete breadcrumbItem["@context"];
+        
+        finalSchema = {
+          "@context": "https://schema.org",
+          "@graph": [mainItem, breadcrumbItem]
+        };
+      }
+    } else if (schemaData) {
+      finalSchema = schemaData;
+    } else if (breadcrumbSchema) {
+      finalSchema = breadcrumbSchema;
+    }
+
     // Schema Script Injection
     const existingScript = document.getElementById("structured-schema-ld");
     if (existingScript) {
       existingScript.remove();
     }
 
-    if (schemaData) {
+    if (finalSchema) {
       const script = document.createElement("script");
       script.id = "structured-schema-ld";
       script.type = "application/ld+json";
-      script.innerHTML = JSON.stringify(schemaData);
+      script.innerHTML = JSON.stringify(finalSchema);
       document.head.appendChild(script);
     }
   }, [currentPage, currentPoojaKey, currentBlogId, language, poojaPrices]);
