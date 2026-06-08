@@ -11198,24 +11198,24 @@ export default function App() {
         const dispDesc = (TRANSLATIONS[descKey as keyof typeof TRANSLATIONS] ? t(descKey as any, language) : null) ?? detail.description;
         desc = dispDesc;
 
-        // Service Schema for Puja Detail
+        // Product Schema for Puja Detail to trigger Price/Availability Rich Snippets
+        const absoluteImgUrl = poojaImages[currentPoojaKey] ? `https://satkarmpuja.com${poojaImages[currentPoojaKey]}` : "https://satkarmpuja.com/favicon.jpg";
         schemaData = {
           "@context": "https://schema.org",
-          "@type": "Service",
+          "@type": "Product",
           "name": dispName,
           "description": dispDesc,
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "SatkarmPuja",
-            "image": "https://satkarmpuja.com/favicon.jpg",
-            "telephone": "+919898044080",
-            "url": "https://satkarmpuja.com"
+          "image": absoluteImgUrl,
+          "brand": {
+            "@type": "Brand",
+            "name": "SatkarmPuja"
           },
           "offers": {
             "@type": "Offer",
             "price": poojaPrices[currentPoojaKey] || detail.price.replace(/[^0-9]/g, ""),
             "priceCurrency": "INR",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "url": `https://satkarmpuja.com/pooja-detail/${currentPoojaKey}`
           }
         };
       }
