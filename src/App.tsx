@@ -6535,12 +6535,14 @@ const blogT = {
 // blogPosts are imported from ./blogSeoContent
 
 function BlogPage({ onNavigate, language }: { onNavigate: (page: Page, key?: string | number) => void; language: Lang }) {
-  const categories = ["All", ...Array.from(new Set(blogPosts.map(p => p.category[language] || p.category.en)))];
+  // Sort posts descending by ID so newly uploaded posts appear at the top
+  const sortedPosts = React.useMemo(() => [...blogPosts].sort((a, b) => b.id - a.id), []);
+  const categories = ["All", ...Array.from(new Set(sortedPosts.map(p => p.category[language] || p.category.en)))];
   const [activeCategory, setActiveCategory] = React.useState("All");
   
   const filtered = activeCategory === "All" 
-    ? blogPosts 
-    : blogPosts.filter(p => (p.category[language] || p.category.en) === activeCategory);
+    ? sortedPosts 
+    : sortedPosts.filter(p => (p.category[language] || p.category.en) === activeCategory);
 
   return (
     <>
