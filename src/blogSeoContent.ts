@@ -274,6 +274,182 @@ const blogMetadata: BlogMetadata[] = [
     date: { en: "May 10, 2026", hi: "10 मई, 2026", gu: "10 મે, 2026" },
     image: "/assets/blogs/blog_chakras.png",
     color: "oklch(0.30 0.12 300)"
+  },
+  {
+    id: 13,
+    title: {
+      en: "Parama Ekadashi 2026: Vrat Vidhi, Muhurat, and Spiritual Significance",
+      hi: "परमा एकादशी 2026: व्रत विधि, मुहूर्त और आध्यात्मिक महत्व",
+      gu: "પરમા એકાદશી 2026: વ્રત વિધિ, મુહૂર્ત અને આધ્યાત્મિક મહત્વ"
+    },
+    excerpt: {
+      en: "Parama Ekadashi is a highly auspicious day dedicated to Lord Vishnu. Learn about the fast details, puja muhurat, and how this holy day helps clear past life debts.",
+      hi: "परमा एकादशी भगवान विष्णु को समर्पित एक अत्यधिक शुभ दिन है। व्रत के विवरण, पूजा मुहूर्त और यह पवित्र दिन पिछले जन्मों के ऋणों को दूर करने में कैसे मदद करता है, इसके बारे में जानें।",
+      gu: "પરમા એકાદશી એ ભગવાન વિષ્ણુને સમર્પિત એક અત્યંત શુભ દિવસ છે. વ્રતની વિગતો, પૂજા મુહૂર્ત અને આ પવિત્ર દિવસ કેવી રીતે કર્મોના બંધનમાંથી મુક્તિ અપાવે છે તે વિશે જાણો."
+    },
+    category: {
+      en: "Rituals",
+      hi: "अनुष्ठान",
+      gu: "ધાર્મિક વિધિઓ"
+    },
+    readTime: { en: "6 min read", hi: "6 मिनट पाठ", gu: "6 મિનિટ વાંચન" },
+    date: { en: "June 8, 2026", hi: "8 जून, 2026", gu: "8 જૂન, 2026" },
+    image: "/assets/blogs/blog_parama_ekadashi.png",
+    color: "oklch(0.56 0.17 65)"
+  },
+  {
+    id: 14,
+    title: {
+      en: "Somvati Amavasya 2026: Rituals, Significance, and Pitru Tarpan Puja",
+      hi: "सोमवती अमावस्या 2026: अनुष्ठान, महत्व और पितृ तर्पण पूजा",
+      gu: "સોમવતી અમાસ 2026: ધાર્મિક વિધિઓ, મહત્વ અને પિતી તર્પણ પૂજા"
+    },
+    excerpt: {
+      en: "Somvati Amavasya holds immense spiritual value in Hindu culture. Discover the sacred rituals like Peepal tree worship and ancestral prayers to invite prosperity.",
+      hi: "हिंदू संस्कृति में सोमवती अमावस्या का अत्यधिक आध्यात्मिक मूल्य है। समृद्धि को आमंत्रित करने के लिए पीपल के पेड़ की पूजा और पितृ तर्पण जैसे पवित्र अनुष्ठानों की खोज करें।",
+      gu: "હિન્દુ સંસ્કૃતિમાં સોમવતી અમાસનું ખૂબ જ આધ્યાત્મિક મહત્વ છે. સમૃદ્ધિ મેળવવા માટે પીપળાના વૃક્ષની પૂજા અને પિતૃ તર્પણ જેવી પવિત્ર વિધિઓ વિશે જાણો."
+    },
+    category: {
+      en: "Astrology & Pujas",
+      hi: "ज्योतिष और पूजा",
+      gu: "જ્યોતિષ અને પૂજા"
+    },
+    readTime: { en: "7 min read", hi: "7 मिनट पाठ", gu: "7 મિનિટ વાંચન" },
+    date: { en: "June 15, 2026", hi: "15 जून, 2026", gu: "15 જૂન, 2026" },
+    image: "/assets/blogs/blog_somvati_amavasya.png",
+    color: "oklch(0.42 0.11 200)"
+  },
+  {
+    id: 15,
+    title: {
+      en: "Masik Shivratri 2026: Fasting Benefits and Mantras for Lord Shiva",
+      hi: "मासिक शिवरात्रि 2026: व्रत के लाभ और भगवान शिव के लिए मंत्र",
+      gu: "માસિક શિવરાત્રી 2026: ઉપવાસના ફાયદા અને ભગવાન શિવના મંત્રો"
+    },
+    excerpt: {
+      en: "Masik Shivratri is observed monthly to receive Lord Shiva's blessings. Explore the proper fasting rules, auspicious timings, and powerful chanting guide.",
+      hi: "भगवान शिव का आशीर्वाद प्राप्त करने के लिए मासिक शिवरात्रि हर महीने मनाई जाती है। उचित व्रत नियम, शुभ मुहूर्त और शक्तिशाली मंत्र जाप मार्गदर्शिका का अन्वेषण करें।",
+      gu: "ભગવાન શિવના આશીર્વાદ મેળવવા માટે દર મહિને માસિક શિવરાત્રી મનાવવામાં આવે છે. યોગ્ય ઉપવાસના નિયમો, શુભ મુહૂર્ત અને શક્તિશાળી મંત્ર જાપ વિશે જાણો."
+    },
+    category: {
+      en: "Spirituality",
+      hi: "आध्यात्मिकता",
+      gu: "આધ્યાત્મિકતા"
+    },
+    readTime: { en: "5 min read", hi: "5 मिनट पाठ", gu: "5 મિનિટ વાંચન" },
+    date: { en: "June 20, 2026", hi: "20 जून, 2026", gu: "20 જૂન, 2026" },
+    image: "/assets/blogs/blog_masik_shivratri.png",
+    color: "oklch(0.32 0.08 260)"
+  },
+  {
+    id: 16,
+    title: {
+      en: "Pitru Dosh Nivaran: Understanding Ancestral Affliction and Vedic Remedies",
+      hi: "पितृ दोष निवारण: पैतृक प्रभाव को समझना और वैदिक उपाय",
+      gu: "પિતૃ દોષ નિવારણ: પિતૃ દોષના લક્ષણો અને વૈદિક ઉપાયો"
+    },
+    excerpt: {
+      en: "Unresolved ancestral karmic blockages can manifest as Pitru Dosh. Learn how custom Vedic rituals, donations, and shradh puja bring peace to ancestors.",
+      hi: "अनसुलझे पैतृक कर्म बंधन पितृ दोष के रूप में प्रकट हो सकते हैं। जानें कि कैसे वैदिक अनुष्ठान, दान और श्राद्ध पूजा पूर्वजों को शांति प्रदान करते हैं।",
+      gu: "પિતૃ દોષના કારણે જીવનમાં અનેક મુશ્કેલીઓ આવી શકે છે. જાણો કેવી રીતે ચોક્કસ વૈદિક વિધિઓ, દાન અને શ્રાદ્ધ પૂજા દ્વારા પિતૃઓને શાંતિ આપી શકાય."
+    },
+    category: {
+      en: "Astrology & Pujas",
+      hi: "ज्योतिष और पूजा",
+      gu: "જ્યોતિષ અને પૂજા"
+    },
+    readTime: { en: "8 min read", hi: "8 मिनट पाठ", gu: "8 મિનિટ વાંચન" },
+    date: { en: "June 22, 2026", hi: "22 जून, 2026", gu: "22 જૂન, 2026" },
+    image: "/assets/blogs/blog_pitru_dosh.png",
+    color: "oklch(0.48 0.15 45)"
+  },
+  {
+    id: 17,
+    title: {
+      en: "Vastu Tips for Home: Harmonizing Cosmic Energies for Peace and Prosperity",
+      hi: "घर के लिए वास्तु टिप्स: शांति और समृद्धि के लिए ब्रह्मांडीय ऊर्जा का सामंजस्य",
+      gu: "ઘર માટે વાસ્તુશાસ્ત્રની ટીપ્સ: સુખ-શાંતિ અને સમૃદ્ધિ માટે વાસ્તુ નિયમો"
+    },
+    excerpt: {
+      en: "A comprehensive Vastu Shastra guide for your home. Discover layout configurations, elemental placements, and simple remedies to invoke wealth.",
+      hi: "आपके घर के लिए एक व्यापक वास्तु शास्त्र मार्गदर्शिका। धन को आकर्षित करने के लिए लेआउट कॉन्फ़िगरेशन, तत्वों की स्थिति और सरल उपायों की खोज करें।",
+      gu: "તમારા ઘર માટે વાસ્તુશાસ્ત્રની સંપૂર્ણ માર્ગદર્શિકા. ઘરમાં હકારાત્મક ઉર્જા વધારવા માટે દિશાઓ, પંચતત્વોની ગોઠવણ અને સરળ ઉપાયો વિશે જાણો."
+    },
+    category: {
+      en: "Home Ceremonies",
+      hi: "गृह अनुष्ठान",
+      gu: "ગૃહ વિધિઓ"
+    },
+    readTime: { en: "6 min read", hi: "6 मिनट पाठ", gu: "6 મિનિટ વાંચન" },
+    date: { en: "June 25, 2026", hi: "25 जून, 2026", gu: "25 જૂન, 2026" },
+    image: "/assets/blogs/blog_vastu_tips.png",
+    color: "oklch(0.58 0.14 90)"
+  },
+  {
+    id: 18,
+    title: {
+      en: "Main Door Vastu: Essential Rules for the Entrance of Your House",
+      hi: "मुख्य द्वार वास्तु: आपके घर के प्रवेश द्वार के लिए आवश्यक नियम",
+      gu: "મુખ્ય દ્વાર વાસ્તુ: ઘરના મુખ્ય દરવાજા માટે અત્યંત જરૂરી નિયમો"
+    },
+    excerpt: {
+      en: "The main door is the primary channel for energy in Vastu Shastra. Read about direction guidelines, decor elements, and mistakes to avoid at the entrance.",
+      hi: "वास्तुकला में मुख्य द्वार ऊर्जा का प्राथमिक स्रोत है। प्रवेश द्वार पर दिशा निर्देशों, सजावट के तत्वों और टाली जाने वाली गलतियों के बारे में पढ़ें।",
+      gu: "વાસ્તુશાસ્ત્રમાં મુખ્ય દરવાજો એ ઉર્જા પ્રવેશનું મુખ્ય કેન્દ્ર છે. પ્રવેશદ્વારની યોગ્ય દિશા, સજાવટની વસ્તુઓ અને કઈ ભૂલો ટાળવી તે વિશે વાંચો."
+    },
+    category: {
+      en: "Tips & Guides",
+      hi: "सुझाव और निर्देश",
+      gu: "ટીપ્સ અને માર્ગદર્શિકા"
+    },
+    readTime: { en: "5 min read", hi: "5 मिनट पाठ", gu: "5 મિનિટ વાંચન" },
+    date: { en: "June 28, 2026", hi: "28 जून, 2026", gu: "28 જૂન, 2026" },
+    image: "/assets/blogs/blog_main_door_vastu.png",
+    color: "oklch(0.55 0.16 35)"
+  },
+  {
+    id: 19,
+    title: {
+      en: "Kitchen Vastu: Designing the Fire Center for Family Health and Wealth",
+      hi: "रसोई वास्तु: परिवार के स्वास्थ्य और धन के लिए अग्नि केंद्र का डिजाइन",
+      gu: "રસોડું વાસ્તુ: પરિવારના ઉત્તમ સ્વાસ્થ્ય અને સમૃદ્ધિ માટે રસોડાનું આયોજન"
+    },
+    excerpt: {
+      en: "Kitchen represents the fire element in Vastu. Learn about stove placement, sink direction, storage guidelines, and auspicious colors for the kitchen.",
+      hi: "वास्तु में रसोई घर अग्नि तत्व का प्रतिनिधित्व करता है। रसोई के लिए चूल्हे की स्थिति, सिंक की दिशा, भंडारण नियमों और शुभ रंगों के बारे में जानें।",
+      gu: "વાસ્તુશાસ્ત્રમાં રસોડું એ અગ્નિ તત્વનું કેન્દ્ર છે. રસોડામાં ગેસ સ્ટવ, સિંક, અનાજ સંગ્રહ કરવાની દિશા અને કયા રંગો રાખવા તે વિશે જાણો."
+    },
+    category: {
+      en: "Tips & Guides",
+      hi: "सुझाव और निर्देश",
+      gu: "ટીપ્સ અને માર્ગદર્શિકા"
+    },
+    readTime: { en: "6 min read", hi: "6 मिनट पाठ", gu: "6 મિનિટ વાંચન" },
+    date: { en: "July 2, 2026", hi: "2 जुलाई, 2026", gu: "2 જુલાઈ, 2026" },
+    image: "/assets/blogs/blog_kitchen_vastu.png",
+    color: "oklch(0.54 0.16 48)"
+  },
+  {
+    id: 20,
+    title: {
+      en: "Bedroom Vastu: Alignment Guidelines for Peaceful Sleep and Strong Relationships",
+      hi: "बेडरूम वास्तु: शांतिपूर्ण नींद और मजबूत संबंधों के लिए संरेखण दिशानिर्देश",
+      gu: "બેડરૂમ વાસ્તુ: સુખદ અને શાંતિપૂર્ણ ઊંઘ તેમજ સારા સંબંધો માટે વાસ્તુ નિયમો"
+    },
+    excerpt: {
+      en: "Your bedroom is where you recharge your energy. Learn Vastu directions for bed placement, mirror placement, wardrobe colors, and decor rules.",
+      hi: "आपका बेडरूम वह स्थान है जहां आप अपनी ऊर्जा को रीचार्ज करते हैं। बिस्तर की स्थिति, दर्पण की स्थिति, अलमारी के रंगों और सजावट के वास्तु नियमों को जानें।",
+      gu: "બેડરૂમ એ આપણી ઉર્જા પુનઃ પ્રાપ્ત કરવાનું કેન્દ્ર છે. બેડરૂમમાં પલંગની દિશા, અરીસાની ગોઠવણી, તિજોરીના રંગો અને સજાવટના નિયમો વિશે જાણો."
+    },
+    category: {
+      en: "Tips & Guides",
+      hi: "सुझाव और निर्देश",
+      gu: "ટીપ્સ અને માર્ગદર્શિકા"
+    },
+    readTime: { en: "5 min read", hi: "5 मिनट पाठ", gu: "5 મિનિટ વાંચન" },
+    date: { en: "July 5, 2026", hi: "5 जुलाई, 2026", gu: "5 જુલાઈ, 2026" },
+    image: "/assets/blogs/blog_bedroom_vastu.png",
+    color: "oklch(0.48 0.12 75)"
   }
 ];
 
@@ -514,6 +690,142 @@ function getBlogContent(id: number, lang: 'en' | 'hi' | 'gu'): string[] {
         "કુંડલિની જાગૃતિ એ વૈદિક યોગ પદ્ધતિનો એક ઉચ્ચ આધ્યાત્મિક માર્ગ છે, જે કરોડરજ્જુના મૂળમાં (મૂલાધાર ચક્ર) સુષુપ્ત અવસ્થામાં રહેલી દૈવી શક્તિને જાગૃત કરવાનું દર્શાવે છે. જ્યારે આ શક્તિને મંત્ર જાપ, પ્રાણાયામ અને ધ્યાન દ્વારા જાગૃત કરવામાં આવે છે, ત્યારે તે सुषુમ્ણા નાડી દ્વારા કરોડરજ્જુમાં ઉપરની તરફ ગતિ કરે છે અને સાત ઊર્જા ચક્રોને જાગૃત કરે છે.",
         "આ સાત ચક્રો - મૂલાધાર, સ્વાધિષ્ઠાન, મણિપુર, અનાહત, વિશુદ્ધ, આજ્ઞા અને સહસ્ત્રાર ચક્ર - આપણા શારીરિક, ભાવનાત્મક અને આધ્યાત્મિક સ્વાસ્થ્યને નિયંત્રિત કરે છે. ચક્રોમાં રહેલા અવરોધો આપણને માનસિક અને શારીરિક રીતે અસ્વસ્થ કરે છે. મંત્ર જાપ અને ધ્યાન ચક્રોને સંતુલિત કરી પ્રાણ ઊર્જાના પ્રવાહને શુદ્ધ કરે છે, જેનાથી આંતરિક શાંતિ મળે છે.",
         "આ આંતરિક શક્તિને જગાડવા માટે યોગ્ય માર્ગદર્શન અને ઘરના પવિત્ર વાતાવરણની જરૂર પડે છે. તમારા ઘરમાં પૂજા અને મંત્ર જાપનું વાતાવરણ ઊભું કરવા માટે અમારા પંડિતો યોગ્ય માર્ગદર્શન અને વિધિ કરાવી આપે છે, જેથી ઘરમાં શાંતિ અને દૈવી શક્તિ વધે."
+      ]
+    },
+    13: {
+      en: [
+        "Parama Ekadashi is celebrated during the auspicious Adhika Masa (also known as Purushottam Masa), which occurs approximately once every three years. This makes Parama Ekadashi one of the rarest and most spiritually potent fasting days in the Hindu calendar. Dedicated entirely to Lord Vishnu, observing this fast is believed to dissolve absolute poverty, remove past life karmic blockages, and grant material and spiritual liberation (Moksha). Devotees rise during Brahma Muhurat, perform a holy bath, and light a ghee lamp in front of Lord Vishnu's image.",
+        "The core ritual of Parama Ekadashi involves the worship of Lord Vishnu with yellow flowers, sandalwood paste, Tulsi leaves, and fresh fruits. Devotees observe a strict fast, either consuming only water and fruits or keeping a complete waterless fast (Nirjala) based on their physical capacity. The day is spent in chanting the Vishnu Sahasranama, reciting the Purushottam Mahatmya, and singing devotional bhajans. Feeding the needy, donating clothes, and distributing Satvik food to brahmins are considered essential to complete the vows of this Ekadashi.",
+        "For 2026, the Parama Ekadashi holds special astrological significance due to planetary alignments in the solar cycle. Engaging in charity, performing Vishnu homam, and chanting the 'Om Namo Bhagavate Vasudevaya' mantra helps to harmonize planetary distress and invites abundance. Our qualified Vedic Pandits can assist you in conducting special Vishnu Pujas and Havan at home to channel these divine frequencies directly into your household, blessing the family with long-term wealth, peace, and health."
+      ],
+      hi: [
+        "परमा एकादशी अधिक मास (जिसे पुरुषोत्तम मास भी कहा जाता है) के दौरान मनाई जाती है, जो लगभग हर तीन साल में एक बार आता है। यह परमा एकादशी को हिंदू कैलेंडर में सबसे दुर्लभ और आध्यात्मिक रूप से शक्तिशाली उपवास दिनों में से एक बनाता है। भगवान विष्णु को समर्पित, इस व्रत को करने से घोर दरिद्रता दूर होती है, पिछले जन्मों के कर्म बंधन कटते हैं और मोक्ष की प्राप्ति होती है। भक्त ब्रह्म मुहूर्त में उठते हैं, पवित्र स्नान करते हैं और भगवान विष्णु के समक्ष घी का दीपक जलाते हैं।",
+        "परमा एकादशी के मुख्य अनुष्ठान में भगवान विष्णु की पीले फूलों, संदन, तुलसी के पत्तों और ताजे फलों से पूजा शामिल है। भक्त एक सख्त उपवास रखते हैं, जो शारीरिक क्षमता के अनुसार केवल पानी और फलों का सेवन करते हैं या निर्जला व्रत रखते हैं। पूरा दिन विष्णु सहस्रनाम के पाठ, पुरुषोत्तम महात्म्य के पाठ और भजन-कीर्तन में व्यतीत होता है। जरूरतमंदों को भोजन कराना, वस्त्र दान करना और ब्राह्मणों को सात्विक भोजन वितरित करना व्रत को पूरा करने के लिए आवश्यक माना जाता है।",
+        "वर्ष 2026 के लिए, परमा एकादशी सौर चक्र में ग्रहीय संरेखण के कारण विशेष ज्योतिषीय महत्व रखती है। दान देना, विष्णु होमम करना और 'ओम नमो भगवते वासुदेवाय' मंत्र का जाप करना ग्रहीय कष्टों को शांत करने में मदद करता है। हमारे योग्य वैदिक पंडित आपके घर पर विशेष विष्णु पूजा और हवन आयोजित करने में सहायता कर सकते हैं, जिससे आपके परिवार को दीर्घकालिक समृद्धि, शांति और स्वास्थ्य प्राप्त होगा।"
+      ],
+      gu: [
+        "પરમા એકાદશી પવિત્ર અધિક માસ (જે પુરુષોત્તમ માસ તરીકે પણ ઓળખાય છે) દરમિયાન ઉજવવામાં આવે છે, જે દર ત્રણ વર્ષે એકવાર આવે છે. આ કારણે પરમા એકાદશી હિન્દુ કેલેન્ડરમાં અત્યંત દુર્લભ અને આધ્યાત્મિક રીતે શક્તિશાળી ઉપવાસનો દિવસ બને છે. ભગવાન વિષ્ણુને સમર્પિત આ વ્રત રાખવાથી ગરીબી દૂર થાય છે, ભૂતકાળના કર્મોના બંધનમાંથી મુક્તિ મળે છે અને મોક્ષની પ્રાપ્તિ થાય છે. ભક્તો બ્રહ્મ મુહૂર્તમાં જાગીને પવિત્ર સ્નાન કરે છે અને વિષ્ણુ ભગવાન સામે ઘીનો દીવો પ્રગટાવે છે.",
+        "પરમા એકાદશીની મુખ્ય પૂજા વિધિમાં ભગવાન વિષ્ણુને પીળા ફૂલ, ચંદન, તુલસી પત્ર અને તાજા ફળો અર્પણ કરવામાં આવે છે. ભક્તો પોતાની શારીરિક ક્ષમતા અનુસાર ફળાહાર કે સંપૂર્ણ નિર્જળા ઉપવાસ રાખે છે. આખો દિવસ વિષ્ણુ સહસ્ત્રનામનો પાઠ, પુરુષોત્તમ મહાત્મ્યનું વાંચન અને ભજન-કીર્તનમાં વિતાવવામાં આવે છે. ગરીબોને અન્નદાન કરવું, વસ્ત્રદાન કરવું અને બ્રાહ્મણોને ભોજન કરાવવું એ વ્રતની પૂર્ણાહુતિ માટે અનિવાર્ય માનવામાં આવે છે.",
+        "વર્ષ 2026ની આ પરમા એકાદશી ગ્રહોની વિશેષ સ્થિતિને કારણે જ્યોતિષીય દ્રષ્ટિએ ખૂબ મહત્વની છે. દાન કાર્ય કરવાથી, વિષ્ણુ હોમ કરવાથી અને 'ઓમ નમો ભગવતે વાસુદેવાય' મંત્રનો જાપ કરવાથી ગ્રહોની નકારાત્મક અસરો દૂર થાય છે. અમારા લાયક વૈદિક પંડિતો તમારા ઘરે વિશેષ વિષ્ણુ પૂજા અને હવન કરાવી શકે છે, જે પરિવારમાં સુખ-શાંતિ અને આયુષ્ય લાવે છે."
+      ]
+    },
+    14: {
+      en: [
+        "Somvati Amavasya refers to the no-moon day (Amavasya) that falls on a Monday (Somvar). In Hindu scriptures, this confluence is considered highly sacred, combining the lunar tranquility of Moon energy with the spiritual depth of the Amavasya tithi. It is a day highly recommended for performing ancestral rituals (Pitru Tarpan) to resolve Pitru Dosh and appease departed souls. Women also observe this day by fasting and performing parikrama around the sacred Peepal tree to pray for the longevity of their husbands.",
+        "The rituals begin with a sacred dip in holy rivers like the Ganges or Yamuna at dawn. At home, devotees clean their prayer area and worship the Peepal tree, which is believed to be the abode of Lord Vishnu, Lord Shiva, and Lord Brahma. A holy thread (moli) is wrapped around the tree trunk 108 times while chanting prayers for family welfare and marital happiness. Offerings of water, milk, sesame seeds, and sweets are made at the roots of the tree, followed by charity and distribution of food to the underprivileged.",
+        "Observing Somvati Amavasya in 2026 is exceptionally beneficial for those with a weak Moon or ancestral afflictions in their horoscope. The combination of Monday's cooling energy and Amavasya's transformative power helps clear negative blockages. Our experienced pandits specialize in performing authentic Pitru Tarpan and Amavasya Pujas, ensuring that Vedic guidelines are meticulously followed to bring peace to your departed ancestors and shower your lineage with abundance."
+      ],
+      hi: [
+        "सोमवती अमावस्या उस बिना चांद के दिन (अमावस्या) को संदर्भित करती है जो सोमवार को पड़ता है। हिंदू शास्त्रों में, इस संगम को अत्यधिक पवित्र माना जाता है, जो चंद्र ऊर्जा की शांति को अमावस्या तिथि की आध्यात्मिक गहराई के साथ जोड़ता है। यह दिन पितृ दोष को दूर करने और दिवंगत आत्माओं की शांति के लिए पैतृक अनुष्ठान (पितृ तर्पण) करने के लिए अत्यधिक अनुशंसित है। महिलाएं अपने पति की लंबी उम्र के लिए उपवास रखती हैं और पीपल के पेड़ की परिक्रमा करती हैं।",
+        "अनुष्ठान भोर में गंगा या यमुना जैसी पवित्र नदियों में पवित्र स्नान के साथ शुरू होते हैं। घर पर, भक्त अपने पूजा क्षेत्र को साफ करते हैं और पीपल के पेड़ की पूजा करते हैं, जिसे भगवान विष्णु, शिव और ब्रह्मा का निवास माना जाता है। पारिवारिक कल्याण के लिए प्रार्थना करते हुए पेड़ के तने के चारों ओर 108 बार पवित्र धागा (मौली) लपेटा जाता है। पीपल की जड़ों में जल, दूध, तिल और मिठाई अर्पित की जाती है। जरूरतमंदों को दान देना इस दिन की मुख्य परंपरा है।",
+        "वर्ष 2026 में सोमवती अमावस्या का पालन उन लोगों के लिए असाधारण रूप से फायदेमंद है जिनकी कुंडली में कमजोर चंद्रमा या पितृ दोष है। सोमवार की शीतलता और अमावस्या की परिवर्तनकारी शक्ति नकारात्मक बाधाओं को दूर करने में मदद करती है। हमारे अनुभवी पंडित प्रामाणिक पितृ तर्पण और अमावस्या पूजा आयोजित करने में विशेषज्ञ हैं, जिससे आपके पूर्वजों को शांति मिलती है और परिवार समृद्ध होता है।"
+      ],
+      gu: [
+        "સોમવતી અમાસ એટલે કે સોમવારે આવતી અમાસ. હિન્દુ શાસ્ત્રોમાં આ સંયોગને અત્યંત પવિત્ર માનવામાં આવે છે, જે ચંદ્રની શાંત ઊર્જાને અમાસ તિથિની આધ્યાત્મિક ઊંડાઈ સાથે જોડે છે. આ દિવસ પિતૃ દોષના નિવારણ માટે અને પિતૃઓના આશીર્વાદ મેળવવા માટે પિતૃ તર્પણ કરવા માટે સર્વોત્તમ માનવામાં આવે છે. વિવાહિત સ્ત્રીઓ પોતાના પતિના દીર્ઘાયુષ્ય માટે વ્રત રાખે છે અને પીપળાના વૃક્ષની પરિક્રમા કરે છે.",
+        "ધાર્મિક વિધિઓની શરૂઆત વહેલી સવારે પવિત્ર નદીઓમાં સ્નાન કરવાથી થાય છે. ઘરે ભક્તો પૂજા સ્થાન સ્વચ્છ કરી પીપળાના વૃક્ષનું પૂજન કરે છે, જેમાં ભગવાન વિષ્ણુ, શિવ અને બ્રહ્માજીનો વાસ માનવામાં આવે છે. પરિવારના કલ્યાણ અને દામ્પત્ય સુખ માટે વૃક્ષની ફરતે ૧૦૮ વાર સુતરનો દોરો (મૌલી) વિંટાળવામાં આવે છે. પીપળાના મૂળમાં જળ, દૂધ, કાળા તલ અને મીઠાઈ અર્પણ કરાય છે.",
+        "વર્ષ 2026માં સોમવતી અમાસનું વ્રત કરવાથી જેમની કુંડળીમાં ચંદ્ર નબળો હોય કે પિતૃ દોષ હોય તેમને ખૂબ રાહત મળે છે. સોમવારની શીતળતા અને અમાસની શક્તિ નકારાત્મકતા દૂર કરે છે. અમારા અનુભવી પંડિતો વૈદિક નિયમો અનુસાર યોગ્ય પિતૃ તર્પણ અને અમાસ પૂજા કરાવી આપે છે, જેથી પિતૃઓ શાંત થાય છે અને ઘરમાં સુખ-સમૃદ્ધિ વધે છે."
+      ]
+    },
+    15: {
+      en: [
+        "Masik Shivratri is a monthly festival dedicated to the supreme deity Lord Shiva, observed on the Chaturdashi tithi of the Krishna Paksha (waning phase of the moon) every month. While Maha Shivratri is celebrated once a year, Masik Shivratri provides a regular monthly opportunity for devotees to tap into Lord Shiva's powerful transformative energy. It is a day of deep meditation, self-discipline, and control over earthly desires, designed to purify the mind and resolve life's difficult struggles.",
+        "The spiritual practice of Masik Shivratri revolves around a complete or partial fast, which is kept from sunrise until the next morning. In the evening or during the sacred Nishita Kaal (midnight hour), a special Abhishekam is performed on the Shiva Lingam. Devotees offer water, milk, curd, honey, ghee, and sugarcane juice, followed by fresh Bilva leaves, datura flowers, and vibhuti. Chanting the sacred 'Om Namah Shivaya' mantra and reciting the Shiva Chalisa or Rudrashtakam creates a shield of protective energy.",
+        "Observing the Masik Shivratri fasts in 2026 helps control planetary disturbances, particularly the negative effects of Mars and Saturn. The midnight worship aligns the individual consciousness with the absolute stillness of Lord Shiva, dissolving deep-rooted fears and anxiety. Our certified Vedic pandits can perform monthly Shivratri Pujas and pathas at your home to establish peace, overcome illness, and clear professional obstacles."
+      ],
+      hi: [
+        "मासिक शिवरात्रि भगवान शिव को समर्पित एक मासिक उत्सव है, जो हर महीने कृष्ण पक्ष की चतुर्दशी तिथि को मनाया जाता है। जबकि महाशिवरात्रि वर्ष में एक बार मनाई जाती है, मासिक शिवरात्रि भक्तों को भगवान शिव की परिवर्तनकारी ऊर्जा से जुड़ने का एक नियमित अवसर प्रदान करती है। यह दिन गहरे ध्यान, आत्म-अनुशासन और भौतिक इच्छाओं पर नियंत्रण का दिन है, जो मन को शुद्ध करता है।",
+        "मासिक शिवरात्रि का व्रत सूर्योदय से लेकर अगले दिन सुबह तक रखा जाता है। शाम को या पवित्र निशीलता काल (मध्यरात्रि) के दौरान, शिवलिंग पर विशेष अभिषेक किया जाता है। भक्त जल, दूध, दही, शहद, घी और गन्ने का रस चढ़ाते हैं, जिसके बाद ताजे बेलपत्र, धतूरा और विभूति अर्पित की जाती है। 'ओम नमः शिवाय' मंत्र का जाप और शिव चालीसा का पाठ सुरक्षा कवच बनाता है।",
+        "वर्ष 2026 में मासिक शिवरात्रि का व्रत रखने से ग्रहीय दोषों, विशेष रूप से मंगल और शनि के नकारात्मक प्रभावों को नियंत्रित करने में मदद मिलती है। मध्यरात्रि की पूजा व्यक्ति को आंतरिक शांति और साहस प्रदान करती है। हमारे प्रमाणित वैदिक पंडित आपके घर पर मासिक शिवरात्रि पूजा और पाठ कर सकते हैं ताकि शांति और स्वास्थ्य की स्थापना हो सके।"
+      ],
+      gu: [
+        "માસિક શિવરાત્રી એ ભગવાન શિવને સમર્પિત દર મહિને ઉજવાતો પવિત્ર ઉત્સવ છે, જે કૃષ્ણ પક્ષની ચતુર્દશી (વદ ચૌદશ) તિથિએ મનાવાય છે. મહાશિવરાત્રી વર્ષમાં એક વાર આવે છે, પરંતુ માસિક શિવરાત્રી ભક્તોને દર મહિને શિવજીની દૈવી ઊર્જા સાથે જોડાવાની ઉત્તમ તક આપે છે. આ દિવસ ગહન ધ્યાન, આત્મસંયમ અને સંસારની વાસનાઓ પર કાબૂ મેળવવાનો છે, જે મનને પરમ શાંતિ આપે છે.",
+        "માસિક શિવરાત્રીની આરાધનામાં સૂર્યોદયથી શરૂ કરીને બીજા દિવસની સવાર સુધી ઉપવાસ રાખવામાં આવે છે. સાંજે અથવા પવિત્ર નિશિથ કાળ (મધ્યરાત્રિ) દરમિયાન શિવલિંગ પર વિશેષ જળાભિષેક કરાય છે. ભક્તો દૂધ, દહીં, મધ, ઘી અને શેરડીનો રસ અર્પણ કરે છે, અને સાથે બિલીપત્ર, ધતૂરાના ફૂલ અને ભસ્મ ચડાવે છે. 'ઓમ નમઃ શિવાય' મંત્ર અને શિવ ચાલીસાના પાઠ રક્ષણાત્મક ઊર્જા પેદા કરે છે.",
+        "વર્ષ 2026માં માસિક શિવરાત્રીનું વ્રત કરવાથી કુંડળીમાં મંગળ અને શનિના નકારાત્મક પ્રભાવો શાંત થાય છે. મધ્યરાત્રિની આરાધના મનુષ્યના ભય અને ચિંતાઓને દૂર કરી આંતરિક શક્તિ આપે છે. અમારા પ્રમાણિત વૈદિક પંડિતો તમારા ઘરે માસિક શિવરાત્રી પૂજન અને પાઠ કરાવી શકે છે જેથી સુખ-શાંતિ અને આરોગ્ય જળવાઈ રહે."
+      ]
+    },
+    16: {
+      en: [
+        "Pitru Dosh is one of the most critical karmic configurations in Vedic astrology, indicating that ancestral souls are restless or dissatisfied due to uncompleted rituals, unresolved karmic issues, or historical family actions. When active in a birth chart, Pitru Dosh can cause repeated obstacles in career, severe financial instability, constant family friction, and delays in marriage or progeny. It is not a curse, but a spiritual calling for the descendants to offer gratitude and perform purifying remedies.",
+        "The resolution of Pitru Dosh lies in Vedic remedies that focus on offering food, water, and prayers to the ancestors. Pitru Tarpan involves pouring holy water mixed with black sesame seeds, barley, and Kusha grass while reciting Vedic mantras. Shradh Pujas, performed during Pitru Paksha or on Amavasya days, along with donating food (Anna Daan) to brahmins and feeding cows, crows, and dogs, help neutralize negative ancestral energy and bring peace.",
+        "Performing Pitru Dosh Nivaran rituals restores the flow of positive energy in your family tree. By pacifying restless ancestral souls, you unlock obstacles in your career, restore marital harmony, and secure divine protection for future generations. Our qualified Vedic Pandits have deep training in performing authentic Pitru Dosh Pujas at sacred centers, guiding you through every step to invoke ancestral blessings."
+      ],
+      hi: [
+        "पितृ दोष वैदिक ज्योतिष में सबसे महत्वपूर्ण कर्म विन्यासों में से एक है, जो दर्शाता है कि अपूर्ण अनुष्ठानों या अनसुलझे कर्मों के कारण पूर्वजों की आत्माएं अशांत हैं। कुंडली में पितृ दोष होने से करियर में बार-बार बाधाएं, गंभीर वित्तीय अस्थिरता, लगातार पारिवारिक कलह और विवाह या संतान में देरी हो सकती है। यह कोई अभिशाप नहीं है, बल्कि पूर्वजों के प्रति आभार व्यक्त करने का एक आध्यात्मिक आह्वान है।",
+        "पितृ दोष का समाधान वैदिक उपायों में निहित है जो पूर्वजों को भोजन, जल और प्रार्थना अर्पित करने पर ध्यान केंद्रित करते हैं। पितृ तर्पण में वैदिक मंत्रों का उच्चारण करते हुए काले तिल, जौ और कुशा घास मिश्रित पवित्र जल अर्पित किया जाता है। पितृपक्ष या अमावस्या के दिनों में की जाने वाली श्राद्ध पूजा, ब्राह्मणों को अन्न दान और गायों, कौओं व कुत्तों को भोजन कराने से पैतृक ऊर्जा शांत होती है।",
+        "पितृ दोष निवारण अनुष्ठान करने से आपके परिवार में सकारात्मक ऊर्जा का संचार बहाल होता है। पूर्वजों को प्रसन्न करने से करियर की बाधाएं दूर होती हैं, वैवाहिक सद्भाव बहाल होता है और आने वाली पीढ़ियों को सुरक्षा मिलती है। हमारे योग्य वैदिक पंडित पवित्र स्थानों पर प्रामाणिक पितृ दोष पूजा आयोजित करने में निपुण हैं, जो आपको पूर्वजों का आशीर्वाद प्राप्त करने में मदद करते हैं।"
+      ],
+      gu: [
+        "પિતૃ દોષ એ વૈદિક જ્યોતિષશાસ્ત્રમાં એક અત્યંત મહત્વનો ગ્રહ દોષ છે, જે દર્શાવે છે કે પૂર્વજોની આત્માઓ તર્પણ કે શ્રાદ્ધ વિધિ ન થવાના કારણે અશાંત છે. કુંડળીમાં પિતૃ દોષ હોવાથી વ્યવસાયમાં સતત અડચણો, આર્થિક તંગી, ઘરમાં અશાંતિ અને સંતાન પ્રાપ્તિ કે લગ્નમાં વિલંબ જેવી સમસ્યાઓ આવે છે. આ કોઈ શ્રાપ નથી, પરંતુ તમારા પૂર્વજો પ્રત્યે કૃતજ્ઞતા વ્યક્ત કરવાનું એક આધ્યાત્મિક આહ્વાન છે.",
+        "પિતૃ દોષના નિવારણ માટે પિતૃઓને અન્ન, જળ અને પ્રાર્થના અર્પણ કરવાની વૈદિક રીતો છે. પિતૃ તર્પણમાં કાળા તલ, જવ અને કુશ ઘાસવાળું પવિત્ર જળ મંત્રોચ્ચાર સાથે પિતૃઓને અર્પણ કરાય છે. અમાસ કે પિતૃ પક્ષ દરમિયાન કરાતી શ્રાદ્ધ પૂજા, બ્રાહ્મણોને ભોજન અને ગાય, કાગડા તેમજ કુતરાને અન્ન આપવાથી પિતૃઓની આત્મા તૃપ્ત થાય છે અને દોષોનું નિવારણ થાય છે.",
+        "પિતૃ દોષ નિવારણ વિધિ કરાવવાથી પરિવાર પરથી નકારાત્મક અસરો દૂર થાય છે. પિતૃઓ પ્રસન્ન થતાં વ્યવસાયમાં પ્રગતિ થાય છે, ઘરના ઝઘડા શાંત થાય છે અને નવી પેઢીનું કલ્યાણ થાય છે. અમારા લાયક વૈદિક પંડિતો યોગ્ય પદ્ધતિ દ્વારા વૈદિક પિતૃ પૂજા કરાવી આપે છે, જેથી પિતૃઓ પ્રત્યેના ઋણ મુક્ત થઈ ઘરમાં સુખ આવે છે."
+      ]
+    },
+    17: {
+      en: [
+        "Vastu Shastra is the ancient Vedic science of architecture and spatial geometry, designed to align human dwellings with the natural flow of cosmic energy. Every house acts as a living organism that absorbs energies from the five elements (Panchamahabhutas)—Earth, Water, Fire, Air, and Space. When these elements are in balance, the house attracts peace, physical health, and abundance. Imbalances, however, lead to mental stress, chronic illnesses, and financial drain.",
+        "Key Vastu guidelines for a harmonious home begin with elemental placements. The Northeast direction is governed by the Water element, making it the ideal spot for a prayer room or water storage. The Southeast, ruled by the Fire element, must host the kitchen. The Southwest represents the Earth element and is reserved for the master bedroom to ensure stability. The Northwest is the Air element, suitable for guest rooms. Keeping the central space (Brahmasthan) open and clutter-free allows energy to circulate freely.",
+        "Implementing simple Vastu adjustments can instantly clear negative blockages from your living space. By balancing the elemental directions, you create a supportive environment that enhances creativity, health, and relationship harmony. Our expert Vastu consultants and pandits offer remote analysis and perform purification pujas (like Vastu Shanti) to align your home with the natural laws of the cosmos."
+      ],
+      hi: [
+        "वास्तु शास्त्र वास्तुकला और स्थानिक ज्यामिति का प्राचीन वैदिक विज्ञान है, जिसे मानव आवास को ब्रह्मांडीय ऊर्जा के प्राकृतिक प्रवाह के साथ संरेखित करने के लिए डिज़ाइन किया गया है। हर घर पांच तत्वों (पंचमहाभूतों)—भूमि, जल, अग्नि, वायु और आकाश से ऊर्जा को अवशोषित करता है। जब ये तत्व संतुलन में होते हैं, तो घर शांति, स्वास्थ्य और समृद्धि को आकर्षित करता है। तत्वों की असंतुलनता से तनाव व अशांति पैदा होती है।",
+        "एक सामंजस्यपूर्ण घर के लिए प्रमुख वास्तु दिशानिर्देश तत्वों की स्थिति से शुरू होते हैं। उत्तर-पूर्व दिशा जल तत्व द्वारा नियंत्रित होती है, जो इसे पूजा घर के लिए आदर्श बनाती है। दक्षिण-पूर्व दिशा अग्नि तत्व द्वारा शासित होती है, इसलिए रसोई यहीं होनी चाहिए। दक्षिण-पश्चिम पृथ्वी तत्व का प्रतिनिधित्व करता है और स्थिरता सुनिश्चित करने के लिए मास्टर बेडरूम के लिए आरक्षित है। मध्य स्थान (ब्रह्मस्थान) को खाली व स्वच्छ रखना चाहिए।",
+        "वास्तु में सरल बदलाव करने से आपके रहने वाले स्थान से नकारात्मक ऊर्जाएं तुरंत दूर हो जाती हैं। तत्वों को संतुलित करके, आप एक ऐसा वातावरण बनाते हैं जो रचनात्मकता, स्वास्थ्य और संबंधों को बढ़ावा देता है। हमारे वास्तु विशेषज्ञ और पंडित आपके घर को ब्रह्मांडीय नियमों के साथ संरेखित करने के लिए वास्तु शांति जैसी शुद्धि पूजा आयोजित करते हैं।"
+      ],
+      gu: [
+        "વાસ્તુશાસ્ત્ર એ સ્થાપત્ય અને દિશાઓનું પ્રાચીન વૈદિક વિજ્ઞાન છે, જે આપણા ઘરને સૃષ્ટિની હકારાત્મક ઊર્જા સાથે સુમેળ સાધવા માટે બનાવવામાં આવ્યું છે. આપણું ઘર પંચતત્વો - પૃથ્વી, જળ, અગ્નિ, વાયુ અને આકાશમાંથી ઊર્જા મેળવે છે. જ્યારે આ તત્વો સંતુલિત હોય છે, ત્યારે ઘરમાં સુખ, ઉત્તમ સ્વાસ્થ્ય અને સમૃદ્ધિ આવે છે. તત્વોની અસંતુલન માનસિક તણાવ અને આર્થિક નુકસાન લાવે છે.",
+        "સુમેળભર્યા ઘર માટે પંચતત્વોની સાચી દિશા જાણવી જરૂરી છે. ઈશાન ખૂણો (ઉત્તર-પૂર્વ) જળ તત્વનું કેન્દ્ર છે, જે પૂજા ઘર કે જળાશય માટે ઉત્તમ છે. અગ્નિ ખૂણો (દક્ષિણ-પૂર્વ) અગ્નિ તત્વનો છે, જ્યાં રસોડું હોવું જોઈએ. નૈઋત્ય ખૂણો (દક્ષિણ-પશ્ચિમ) પૃથ્વી તત્વનો છે, જે ઘરના માલિકના બેડરૂમ માટે યોગ્ય છે. ઘરની મધ્યમાં આવેલ બ્રહ્મસ્થાન હંમેશા ખાલી અને સ્વચ્છ હોવું જોઈએ.",
+        "ઘરમાં વાસ્તુશાસ્ત્રના નિયમો અપનાવવાથી નકારાત્મક શક્તિઓ દૂર થાય છે. યોગ્ય દિશામાં પંચતત્વોની ગોઠવણ કરવાથી પ્રગતિ, સ્વાસ્થ્ય અને સંબંધોમાં મધુરતા જળવાઈ રહે છે. અમારા વાસ્તુ નિષ્ણાતો અને પંડિતો વાસ્તુ શાંતિ પૂજા દ્વારા તમારા ઘરની નકારાત્મકતા દૂર કરી દૈવી ઊર્જા વધારવામાં મદદ કરે છે."
+      ]
+    },
+    18: {
+      en: [
+        "In Vastu Shastra, the main door is considered the mouth of the house (Prana Dwara), representing the primary gateway through which both cosmic energies and worldly opportunities enter. The position, design, and condition of your main entrance determine the quality of vibrations that flow into the household. A well-designed entrance brings health, prosperity, and joy, while a poorly placed or neglected entrance can block positive flow and attract negativity.",
+        "Key Vastu guidelines recommend that the main door should ideally face North, Northeast, or East to capture beneficial solar radiations. The entrance should be larger than all other doors in the house and constructed from high-quality wood. Decorating the door with a beautiful toran made of fresh marigolds and mango leaves, drawing a swastika symbol, and keeping the threshold clean and well-lit are essential practices. Avoid keeping shoe racks, dustbins, or broken items right in front of the entrance.",
+        "Aligning your main entrance with Vastu rules clears obstacles to financial success and invites auspicious opportunities. Small changes like placing brass deity symbols or lighting oil lamps at sunset can dramatically shift the energy. We help conduct Vastu purification rituals and provide practical guidelines to transform your home entrance into a magnet for positive cosmic vibrations."
+      ],
+      hi: [
+        "वास्तु शास्त्र में, मुख्य द्वार को घर का मुंह (प्राण द्वार) माना जाता है, जो उस प्राथमिक प्रवेश द्वार का प्रतिनिधित्व करता है जिसके माध्यम से ब्रह्मांडीय ऊर्जाएं और अवसर प्रवेश करते हैं। प्रवेश द्वार की स्थिति, डिजाइन और स्थिति घर में आने वाले स्पंदनों की गुणवत्ता निर्धारित करती है। एक अच्छी तरह से डिजाइन किया गया प्रवेश द्वार स्वास्थ्य, समृद्धि और खुशी लाता है।",
+        "वास्तु के नियमों के अनुसार मुख्य द्वार अधिमानतः उत्तर, उत्तर-पूर्व या पूर्व दिशा की ओर होना चाहिए। प्रवेश द्वार घर के अन्य सभी दरवाजों से बड़ा होना चाहिए और उच्च गुणवत्ता वाली लकड़ी से बना होना चाहिए। ताजे गेंदे और आम के पत्तों से बने तोरण से द्वार को सजाना, स्वास्तिक बनाना और प्रवेश द्वार को साफ रखना आवश्यक है। प्रवेश द्वार के सामने जूते का स्टैंड या कूड़ेदान न रखें।",
+        "मुख्य प्रवेश द्वार को वास्तु के नियमों के अनुसार संरेखित करने से वित्तीय सफलता की बाधाएं दूर होती हैं। मुख्य द्वार पर तांबे या पीतल के धार्मिक प्रतीक लगाने और संध्याकाल में दीया जलाने से ऊर्जा में बड़ा सुधार होता है। हम प्रवेश द्वार को सकारात्मक ऊर्जा का स्रोत बनाने के लिए वास्तु शुद्धि अनुष्ठान आयोजित करने में मदद करते हैं।"
+      ],
+      gu: [
+        "વાસ્તુશાસ્ત્રમાં મુખ્ય દરવાજો એ ઘરનું મુખ (પ્રાણ દ્વાર) માનવામાં આવે છે, જે સૃષ્ટિની હકારાત્મક ઊર્જા અને તકોને ઘરમાં લાવવાનું મુખ્ય માધ્યમ છે. તમારા મુખ્ય દરવાજાની દિશા અને રચના ઘરમાં વહેતી ઊર્જાની ગુણવત્તા નક્કી કરે છે. સુંદર અને વાસ્તુ સંમત પ્રવેશદ્વાર ઘરમાં આરોગ્ય અને સમૃદ્ધિ લાવે છે, જે ઘરના અન્ય દરવાજા કરતાં મોટો અને મજબૂત લાકડાનો હોવો જોઈએ.",
+        "વાસ્તુ નિયમો મુજબ મુખ્ય દરવાજો ઉત્તર, ઉત્તર-પૂર્વ કે પૂર્વ દિશામાં હોવો જોઈએ જેથી સૂર્યના હકારાત્મક કિરણો સીધા ઘરમાં આવે. દરવાજા પર આસોપાલવ અને ગલગોટાના ફૂલનું તોરણ બાંધવું, સ્વસ્તિકનું ચિહ્ન દોરવું અને ઉંબરો સાફ રાખવો અત્યંત શુભ છે. દરવાજા પાસે પગરખાં કે કચરાપેટી ન રાખવા જોઈએ.",
+        "મુખ્ય દરવાજાની વાસ્તુ ગોઠવણી કરવાથી આર્થિક પ્રગતિના માર્ગ ખુલે છે. સાંજના સમયે દરવાજા પાસે દીવો પ્રગટાવવા જેવા નાના ઉપાયો ઘરમાં હકારાત્મકતા લાવે છે. અમારા પંડિતો મુખ્ય દ્વારની નકારાત્મકતા દૂર કરવા માટે વાસ્તુ શાંતિ પૂજા અને ઉંબરા પૂજન યોગ્ય વૈદિક વિધિથી કરાવી આપે છે."
+      ]
+    },
+    19: {
+      en: [
+        "The kitchen represents the fire element (Agni) in Vastu Shastra, which governs digestion, physical energy, and the financial stability of the family. Since food cooked in the kitchen is consumed by all family members, the vibrations of this space directly affect the health, mental state, and longevity of the household. A Vastu-compliant kitchen ensures that the food cooked is filled with vitality and positive energy.",
+        "The Southeast corner is ruled by Lord Agni, making it the most auspicious location for the kitchen. The cooking stove must be placed in the Southeast, and the cook should face East while cooking. The sink, representing the Water element, should be placed in the Northeast, as far away from the stove as possible to avoid conflict between fire and water. Storage for heavy grains should be in the South or West, and light pastel shades like orange, yellow, or cream should be used for the walls.",
+        "Correcting kitchen imbalances is vital to maintain family health and prevent financial drain. Simple adjustments, like placing copper objects or changing container placements, can resolve Vastu defects. Our team of Vastu pandits provides personalized guidance and conducts Agni-related pujas to harmonize your kitchen, bringing vitality and prosperity to your household."
+      ],
+      hi: [
+        "रसोईघर वास्तु शास्त्र में अग्नि तत्व का प्रतिनिधित्व करता है, जो पाचन, शारीरिक ऊर्जा और परिवार की वित्तीय स्थिरता को नियंत्रित करता है। चूंकि रसोई में पकाया गया भोजन परिवार के सभी सदस्यों द्वारा ग्रहण किया जाता है, इसलिए इस स्थान का स्पंदन सीधे तौर पर स्वास्थ्य और मानसिक स्थिति को प्रभावित करता है। वास्तु के अनुसार रसोई यह सुनिश्चित करती है कि भोजन जीवन शक्ति से भरपूर हो।",
+        "दक्षिण-पूर्व कोना अग्नि देव का स्थान है, जो रसोई के लिए सबसे शुभ स्थान है। खाना पकाने का चूल्हा दक्षिण-पूर्व में होना चाहिए, और खाना बनाते समय मुंह पूर्व की ओर होना चाहिए। जल तत्व का प्रतिनिधित्व करने वाला सिंक उत्तर-पूर्व में होना चाहिए, ताकि आग और पानी में टकराव न हो। भारी अनाज का भंडारण दक्षिण या पश्चिम में होना चाहिए, और दीवारों पर हल्के रंगों का उपयोग होना चाहिए।",
+        "पारिवारिक स्वास्थ्य को बनाए रखने और अनावश्यक खर्चों को रोकने के लिए रसोई के वास्तु दोषों को ठीक करना आवश्यक है। तांबे की वस्तुएं रखने या डिब्बों की स्थिति बदलने जैसे सरल उपाय रसोई को संतुलित कर सकते हैं। हमारे पंडित रसोई के सामंजस्य के लिए अग्नि-संबंधी विशेष पूजा आयोजित करने में सहायता करते हैं।"
+      ],
+      gu: [
+        "વાસ્તુશાસ્ત્રમાં રસોડું એ અગ્નિ તત્વ (અગ્નિ દેવ) નું કેન્દ્ર છે, જે આપણી પાચન શક્તિ, શારીરિક ઊર્જા અને પરિવારની આર્થિક સ્થિરતા નક્કી કરે છે. રસોડામાં બનેલી રસોઈ આખો પરિવાર જમે છે, તેથી આ સ્થાનના કંપનો સીધા જ આરોગ્ય અને મગજની સ્થિતિ પર અસર કરે છે. વાસ્તુ સંમત રસોડું ઘરમાં ભોજનને અમૃત સમાન બનાવે છે.",
+        "રસોડું હંમેશા દક્ષિણ-પૂર્વ (અગ્નિ ખૂણા) માં હોવું જોઈએ, કારણ કે આ ખૂણાના સ્વામી અગ્નિ દેવ છે. ગેસનો ચૂલો અગ્નિ ખૂણામાં રાખવો અને રસોઈ કરતી વખતે મોઢું પૂર્વ દિશા તરફ હોવું જોઈએ. પાણીનું સ્થાન (સિંક) ઉત્તર-પૂર્વમાં હોવું જોઈએ, જેથી અગ્નિ અને જળ તત્વો સામસામે ન આવે. અનાજનો સંગ્રહ દક્ષિણ કે પશ્ચિમ દિશામાં કરવો અને દીવાલો પર પીળો કે કેસરી રંગ રાખવો.",
+        "રસોડામાં વાસ્તુ દોષો નિવારવા અત્યંત જરૂરી છે, જેથી ઘરમાં બીમારીઓ અટકે અને લક્ષ્મીજીની કૃપા જળવાઈ રહે. રસોડામાં તાંબાના પાત્રો રાખવા કે કિચન પ્લેટફોર્મના પથ્થરનો યોગ્ય રંગ પસંદ કરવા જેવા નાના ફેરફારો દોષોને દૂર કરે છે. અમારા પંડિતો અગ્નિ પૂજા દ્વારા રસોડાના ઊર્જા સ્તરને સુધારવામાં માર્ગદર્શન આપે છે."
+      ]
+    },
+    20: {
+      en: [
+        "The bedroom is a sacred space of retreat, representing the Earth element in Vastu Shastra, which governs stability, rest, and relationship harmony. A Vastu-compliant bedroom supports deep, restorative sleep and cultivates a sense of trust and peace between partners. Poor bedroom layout, wrong bed placements, or negative colors can disturb sleep patterns, cause fatigue, and lead to relationship friction.",
+        "The master bedroom should ideally be located in the Southwest corner of the house to strengthen the authority and stability of the head of the family. The bed should be placed so that your head points South or East while sleeping, promoting healthy blood circulation. Avoid placing mirrors directly facing the bed, as this is believed to reflect worries and disrupt sleep. Choose soothing pastel shades and natural wooden furniture, keeping the space clutter-free.",
+        "Optimizing your bedroom layout according to Vastu principles restores emotional balance and ensures peace of mind. Removing electronics, replacing metallic frames with wood, and placing rock salt lamps can immediately enhance bedroom energy. Our expert team offers personalized Vastu consultations and conducts purification rituals to establish a peaceful, loving environment in your home."
+      ],
+      hi: [
+        "बेडरूम विश्राम का एक पवित्र स्थान है, जो वास्तु शास्त्र में पृथ्वी तत्व का प्रतिनिधित्व करता है, जो स्थिरता, आराम और संबंधों में सामंजस्य को नियंत्रित करता है। वास्तु के अनुसार बेडरूम गहरी और शांतिपूर्ण नींद का समर्थन करता है और आपसी विश्वास को बढ़ाता है। बेडरूम का गलत लेआउट या रंग नींद को प्रभावित कर सकते हैं और संबंधों में तनाव पैदा कर सकते हैं।",
+        "मास्टर बेडरूम आदर्श रूप से घर के दक्षिण-पश्चिम कोने में होना चाहिए ताकि परिवार के मुखिया की स्थिरता मजबूत हो। सोते समय सिर दक्षिण या पूर्व की ओर होना चाहिए, जो स्वस्थ रक्त परिसंचरण को बढ़ावा देता है। बिस्तर के सामने दर्पण लगाने से बचें, क्योंकि यह नींद में बाधा डालता है। सुखदायक हल्के रंगों और प्राकृतिक लकड़ी के फर्नीचर का चयन करें, और बेडरूम में कोई भारी इलेक्ट्रॉनिक उपकरण न रखें।",
+        "वास्तु सिद्धांतों के अनुसार अपने बेडरूम के लेआउट को अनुकूलित करने से मानसिक शांति सुनिश्चित होती है। इलेक्ट्रॉनिक्स को हटाने और बेडरूम में सेंधा नमक रखने जैसे उपाय तुरंत सकारात्मक ऊर्जा लाते हैं। हमारी टीम आपके घर में शांतिपूर्ण वातावरण स्थापित करने के लिए विशेष परामर्श और शुद्धि अनुष्ठान प्रदान करती है।"
+      ],
+      gu: [
+        "બેડરૂમ એ આરામ કરવાનું પવિત્ર સ્થાન છે, જે વાસ્તુશાસ્ત્રમાં પૃથ્વી તત્વનું કેન્દ્ર છે. આ સ્થાન સ્થિરતા, શાંતિ અને સંબંધોની મધુરતા જાળવે છે. વાસ્તુ સંમત બેડરૂમ આપણને ગાઢ અને પવિત્ર ઊંઘ આપે છે. બેડરૂમની ખોટી ગોઠવણી કે ખોટા રંગો ઊંઘમાં ખલેલ પહોંચાડે છે અને પરિવારમાં મનભેદ ઊભા કરે છે.",
+        "ઘરના માલિકનો મુખ્ય બેડરૂમ હંમેશા દક્ષિણ-પશ્ચિમ (નૈઋત્ય) ખૂણામાં હોવો જોઈએ જેથી તેમની સ્થિરતા અને નિર્ણય શક્તિ મજબૂત બને. સુતી વખતે માથું દક્ષિણ કે પૂર્વ દિશા તરફ રાખવું જેથી લોહીનું પરિભ્રમણ બરાબર થાય. પલંગની સામે ક્યારેય અરીસો ન રાખવો, કારણ કે તે ઊંઘમાં વિક્ષેપ પાડે છે. હળવા રંગો અને લાકડાના ફર્નિચરનો ઉપયોગ કરવો.",
+        "બેડરૂમની વાસ્તુ ગોઠવણી કરવાથી માનસિક શાંતિ મળે છે અને દામ્પત્ય જીવન સુખી બને છે. બેડરૂમમાંથી ઇલેક્ટ્રોનિક વસ્તુઓ હટાવવી અને સિંધવ નમક રાખવાથી નકારાત્મકતા દૂર થાય છે. અમારા પંડિતો યોગ્ય પૂજા અને વાસ્તુ શાંતિ વિધિ દ્વારા તમારા ઘરના વાતાવરણને સુખદાયી બનાવવામાં મદદ કરે છે."
       ]
     }
   };
