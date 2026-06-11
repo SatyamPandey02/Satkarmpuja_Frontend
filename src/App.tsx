@@ -933,7 +933,7 @@ const TRANSLATIONS = {
   pooja_navagraha_shanti_benefit_3: { en: "Enhances mental clarity and focus", hi: "मानसिक स्पष्टता और एकाग्रता बढ़ाता है", gu: "માનસિક સ્પષ્ટતા અને ધ્યાન વધારે છે" },
   pooja_navagraha_shanti_benefit_4: { en: "Protects family from malefic effects", hi: "परिवार को अशुभ प्रभावों से बचाता है", gu: "પરિવારને અશુભ પ્રભાવોથી બચાવે છે" },
   pooja_navagraha_shanti_benefit_5: { en: "Brings peace and harmony", hi: "शांति और सामंजस्य लाता है", gu: "શાંતિ અને સંવાદિતા લાવે છે" },
-  pooja_navagraha_shanti_process_0: { en: "Purification of the space (Shaucha)", hi: "स्थान की शुद्धि (शौच)", gu: "જગ્યાની શુદ્ધિ (શૌચ)" },
+  pooja_navagraha_shanti_process_0: { en: "Purification of the space", hi: "स्थान की शुद्धि", gu: "જગ્યાની શુદ્ધિ" },
   pooja_navagraha_shanti_process_1: { en: "Invocation of Lord Ganesha", hi: "भगवान गणेश का आह्वान", gu: "ભગવાન ગણેશનું આહ્વાન" },
   pooja_navagraha_shanti_process_2: { en: "Chanting of Navagraha mantras", hi: "नवग्रह मंत्रों का जाप", gu: "નવગ્રહ મંત્રોનો જાપ" },
   pooja_navagraha_shanti_process_3: { en: "Offerings to each planet deity", hi: "प्रत्येक ग्रह देवता को भोग", gu: "દરેક ગ્રહ દેવતાને ભોગ" },
@@ -987,7 +987,7 @@ const TRANSLATIONS = {
   pooja_chandra_grah_shanti_process_1: { en: "Invocation of Lord Chandra", hi: "भगवान चंद्र का आह्वान", gu: "ભગવાન ચંદ્રનું આહ્વાન" },
   pooja_chandra_grah_shanti_process_2: { en: "Chanting of Chandra Mantras", hi: "चंद्र मंत्रों का जाप", gu: "ચંદ્ર મંત્રોનો જાપ" },
   pooja_chandra_grah_shanti_process_3: { en: "Offering of white flowers", hi: "सफेद फूलों का भोग", gu: "સફેદ ફૂલોનો ભોગ" },
-  pooja_chandra_grah_shanti_process_4: { en: "Aarti with milk", hi: "दूध से आरती", gu: "દૂધથી આરતી" },
+  pooja_chandra_grah_shanti_process_4: { en: "Aarti", hi: "आरती", gu: "આરતી" },
   pooja_chandra_grah_shanti_process_5: { en: "Distribution of Prasad", hi: "प्रसाद वितरण", gu: "પ્રસાદ વિતરણ" },
   // Puja detail: mangal_grah_shanti
   pooja_mangal_grah_shanti_subtitle: { en: "Mars God's Warrior Energy", hi: "मंगल देव की योद्धा ऊर्जा", gu: "મંગળ દેવની યોદ્ધા ઊર્જા" },
@@ -2498,7 +2498,7 @@ const poojaDetails: Record<string, PoojaDetail> = {
       "Brings peace and harmony",
     ],
     process: [
-      "Purification of the space (Shaucha)",
+      "Purification of the space",
       "Invocation of Lord Ganesha",
       "Chanting of Navagraha mantras",
       "Offerings to each planet deity",
@@ -2559,7 +2559,7 @@ const poojaDetails: Record<string, PoojaDetail> = {
       "Invocation of Lord Chandra",
       "Chanting of Chandra Mantras",
       "Offering of white flowers",
-      "Aarti with milk",
+      "Aarti",
       "Distribution of Prasad",
     ],
     bestFor:
@@ -10959,7 +10959,7 @@ export default function App() {
           "datePublished": post.date,
           "author": {
             "@type": "Person",
-            "name": post.author
+            "name": "SatkarmPuja"
           },
           "publisher": {
             "@type": "Organization",
@@ -11182,7 +11182,7 @@ export default function App() {
       } else {
         const mainItem = { ...schemaData };
         delete mainItem["@context"];
-        const breadcrumbItem = { ...breadcrumbSchema };
+        const breadcrumbItem = { ...breadcrumbSchema } as any;
         delete breadcrumbItem["@context"];
         
         finalSchema = {
