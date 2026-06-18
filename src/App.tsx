@@ -148,6 +148,33 @@ const POPULAR_POOJAS_STORAGE_KEY = "satkarmpooja.content.popularPoojas.v2";
 const ABOUT_GALLERY_STORAGE_KEY = "satkarmpooja.content.aboutPoojaGallery.v1";
 const CONTENT_EVENT_NAME = "satkarmpooja:content";
 
+const DEFAULT_POPULAR_POOJAS: PopularPoojaCard[] = [
+  {
+    id: "default_1",
+    poojaId: "griha-pravesh",
+    title: "Griha Pravesh",
+    description: "Sacred home warming ceremony to invoke positive energy, peace, and prosperity.",
+    price: "₹4,999",
+    icon: "🏠"
+  },
+  {
+    id: "default_2",
+    poojaId: "satyanarayan-katha",
+    title: "Satyanarayan Katha",
+    description: "Devotional story recital honoring Lord Vishnu for gratitude, truth, and family grace.",
+    price: "₹2,100",
+    icon: "📖"
+  },
+  {
+    id: "default_3",
+    poojaId: "rudrabhishek",
+    title: "Rudrabhishek Puja",
+    description: "Powerful bathing ritual of Shiva Lingam with sacred liquids for healing and protection.",
+    price: "₹4,999",
+    icon: "🔱"
+  }
+];
+
 
 
 function writeLocalJson<T>(key: string, value: T) {
@@ -4145,7 +4172,7 @@ interface FooterProps {
 
 function Footer({ config, onNavigate, language }: FooterProps) {
   const year = new Date().getFullYear();
-  const [popularPoojas, setPopularPoojas] = useState<PopularPoojaCard[]>([]);
+  const [popularPoojas, setPopularPoojas] = useState<PopularPoojaCard[]>(DEFAULT_POPULAR_POOJAS);
 
   const loadPopular = () => {
     apiFetch("/api/content/popularPoojas")
@@ -4157,11 +4184,12 @@ function Footer({ config, onNavigate, language }: FooterProps) {
         if (body?.data && Array.isArray(body.data)) {
           setPopularPoojas(body.data);
         } else {
-          setPopularPoojas([]);
+          setPopularPoojas(DEFAULT_POPULAR_POOJAS);
         }
       })
       .catch((err) => {
         console.error("Failed to fetch popular pujas:", err);
+        setPopularPoojas(DEFAULT_POPULAR_POOJAS);
       });
   };
 
@@ -4407,7 +4435,7 @@ const faqItems: { qKey: keyof typeof TRANSLATIONS; aKey: keyof typeof TRANSLATIO
 
 function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [popularCards, setPopularCards] = useState<PopularPoojaCard[]>([]);
+  const [popularCards, setPopularCards] = useState<PopularPoojaCard[]>(DEFAULT_POPULAR_POOJAS);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -4429,11 +4457,12 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
         if (body?.data && Array.isArray(body.data)) {
           setPopularCards(body.data);
         } else {
-          setPopularCards([]);
+          setPopularCards(DEFAULT_POPULAR_POOJAS);
         }
       })
       .catch((err) => {
         console.error("Failed to fetch popular pujas:", err);
+        setPopularCards(DEFAULT_POPULAR_POOJAS);
       });
   };
 
