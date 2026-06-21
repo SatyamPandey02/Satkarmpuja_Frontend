@@ -468,7 +468,7 @@ const blogMetadata: BlogMetadata[] = [
       gu: "ધાર્મિક વિધિઓ"
     },
     readTime: { en: "6 min read", hi: "6 मिनट पाठ", gu: "6 મિનિટ વાંચન" },
-    date: { en: "June 24, 2026", hi: "24 जून, 2026", gu: "24 જૂન, 2026" },
+    date: { en: "June 22, 2026", hi: "22 जून, 2026", gu: "22 જૂન, 2026" },
     image: "/assets/blogs/blog_nirjala_ekadashi.png",
     color: "oklch(0.58 0.17 50)"
   }
