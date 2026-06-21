@@ -449,6 +449,28 @@ const blogMetadata: BlogMetadata[] = [
     date: { en: "July 5, 2026", hi: "5 जुलाई, 2026", gu: "5 જુલાઈ, 2026" },
     image: "/assets/blogs/blog_bedroom_vastu.png",
     color: "oklch(0.48 0.12 75)"
+  },
+  {
+    id: 21,
+    title: {
+      en: "Nirjala Ekadashi 2026: Fasting Rules, Muhurat, and Spiritual Significance",
+      hi: "निर्जला एकादशी 2026: व्रत नियम, शुभ मुहूर्त और आध्यात्मिक महत्व",
+      gu: "નિર્જલા એકાદશી 2026: વ્રત નિયમો, શુભ મુહૂર્ત અને આધ્યાત્મિક મહત્વ"
+    },
+    excerpt: {
+      en: "Nirjala Ekadashi is the most sacred and rigorous of all 24 Ekadashis. Discover the fasting rules (vrat vidhi), auspicious muhurat, and benefits of fasting without water.",
+      hi: "निर्जला एकादशी सभी 24 एकादशियों में सबसे पवित्र और कठिन है। बिना पानी के व्रत रखने के नियम (व्रत विधि), शुभ मुहूर्त और लाभों के बारे में जानें।",
+      gu: "નિર્જલા એકાદશી તમામ 24 એકાદશીઓમાં સૌથી પવિત્ર અને કઠિન છે. પાણી વગર ઉપવાસ કરવાના નિયમો (વ્રત વિધિ), શુભ મુહૂર્ત અને તેના આધ્યાત્મિક ફાયદાઓ વિશે જાણો."
+    },
+    category: {
+      en: "Rituals",
+      hi: "अनुष्ठान",
+      gu: "ધાર્મિક વિધિઓ"
+    },
+    readTime: { en: "6 min read", hi: "6 मिनट पाठ", gu: "6 મિનિટ વાંચન" },
+    date: { en: "June 24, 2026", hi: "24 जून, 2026", gu: "24 જૂન, 2026" },
+    image: "/assets/blogs/blog_nirjala_ekadashi.png",
+    color: "oklch(0.58 0.17 50)"
   }
 ];
 
@@ -972,6 +994,32 @@ const allBlogContents: Record<number, Record<'en' | 'hi' | 'gu', string[]>> = {
       "નૈઋત્ય ખૂણો પૃથ્વી તત્વ દર્શાવે છે જે ઘરમાં સ્થિરતા લાવે છે. જો માલિકનો બેડરૂમ ઈશાન ખૂણામાં હોય તો તે માનસિક અશાંતિ પેદા કરે છે. પલંગ ક્યારેય લોખંડનો ન હોવો જોઈએ કારણ કે તે ચુંબકીય લાઈનોમાં અવરોધ ઊભો કરી ઊંઘ બગાડે છે, તેથી હંમેશા લાકડાના પલંગનો ઉપયોગ કરવો.",
       "ઉત્તર દિશા તરફ માથું રાખીને ક્યારેય ન સુવું કારણ કે પૃથ્વીના ધ્રુવીય આકર્ષણથી મગજમાં દબાણ વધે છે અને બ્લડ પ્રેશર વધે છે. બેડરૂમની દીવાલો પર ગુલાબી, આછો પીળો કે ક્રીમ કલર રાખવો જે મગજને શાંતિ આપે છે.",
       "નિષ્કર્ષમાં, વાસ્તુ સંમત બેડરૂમ આપણી શારીરિક અને માનસિક ઊર્જાને રિચાર્જ કરવા માટે ખૂબ જ જરૂરી છે. અમારા વાસ્તુશાસ્ત્રી પંડિતો પાસે વાસ્તુ પૂજા કરાવી તમારા બેડરૂમની નકારાત્મક ઉર્જા દૂર કરો, જેથી ઘરમાં સ્નેહ અને ગાઢ ઊંઘનું સુંદર વાતાવરણ બને."
+    ]
+  },
+  21: {
+    en: [
+      "Nirjala Ekadashi is widely considered the most sacred, significant, and spiritually rigorous of all the twenty-four Ekadashis in the Hindu calendar. Falling during the bright fortnight (Shukla Paksha) of the Jyeshtha month, this auspicious day is dedicated entirely to Lord Vishnu. The Sanskrit word 'Nirjala' translates to 'without water,' which highlights the defining rule of this vow: devotees refrain from consuming even a single drop of water or food for a continuous 24-hour period. According to the Mahabharata, the sage Vyasa advised the powerful Bhima—who could not control his immense hunger—to observe this single fast to attain the combined merits of all annual Ekadashis, earning it the names Bhimseni Ekadashi and Pandava Ekadashi.",
+      "Observing Nirjala Ekadashi brings profound astrological, spiritual, and scientific benefits to the devotee. Astrologically, fasting during the peak of summer helps neutralize planetary afflictions and aligns the mind with cosmic energies, particularly strengthening the influence of the Moon which governs mental peace and emotional stability. From a scientific perspective, a complete dry fast serves as an intense detoxification process, giving the digestive system a complete rest, purifying the bloodstream, and renewing bodily tissues. Cultivating self-discipline under such demanding physical conditions purifies past karma, cleanses negative thoughts, and builds immense willpower.",
+      "To ensure maximum spiritual benefits and alignment, performing the rituals during the correct shubh muhurat is essential. For the year 2026, Nirjala Ekadashi is celebrated on Thursday, June 25, 2026. The Ekadashi Tithi begins on June 24, 2026, and concludes on the afternoon of June 25, 2026. Engaging in prayers, reading the sacred scriptures, and performing the main Vishnu Puja during the auspicious Brahma Muhurat hours is highly recommended. The fast is officially broken (Parana) on the following day, Dwadashi (June 26, 2026), after sunrise and within the prescribed Parana time window to complete the ritual successfully.",
+      "The fasting rules (vrat vidhi) for Nirjala Ekadashi require complete dedication and spiritual focus. Devotees begin their day before sunrise with a holy bath, followed by taking a solemn vow (Sankalpa) of fasting and offering water (Arghya) to the Sun God. A beautiful altar is prepared for Lord Vishnu, where His idol or picture is bathed with Panchamrit and adorned with yellow flowers, Tulsi leaves, incense, and yellow sweets. Continuous chanting of 'Om Namo Bhagavate Vasudevaya' and reading the Nirjala Ekadashi Vrat Katha are key practices that keep the devotee's mind pure and centered on the Lord throughout the fast.",
+      "Actively participating in charity (Daan) and keeping a night vigil (Jagran) are highly emphasized actions on Nirjala Ekadashi. Since the fast occurs during the peak summer heat, donating water-filled clay pots (Kalash), hand fans, umbrellas, clothes, and seasonal sweet fruits like melons or mangoes to the needy is considered extremely meritorious and pleases Lord Vishnu. Devotees also stay awake during the night of Ekadashi, singing devotional bhajans, reciting Vishnu Sahasranama, and performing aarti, transforming physical discipline into a beautiful state of spiritual joy.",
+      "At SatkarmPuja, we are dedicated to helping you observe this holy day with the utmost devotion and correctness. Our team of experienced, certified Vedic pandits can perform customized Lord Vishnu Pujas, ancestral prayers, and coordinate charitable distributions on your behalf. Whether you wish to host a virtual Puja or invite our pandits to perform the rituals in person, you can book our services online to ensure all scriptural guidelines are strictly followed, inviting absolute peace, happiness, and divine blessings into your home."
+    ],
+    hi: [
+      "निर्जला एकादशी को हिंदू कैलेंडर की सभी चौबीस एकादशियों में सबसे पवित्र, महत्वपूर्ण और कठिन माना जाता है। ज्येष्ठ मास के शुक्ल पक्ष में आने वाली यह अत्यंत शुभ तिथि पूरी तरह से भगवान विष्णु को समर्पित है। 'निर्जला' शब्द का अर्थ है 'जल के बिना', जो इस व्रत के मुख्य नियम को दर्शाता है: भक्त लगातार 24 घंटे तक पानी की एक बूंद भी ग्रहण किए बिना व्रत रखते हैं। महाभारत के अनुसार, महर्षि व्यास ने पांडु पुत्र भीम को—जो अपनी तीव्र भूख को नियंत्रित नहीं कर पाते थे—यह व्रत रखने की सलाह दी थी ताकि वे वर्ष की सभी एकादशियों का पुण्य एक साथ प्राप्त कर सकें। इसी कारण इसे भीमसेनी एकादशी या पांडव एकादशी भी कहा जाता है।",
+      "निर्जला एकादशी का व्रत रखने से साधक को गहरे ज्योतिषीय, आध्यात्मिक और शारीरिक लाभ प्राप्त होते हैं। ज्योतिष के अनुसार, भीषण गर्मी के मौसम में यह कठिन व्रत रखने से कुंडली के ग्रह दोष शांत होते हैं और चंद्रमा की स्थिति मजबूत होती है, जो मन की शांति और भावनात्मक स्थिरता को नियंत्रित करता है। वैज्ञानिक दृष्टिकोण से, बिना पानी का यह पूर्ण उपवास शरीर के लिए एक शक्तिशाली डिटॉक्सिफिकेशन (शुद्धिकरण) का काम करता है, जिससे पाचन तंत्र को आराम मिलता है और रक्त शुद्ध होता है। ऐसी कठिन परिस्थितियों में आत्म-नियंत्रण रखने से पिछले संचित कर्मों का क्षय होता है और मानसिक संकल्प शक्ति बढ़ती है।",
+      "व्रत का पूर्ण फल प्राप्त करने के लिए, सभी अनुष्ठानों को शुभ मुहूर्त के अनुसार करना अत्यंत आवश्यक है। वर्ष 2026 में, पवित्र निर्जला एकादशी गुरुवार, 25 जून 2026 को मनाई जाएगी। एकादशी तिथि का प्रारंभ 24 जून 2026 को होगा और इसका समापन 25 जून 2026 को होगा। पूजा, विष्णु सहस्रनाम पाठ और मुख्य आरती के लिए ब्रह्म मुहूर्त का समय सर्वोत्तम माना गया है। व्रत का पारण अगले दिन, द्वादशी तिथि (26 जून 2026) को सूर्योदय के बाद और निर्धारित पारण मुहूर्त के भीतर किया जाना चाहिए, जिससे यह पवित्र व्रत शास्त्र सम्मत विधि से पूर्ण माना जाता है।",
+      "निर्जला एकादशी व्रत के नियम और पूजा विधि (vrat vidhi) के लिए पूर्ण समर्पण की आवश्यकता होती है। व्रत के दिन सूर्योदय से पहले उठकर स्नान करने के बाद भक्त उपवास का संकल्प लेते हैं और सूर्य देव को अर्घ्य देते हैं। इसके बाद पूजा स्थल पर भगवान विष्णु की प्रतिमा या चित्र स्थापित कर उसे पंचामृत से स्नान कराया जाता है और पीले फूल, तुलसी दल, धूप-दीप और पीली मिठाइयां अर्पित की जाती हैं। दिनभर 'ॐ नमो भगवते वासुदेवाय' का जाप करना और निर्जला एकादशी की पौराणिक व्रत कथा सुनना या पढ़ना भक्त के मन को शुद्ध और ईश्वर में केंद्रित रखता है।",
+      "निर्जला एकादशी के दिन दान (Daan) करने और रात्रि जागरण (Jagran) करने का विशेष महत्व शास्त्रों में बताया गया है। चूंकि यह व्रत ज्येष्ठ की भीषण गर्मी में आता है, इसलिए जरूरतमंदों को पानी से भरे मिट्टी के घड़े (कलश), हाथ के पंखे, छाते, वस्त्र और मौसमी फल जैसे खरबूजा या आम दान करना अत्यंत कल्याणकारी माना जाता है। इसके अतिरिक्त, एकादशी की रात को जागकर भगवान विष्णु के भजनों का कीर्तन करना और विष्णु सहस्रनाम का पाठ करना भक्त के शारीरिक श्रम को आध्यात्मिक आनंद में बदल देता है।",
+      "सत्कर्मपूजा (SatkarmPuja) में हम इस पवित्र दिन को पूरी श्रद्धा और शास्त्रोक्त नियमों के साथ मनाने में आपकी सहायता करते हैं। हमारे अनुभवी और वैदिक विद्वान पंडित आपके लिए विशेष भगवान विष्णु पूजा, विष्णु सहस्रनाम हवन और दान-पुण्य के अनुष्ठान संपन्न कर सकते हैं। आप हमारी वेबसाइट के माध्यम से आसानी से ऑनलाइन पंडित बुक कर सकते हैं ताकि सभी वैदिक अनुष्ठान पूर्ण शुद्धता और नियमों के साथ संपन्न हों, जिससे आपके जीवन और घर में सुख, शांति, समृद्धि और भगवान श्री हरि का दिव्य आशीर्वाद बना रहे।"
+    ],
+    gu: [
+      "નિર્જલા એકાદશીને હિન્દુ પંચાંગની તમામ ચોવીસ એકાદશીઓમાં સૌથી પવિત્ર, મહત્વપૂર્ણ અને કઠિન માનવામાં આવે છે. જ્યેષ્ઠ મહિનાના શુક્લ પક્ષમાં આવતી આ શુભ તિથિ સંપૂર્ણપણે ભગવાન વિષ્ણુને સમર્પિત છે. 'નિર્જલા' શબ્દનો અર્થ થાય છે 'પાણી વિનાનું', જે આ વ્રતના નિયમની કઠોરતા દર્શાવે છે: ભક્તો સતત ૨૪ કલાક સુધી પાણીનું એક ટીપું પણ પીધા વિના આ ઉપવાસ રાખે છે. મહાભારત અનુસાર, વેદવ્યાસજીએ પાંડુ પુત્ર ભીમને—જેઓ પોતાની ભૂખ સહન કરી શકતા નહોતા—આ એક જ વ્રત રાખવાની સલાહ આપી હતી જેથી તેઓ વર્ષની બધી એકાદશીઓનું પુણ્ય એકસાથે મેળવી શકે. આ કારણે તેને ભીમસેની એકાદશી પણ કહેવામાં આવે છે.",
+      "નિર્જલા એકાદશીનું વ્રત કરવાથી ભક્તોને જ્યોતિષીય, આધ્યાત્મિક અને શારીરિક રીતે અનેક લાભો થાય છે. જ્યોતિષશાસ્ત્ર મુજબ, કાળઝાળ ગરમીની ઋતુમાં આ કઠિન વ્રત કરવાથી કુંડળીના ગ્રહ દોષ શાંત થાય છે અને ચંદ્ર શુભ બને છે, જે મનની શાંતિ જાળવે છે. વૈજ્ઞાનિક દ્રષ્ટિએ, પાણી વિનાનો આ ઉપવાસ શરીરના ઝેરી તત્વોને બહાર કાઢી પાચનતંત્રને આરામ આપે છે અને લોહીને શુદ્ધ કરે છે. આવી મુશ્કેલ પરિસ્થિતિઓમાં પણ ઈશ્વર ભક્તિમાં લીન રહેવાથી પૂર્વ કર્મોનું પાપ ધોવાઈ જાય છે અને મનની સંકલ્પ શક્તિમાં અદ્ભુત વધારો થાય છે.",
+      "વ્રતનું પૂરેપૂરું પુણ્ય મેળવવા માટે શુભ મુહૂર્તમાં જ પૂજા વિધિ કરવી જોઈએ. વર્ષ ૨૦૨૬ માં, પવિત્ર નિર્જલા એકાદશી ગુરુવાર, ૨૫ જૂન ૨૦૨૬ ના રોજ ઉજવવામાં આવશે. એકાદશી તિથિની શરૂઆત ૨૪ જૂન ૨૦૨૬ ના રોજ થશે અને તેની પૂર્ણાહુતિ ૨૫ જૂન ૨૦૨૬ ના રોજ થશે. ભગવાન વિષ્ણુની પૂજા અને વિષ્ણુ સહસ્ત્રનામ પાઠ માટે બ્રહ્મ મુહૂર્તનો સમય સર્વોત્તમ છે. આ વ્રતના પારણાં બીજા દિવસે, દ્વાદશી તિથિ (૨૬ જૂન ૨૦૨૬) ના રોજ સૂર્યોદય પછી અને નિયત મુહૂર્તની અંદર કરવા જોઈએ, જેથી વ્રત વિધિપૂર્વક પૂર્ણ ગણાય.",
+      "નિર્જલા એકાદશી વ્રતના નિયમો અને પૂજા વિધિ (vrat vidhi) માં પૂર્ણ શ્રદ્ધા અને સમર્પણની જરૂર પડે છે. વ્રતના દિવસે સૂર્યોદય પહેલાં સ્નાન કરીને ભક્તો વ્રતનો સંકલ્પ લે છે અને સૂર્યદેવને અર્ઘ્ય આપે છે. ત્યારબાદ પૂજા સ્થાન પર ભગવાન વિષ્ણુની મૂર્તિ કે છબી સ્થાપિત કરી તેને પંચામૃતથી સ્નાન કરાવી પીળા ફૂલ, તુલસી પત્ર, ધૂપ-દીપ અને પીળી મીઠાઈઓ અર્પણ કરવામાં આવે છે. આખો દિવસ 'ૐ નમો ભગવતે વાસુદેવાય' મંત્રનો જાપ અને નિર્જલા એકાદશીની વ્રત કથાનું શ્રવણ કરવાથી મન પ્રભુમય બને છે.",
+      "નિર્જલા એકાદશીના દિવસે દાન અને રાત્રિ જાગરણ કરવાનું ખૂબ જ મહત્વ છે. ગરમીની ઋતુ હોવાથી જરૂરિયાતમંદોને પાણીથી ભરેલા માટીના ઘડા (કળશ), પંખા, છત્રી, વસ્ત્રો અને ઋતુગત ફળો જેમ કે ટેટી અથવા કેરીનું દાન કરવું અત્યંત પુણ્યદાયી માનવામાં આવે છે. આ ઉપરાંત, એકાદશીની રાત્રે સૂવાના બદલે જાગીને ભગવાન વિષ્ણુના ભજનો ગાવા અને વિષ્ણુ સહસ્ત્રનામનો પાઠ કરવો એ ભક્તના શારીરિક શ્રમને આધ્યાત્મિક આનંદમાં પરિવર્તિત કરે છે.",
+      "સત્કર્મપૂજા (SatkarmPuja) માં અમે તમને આ પવિત્ર દિવસને પૂર્ણ શ્રદ્ધા અને શાસ્ત્રોક્ત વિધિથી ઉજવવામાં મદદ કરીએ છીએ. અમારા અનુભવી અને વૈદિક વિદ્વાન પંડિતો તમારા માટે ખાસ ભગવાન વિષ્ણુ પૂજા, વિષ્ણુ સહસ્ત્રનામ હવન અને દાન વિધિ કરાવી શકે છે. તમે અમારી વેબસાઈટ દ્વારા સરળતાથી ઓનલાઈન પંડિત બુક કરાવી શકો છો જેથી પૂજા પૂર્ણ શુદ્ધતા અને નિયમો સાથે સંપન્ન થાય અને તમારા ઘરમાં સુખ, શાંતિ, સમૃદ્ધિ અને શ્રી હરિના આશીર્વાદ હંમેશા માટે બની રહે."
     ]
   }
 };
