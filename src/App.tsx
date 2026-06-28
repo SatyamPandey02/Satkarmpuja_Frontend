@@ -288,14 +288,14 @@ const TRANSLATIONS = {
     gu: "SatkarmPuja નો ફરક",
   },
   heroTitle: {
-    en: "Book Authentic Vedic Pujas with Verified Pandits",
-    hi: "प्रमाणित पंडितों के साथ प्रामाणिक वैदिक पूजाएँ बुक करें",
-    gu: "પ્રમાણિત પંડિતો સાથે સાચી વૈદિક પૂજા બુક કરો",
+    en: "Book Authentic Vedic Pujas with Verified Pandits from Varanasi & Prayagraj",
+    hi: "वाराणसी (काशी) और प्रयागराज के प्रमाणित पंडितों के साथ प्रामाणिक वैदिक पूजाएँ बुक करें",
+    gu: "વારાણસી (કાશી) અને પ્રયાગરાજના પ્રમાણિત પંડિતો સાથે સાચી વૈદિક પૂજા બુક કરો",
   },
   heroSubtitle: {
-    en: "Experience sacred rituals performed by learned Brahmins with personalized consultation and transparent pricing.",
-    hi: "विद्वान ब्राह्मणों द्वारा कराए गए पवित्र अनुष्ठानों का अनुभव करें, व्यक्तिगत परामर्श और पारदर्शी शुल्क के साथ।",
-    gu: "પંડિત બ્રાહ્મણો દ્વારા કરાયેલા પવિત્ર વિધિઓનો અનુભવ કરો, વ્યક્તિગત માર્ગદર્શન અને પારદર્શક કિંમતો સાથે.",
+    en: "Experience sacred rituals performed by learned Brahmins from Kashi and Prayagraj with personalized consultation and transparent pricing.",
+    hi: "काशी (वाराणसी) और प्रयागराज के विद्वान ब्राह्मणों द्वारा कराए गए पवित्र अनुष्ठानों का अनुभव करें, व्यक्तिगत परामर्श और पारदर्शी शुल्क के साथ।",
+    gu: "કાશી (વારાણસી) અને પ્રયાગરાજના વિદ્વાન બ્રાહ્મણો દ્વારા કરાયેલા પવિત્ર વિધિઓનો અનુભવ કરો, વ્યક્તિગત માર્ગદર્શન અને પાવનકારી કિંમતો સાથે.",
   },
   popular_griha_pravesh_name: {
     en: "Griha Pravesh",
@@ -10778,12 +10778,17 @@ export default function App() {
     const page = parts[0] as Page;
     const key = parts[1];
 
-    // Check if we need to auto-download a receipt (e.g. ?downloadReceipt=xxxx)
+    // Check query params for download receipt and language settings
     if (search) {
       const queryParams = new URLSearchParams(search);
       const downloadReceiptId = queryParams.get("downloadReceipt");
       if (downloadReceiptId) {
         triggerReceiptDownload(downloadReceiptId);
+      }
+      const urlLang = queryParams.get("lang");
+      if (urlLang === "en" || urlLang === "hi" || urlLang === "gu") {
+        setLanguage(urlLang);
+        localStorage.setItem("satkarmpooja.lang", urlLang);
       }
     }
 
@@ -10814,7 +10819,7 @@ export default function App() {
         setCurrentBlogId(Number(key));
       }
     }
-  }, [triggerReceiptDownload]);
+  }, [triggerReceiptDownload, setLanguage]);
 
   const navigateTo = useCallback((page: Page, poojaKey?: string | number) => {
     console.log("Navigating to:", page);
@@ -10866,15 +10871,15 @@ export default function App() {
 
   // Dynamic SEO Metadata and Schema Injection
   useEffect(() => {
-    let title = "SatkarmPuja - Online Puja Service";
-    let desc = "Book authentic Vedic Pujas online with verified Pandits from Kashi, Prayagraj, and Chitrakoot. Online Puja service with transparent pricing.";
+    let title = "SatkarmPuja - Book Online Puja with Kashi (Varanasi) Pandits";
+    let desc = "Book authentic Vedic Pujas online with verified Pandits from Varanasi (Kashi), Prayagraj, and Chitrakoot. Online Puja service with transparent pricing.";
     let schemaData: Record<string, unknown> | null = null;
 
     const metaTitles: Record<string, Record<Lang, string>> = {
       home: {
-        en: "Book Authentic Vedic Pujas with Verified Pandits | SatkarmPuja",
-        hi: "प्रमाणित पंडितों के साथ प्रामाणिक वैदिक पूजाएँ बुक करें | SatkarmPuja",
-        gu: "પ્રમાણિત પંડિતો સાથે સાચી વૈદિક પૂજા બુક કરો | SatkarmPuja",
+        en: "Book Authentic Vedic Pujas with Verified Varanasi Pandits | SatkarmPuja",
+        hi: "वाराणसी (काशी) के प्रमाणित पंडितों के साथ प्रामाणिक वैदिक पूजाएँ बुक करें | SatkarmPuja",
+        gu: "વારાણસી (કાશી) ના પ્રમાણિત પંડિતો સાથે સાચી વૈદિક પૂજા બુક કરો | SatkarmPuja",
       },
       categories: {
         en: "Puja Categories & Services | SatkarmPuja",
