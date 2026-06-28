@@ -1043,6 +1043,11 @@ function getBlogContent(id: number, lang: 'en' | 'hi' | 'gu'): string[] {
 }
 
 export const blogPosts = blogMetadata.map((meta) => {
+  const englishTitle = meta.title.en || "blog-post";
+  const slug = englishTitle
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
   return {
     id: meta.id,
     title: meta.title,
@@ -1052,6 +1057,7 @@ export const blogPosts = blogMetadata.map((meta) => {
     date: meta.date,
     image: meta.image,
     color: meta.color,
+    slug,
     content: {
       en: getBlogContent(meta.id, 'en'),
       hi: getBlogContent(meta.id, 'hi'),

@@ -6619,7 +6619,7 @@ function BlogPage({ onNavigate, language }: { onNavigate: (page: Page, key?: str
             {filtered.map(post => (
               <article
                 key={post.id}
-                onClick={() => onNavigate("blog-detail", post.id)}
+                onClick={() => onNavigate("blog-detail", post.slug)}
                 className="bg-white rounded-2xl overflow-hidden border border-gold-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
               >
                 {/* Image */}
@@ -6811,7 +6811,7 @@ function BlogDetailPage({ postId, onNavigate, language }: BlogDetailPageProps) {
                   {relatedPosts.map(related => (
                     <div
                       key={related.id}
-                      onClick={() => onNavigate("blog-detail", related.id)}
+                      onClick={() => onNavigate("blog-detail", related.slug)}
                       className="group cursor-pointer flex gap-4 items-start"
                     >
                       <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-gold-100">
@@ -10816,7 +10816,15 @@ export default function App() {
       if (page === "pooja-detail" && key) {
         setCurrentPoojaKey(key);
       } else if (page === "blog-detail" && key) {
-        setCurrentBlogId(Number(key));
+        const post = blogPosts.find(p => p.slug === key);
+        if (post) {
+          setCurrentBlogId(post.id);
+        } else {
+          const numId = Number(key);
+          if (!isNaN(numId)) {
+            setCurrentBlogId(numId);
+          }
+        }
       }
     }
   }, [triggerReceiptDownload, setLanguage]);
@@ -11083,7 +11091,10 @@ export default function App() {
     if (currentPage === "pooja-detail" && currentPoojaKey) {
       canonicalUrl = `https://satkarmpuja.com/pooja-detail/${currentPoojaKey}`;
     } else if (currentPage === "blog-detail" && currentBlogId) {
-      canonicalUrl = `https://satkarmpuja.com/blog-detail/${currentBlogId}`;
+      const post = blogPosts.find(p => p.id === currentBlogId);
+      if (post) {
+        canonicalUrl = `https://satkarmpuja.com/blog-detail/${post.slug}`;
+      }
     } else if (currentPage !== "home") {
       canonicalUrl = `https://satkarmpuja.com/${currentPage}`;
     }
@@ -11167,7 +11178,7 @@ export default function App() {
             "@type": "ListItem",
             "position": 3,
             "name": blogTitle,
-            "item": `https://satkarmpuja.com/blog-detail/${currentBlogId}`
+            "item": `https://satkarmpuja.com/blog-detail/${post.slug}`
           });
         }
       } else if (currentPage === "about") {
