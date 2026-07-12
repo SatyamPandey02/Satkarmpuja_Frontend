@@ -4503,7 +4503,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-4 lg:mb-5">
               <span className="text-white text-sm font-body font-semibold tracking-wide flex items-center">
-                <Sparkles className="w-4 h-4 mr-2 text-gold-300 fill-gold-300/30" /> {t("heroTagline", language)}
+                {t("heroTagline", language)}
               </span>
             </div>
 
