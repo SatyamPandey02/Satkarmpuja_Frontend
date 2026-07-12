@@ -4485,7 +4485,7 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
     <>
       {/* Hero */}
       <section
-        className="relative min-h-screen lg:min-h-0 lg:h-screen flex flex-col overflow-hidden"
+        className="relative min-h-screen flex flex-col overflow-hidden"
         style={{
           backgroundImage: isMobile
             ? "url('/assets/generated/Mobile_VIew _Hero.webp')"
