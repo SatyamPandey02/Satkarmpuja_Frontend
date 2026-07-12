@@ -475,9 +475,9 @@ const blogMetadata: BlogMetadata[] = [
   {
     id: 22,
     title: {
-      en: "Puri Ratha Yatra: The Divine Chariot Festival of Lord Jagannath",
-      hi: "पुरी रथ यात्रा: भगवान जगन्नाथ का दिव्य रथ महोत्सव",
-      gu: "પુરી રથયાત્રા: ભગવાન જગન્નાથનો દિવ્ય રથ મહોત્સવ"
+      en: "Ratha Yatra: The Divine Chariot Festival of Lord Jagannath",
+      hi: "रथ यात्रा: भगवान जगन्नाथ का दिव्य रथ महोत्सव",
+      gu: "રથયાત્રા: ભગવાન જગન્નાથનો દિવ્ય રથ મહોત્સવ"
     },
     excerpt: {
       en: "Experience the spiritual grandeur and architectural marvel of the Puri Ratha Yatra. Discover its history, the construction of three mighty chariots, and virtual ways to participate.",
