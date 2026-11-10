@@ -5316,8 +5316,8 @@ function SuccessStoriesPage({ onNavigate, language }: SuccessStoriesPageProps) {
           <div className="gradient-maroon rounded-3xl p-8 md:p-12 text-white">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { icon: <Users className="w-8 h-8 text-saffron-500" />, number: "2,500+", labelKey: "statsHappyFamilies" as const },
-                { icon: <HeartHandshake className="w-8 h-8 text-saffron-500" />, number: "5,000+", labelKey: "statsPoojasPerformed" as const },
+                { icon: <Users className="w-8 h-8 text-saffron-500" />, number: "10,000+", labelKey: "statsHappyFamilies" as const },
+                { icon: <HeartHandshake className="w-8 h-8 text-saffron-500" />, number: "15,000+", labelKey: "statsPoojasPerformed" as const },
                 { icon: <Star className="w-8 h-8 text-yellow-500" />, number: "4.9/5", labelKey: "statsAvgRating" as const },
                 { icon: <Trophy className="w-8 h-8 text-saffron-500" />, number: "99%", labelKey: "statsSatisfaction" as const },
               ].map((st) => (
