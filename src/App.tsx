@@ -4543,8 +4543,8 @@ function HomePage({ config, onNavigate, language, poojaPrices }: HomePageProps) 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-3.5">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
               {[
-                { icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "2,500+", label: t("statsHappyFamilies", language) },
-                { icon: <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "5,000+", label: t("statsPoojasPerformed", language) },
+                { icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "10,000+", label: t("statsHappyFamilies", language) },
+                { icon: <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "15,000+", label: t("statsPoojasPerformed", language) },
                 { icon: <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500" />, num: "4.9/5", label: t("statsAvgRating", language) },
                 { icon: <Trophy className="w-5 h-5 sm:w-6 sm:h-6 text-saffron-500" />, num: "99%", label: t("statsSatisfaction", language) },
               ].map((s) => (
